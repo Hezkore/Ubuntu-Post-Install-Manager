@@ -1,6 +1,21 @@
 #!/bin/bash
 # -*- Mode: sh; coding: utf-8; indent-tabs-mode: t; tab-width: 4 -*-
 
+function bin_exists () {
+  command -v "$1" >/dev/null 2>&1
+}
+
+function create_dir () {
+	mkdir -p $1
+	if [[ -d $1 ]]; then
+		echo "Created directory $1"
+		return 0
+	else
+		LAST_ERROR="Unable to create directory $1"
+		return 1
+	fi
+}
+
 # Quit properly
 function quit () {
 	exit 99
@@ -71,13 +86,8 @@ function show_system_warnings () {
 }
 
 function show_main_menu () {
-	actions=( "show_misc_menu" "1. Miscellaneous" \
-	"show_software_menu" "2. Software" \
-	"show_extensions_menu" "3. Extensions" \
-	"show_configuration_menu" "4. Configuration" )
-	
 	category=$(whiptail --ok-button "Run" --cancel-button "Exit" --notags \
-	--title "$TITLE" --menu "" 0 0 0 "${actions[@]}" 3>&1 1>&2 2>&3)
+	--title "$TITLE" --menu "" 0 0 0 "${CATEGORIES[@]}" 3>&1 1>&2 2>&3)
 	
 	if [ $? -gt 0 ]; then # User pressed Cancel
         quit
@@ -93,7 +103,7 @@ function notify_error () {
 	sleep 0.5
 	
 	if (whiptail --title "Error #$exitstatus" \
-		--yesno "There was an error while executing action \"$LAST_ACTION_NAME\".\nMessage: $LAST_ERROR.\n\nDo you want to continue?" \
+		--yesno "There was an error while executing action \"$LAST_ACTION_NAME\".\nMessage: $LAST_ERROR.\n\nDo you want to continue with the next action?" \
 		0 0)
 	then
 		echo "== Resuming =="
@@ -167,7 +177,7 @@ function generate_selection_menu () {
 	choices=$(
 		whiptail \
 			--ok-button "Confirm" \
-			--cancel-button "Abort" \
+			--cancel-button "Back" \
 			--separate-output \
 			--checklist \
 			--title "Customize" \
@@ -180,7 +190,7 @@ function generate_selection_menu () {
 	ERROR_COUNT=0
 	ACTION_COUNT=0
 	if [ -z "$choices" ]; then
-		echo "Nothing selected"
+		return
 	else
 		for choice in $choices; do
 			exec_action $choice
