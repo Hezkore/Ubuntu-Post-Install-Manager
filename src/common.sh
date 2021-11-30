@@ -86,6 +86,52 @@ function show_main_menu () {
     fi
 }
 
+function notify_error () {
+	notify-send "Error when running action!"
+	echo -ne '\007' # Beep sound
+	
+	sleep 0.5
+	
+	if (whiptail --title "Error #$exitstatus" \
+		--yesno "There was an error while executing action \"$LAST_ACTION_NAME\".\nMessage: $LAST_ERROR.\n\nDo you want to continue?" \
+		0 0)
+	then
+		echo "= Resuming ="
+		echo
+	else
+		echo "= Abort ="
+		exit 99
+	fi
+}
+
+function exec_action () {
+	# Reset
+	LAST_ERROR="Unknown Error"
+	LAST_ACTION_NAME=${1//_/ }
+	
+	# Information
+	echo "== $LAST_ACTION_NAME =="
+	
+	# Execute
+	${1,,}
+	
+	# Fetch result
+	exitstatus=$?
+	
+	# Error?
+	if [ $exitstatus = 127 ]; then
+		LAST_ERROR="Internal error"
+	fi
+	if [ $exitstatus = 0 ]; then
+		echo "== Complete =="
+		echo
+	else
+		echo "== Error #$exitstatus =="
+		echo $LAST_ERROR
+		notify_error
+	fi
+}
+
 function generate_selection_menu () {
 	# We need to strip out the title from the array
 	items_raw=("$@")
@@ -114,4 +160,15 @@ function generate_selection_menu () {
 			"$item_count" -- "${items[@]}" \
 			3>&1 1>&2 2>&3
 	)
+	
+	if [ -z "$choices" ]; then
+		echo "Nothing selected"
+	else
+		for choice in $choices; do
+			exec_action $choice
+		done
+		
+		echo -ne '\007' # Beep sound
+		#notify-send "Ubuntu Post-Install Script Done"
+	fi
 }
