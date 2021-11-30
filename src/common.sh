@@ -87,7 +87,7 @@ function show_main_menu () {
 }
 
 function notify_error () {
-	notify-send "Error when running action!"
+	#notify-send "Error when running action!"
 	echo -ne '\007' # Beep sound
 	
 	sleep 0.5
@@ -96,12 +96,25 @@ function notify_error () {
 		--yesno "There was an error while executing action \"$LAST_ACTION_NAME\".\nMessage: $LAST_ERROR.\n\nDo you want to continue?" \
 		0 0)
 	then
-		echo "= Resuming ="
+		echo "== Resuming =="
 		echo
 	else
-		echo "= Abort ="
-		exit 99
+		echo "== Abort =="
+		echo
+		quit
 	fi
+	
+	# Count error
+	ERROR_COUNT="$(($ERROR_COUNT+1))"
+}
+
+function notify_complete () {
+	#notify-send "Ubuntu Post-Install Script Done"
+	echo -ne '\007' # Beep sound
+	
+	sleep 0.5
+	
+	whiptail --title "Complete" --msgbox "$ACTION_COUNT action(s) finished with $ERROR_COUNT error(s)." 0 0
 }
 
 function exec_action () {
@@ -130,6 +143,9 @@ function exec_action () {
 		echo $LAST_ERROR
 		notify_error
 	fi
+	
+	# Count this action
+	ACTION_COUNT="$(($ACTION_COUNT+1))"
 }
 
 function generate_selection_menu () {
@@ -161,14 +177,15 @@ function generate_selection_menu () {
 			3>&1 1>&2 2>&3
 	)
 	
+	ERROR_COUNT=0
+	ACTION_COUNT=0
 	if [ -z "$choices" ]; then
 		echo "Nothing selected"
 	else
 		for choice in $choices; do
 			exec_action $choice
 		done
-		
-		echo -ne '\007' # Beep sound
-		#notify-send "Ubuntu Post-Install Script Done"
 	fi
+	
+	notify_complete
 }
