@@ -25,8 +25,9 @@ function show_software_menu () {
 		"Install_Discord" "Install Discord messenger" "ON"
 		"Install_Steam" "Install Steam game store" "ON"
 		"Install_Lutris" "Install Lutris game manager via custom PPA" "ON"
-		"Install_Spotify" "Install Spotify music player" via custom PPA "ON"
+		"Install_Spotify" "Install Spotify music player via custom PPA" "ON"
 		"Install_OBS" "Install OBS Studio via custom PPA" "ON"
+		"Install_OBS_NvFBC_Plugin" "Install OBS Studio NvFBC plugin for NVidia cards" "ON"
 	)
 	generate_selection_menu "Software" "${items[@]}"
 }
