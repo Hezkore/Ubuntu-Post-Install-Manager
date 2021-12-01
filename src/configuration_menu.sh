@@ -11,7 +11,7 @@ function show_configuration_menu () {
 		"Config_Telegram_Start" "Configure Telegram to start at login" "ON"
 		"Config_Discord_Start" "Configure Discord to start at login" "ON"
 		"Config_Steam_Start" "Configure Steam to start at login" "ON"
-		"Config_Geary_Start" "Configure Geary continuously check for incoming email" "ON"
+		"Config_Geary_Start" "Configure Geary to check for incoming email" "ON"
 	)
 	generate_selection_menu "Configuration Options" "${items[@]}"
 }
