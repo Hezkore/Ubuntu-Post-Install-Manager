@@ -88,7 +88,7 @@ function config_mimeapps () {
 		echo 'text/xml=code.desktop' >> $file
 	fi
 	
-	if bin_exists "code"; then
+	if bin_exists "gedit"; then
 		echo 'text/plain=org.gnome.gedit.desktop' >> $file
 	fi
 	
