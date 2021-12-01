@@ -6,6 +6,8 @@ function show_software_menu () {
 		"Remove_Snap" "Purge Snap store and software" "ON"
 		"Install_APT_HTTPS" "Install APT HTTPS support" "ON"
 		"Install_GNOME-Software" "Install GNOME software store" "ON"
+		"Install_GNOME_Shell_Ext_Support" "Install GNOME shell extension support" "ON"
+		"Install_GNOME_Ext_Installer" "Install GNOME extension installer" "ON"
 		"Install_Discover_Store" "Install KDE Discover software store" "OFF"
 		"Install_Flatpak" "Enable Flatpak support" "ON"
 		"Install_DConf" "Install DConf editor" "ON"
@@ -101,6 +103,22 @@ function install_ninja () {
 
 function install_gnome-software () {
 	sudo apt install gnome-software -y
+}
+
+function install_gnome_shell_ext_support () {
+	sudo apt install gnome-shell-extensions -y
+}
+
+function install_gnome_ext_installer () {
+	if bin_exists "wget"; then
+		sudo wget -O gnome-shell-extension-installer "https://github.com/brunelli/gnome-shell-extension-installer/raw/master/gnome-shell-extension-installer"
+		sudo chmod +x gnome-shell-extension-installer
+		sudo mv gnome-shell-extension-installer /usr/bin/
+		return 0
+	else
+		LAST_ERROR="WGet is not installed, cannot download package"
+		return 1
+	fi
 }
 
 function install_discover_store () {
