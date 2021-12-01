@@ -141,15 +141,33 @@ function install_flatpak () {
 }
 
 function install_blender () {
-	flatpak install org.blender.Blender -y
+	if bin_exists "flatpak"; then
+		flatpak install org.blender.Blender -y
+		return 0
+	else
+		LAST_ERROR="Flatpak is not installed, cannot update Flatpak software"
+		return 1
+	fi
 }
 
 function install_audacity () {
-	flatpak install org.audacityteam.Audacity -y
+	if bin_exists "flatpak"; then
+		flatpak install org.audacityteam.Audacity -y
+		return 0
+	else
+		LAST_ERROR="Flatpak is not installed, cannot update Flatpak software"
+		return 1
+	fi
 }
 
 function install_bitwarden () {
-	flatpak install bitwarden -y
+	if bin_exists "flatpak"; then
+		flatpak install bitwarden -y
+		return 0
+	else
+		LAST_ERROR="Flatpak is not installed, cannot update Flatpak software"
+		return 1
+	fi
 }
 
 function install_homebrew () {
