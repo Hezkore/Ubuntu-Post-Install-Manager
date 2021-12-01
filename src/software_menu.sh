@@ -40,13 +40,21 @@ function show_software_menu () {
 		"Install_Discord" "Install Discord messenger" "ON"
 		"Install_Steam" "Install Steam game store" "ON"
 		"Install_Lutris" "Install Lutris game manager via custom PPA" "ON"
+		"Install_Htop" "Install Htop system monitor" "ON"
+		"Install_Nvtop" "Install Nvtop NVidia GPU monitor" "ON"
+		"Install_Radeontop" "Install Radeontop Radeon GPU monitor" "ON"
+		"Install_GameMode" "Install Game Mode" "ON"
+		"Install_Mangohud" "Install Mangohud via custom PPA" "ON"
+		"Install_vkBasalt" "Install vkBasalt via custom PPA" "ON"
+		"Install_GOverlay" "Install GOverlay via custom PPA" "ON"
+		"Install_Flameshot" "Install Flameshot screenshot tool" "ON"
 		"Install_Spotify" "Install Spotify music player via custom PPA" "ON"
 		"Install_OBS" "Install OBS Studio via custom PPA" "ON"
 		"Install_OBS_NvFBC_Plugin" "Install OBS Studio NvFBC plugin for NVidia cards" "ON"
 		"Install_Edge_Browser" "Install Microsoft Edge Browser via custom PPA" "ON"
 		"Install_VSCode" "Install Visual Studio Code via custom PPA" "ON"
 		"Install_Wine" "Install Wine and Winetricks" "ON"
-		"Install_VirtualBox" "Install Virtual Box" "ON"
+		"Install_VirtualBox" "Install VirtualBox" "ON"
 		"Install_IMWheel" "Install custom IMWheel version" "ON"
 		"Remove_Thunderbird" "Remove Thunderbird" "ON"
 		"Install_Geary" "Install Geary email client" "ON"
@@ -331,6 +339,53 @@ function install_lutris () {
 	fi
 }
 
+function install_htop () {
+	sudo apt install htop -y
+}
+
+function install_nvtop () {
+	sudo apt install nvtop -y
+}
+
+function install_radeontop () {
+	sudo apt install radeontop -y
+}
+
+function install_gamemode () {
+	sudo apt install gamemode -y
+}
+
+function install_mangohud () {
+	if add_ppa "ppa:flexiondotorg/mangohud"; then
+		sudo apt install mangohud -y
+		return 0
+	else
+		return 1
+	fi
+}
+
+function install_vkbasalt () {
+	if add_ppa "ppa:flexiondotorg/mangohud"; then
+		sudo apt install vkbasalt -y
+		return 0
+	else
+		return 1
+	fi
+}
+
+function install_goverlay () {
+	if add_ppa "ppa:flexiondotorg/mangohud"; then
+		sudo apt install goverlay -y
+		return 0
+	else
+		return 1
+	fi
+}
+
+function install_flameshot () {
+	sudo apt install flameshot -y
+}
+
 function install_spotify () {
 	if bin_exists "curl"; then
 		curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add - 
@@ -439,6 +494,7 @@ function install_imwheel () {
 				sudo mkdir -p /etc/X11/imwheel
 				wget -O imwheelrc https://raw.githubusercontent.com/Hezkore/Ubuntu-Post-Install-Manager/master/extra/imwheelrc
 				sudo mv imwheelrc /etc/X11/imwheel/
+				return 0
 			else
 				LAST_ERROR="Make is not installed, cannot build project"
 				return 1
