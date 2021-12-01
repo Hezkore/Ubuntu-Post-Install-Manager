@@ -44,6 +44,10 @@ function show_software_menu () {
 		"Install_VirtualBox" "Install Virtual Box" "ON"
 		"Remove_Thunderbird" "Remove Thunderbird" "ON"
 		"Install_Geary" "Install Geary email client" "ON"
+		"Remove_KDE_Connect" "Remove KDE Connect" "ON"
+		"Update_APT" "Update APT software" "ON"
+		"Clean_APT" "Clean and remove APT redundant data" "ON"
+		"Update_Flatpak_Software" Update all Flatpak software"" "ON"
 	)
 	generate_selection_menu "Software" "${items[@]}"
 }
@@ -374,4 +378,29 @@ function remove_thunderbird () {
 
 function install_geary () {
 	sudo apt install geary -y
+}
+
+function remove_kde_connect () {
+	killall kdeconnectd
+	sudo apt autoremove --purge kdeconnect -y
+}
+
+function update_apt () {
+	sudo apt update
+	sudo apt upgrade -y
+}
+
+function clean_apt () {
+	sudo apt autoremove -y
+	sudo apt clean -y
+}
+
+function update_flatpak_software () {
+	if bin_exists "flatpak"; then
+		flatpak update -y
+		return 0
+	else
+		LAST_ERROR="Flatpak is not installed, cannot update Flatpak software"
+		return 1
+	fi
 }
