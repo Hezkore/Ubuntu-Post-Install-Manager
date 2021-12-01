@@ -42,6 +42,7 @@ function show_software_menu () {
 		"Install_Discord" "Install Discord messenger" "ON"
 		"Install_Steam" "Install Steam game store" "ON"
 		"Install_Lutris" "Install Lutris game manager via custom PPA" "ON"
+		"Install_DOSBox" "Install DOSBox x86 emulator with DOS" "ON"
 		"Install_Htop" "Install Htop system monitor" "ON"
 		"Install_Nvtop" "Install Nvtop NVidia GPU monitor" "ON"
 		"Install_Radeontop" "Install Radeontop Radeon GPU monitor" "ON"
@@ -340,6 +341,10 @@ function install_lutris () {
 	else
 		return 1
 	fi
+}
+
+function install_dosbox () {
+	sudo apt install dosbox -y
 }
 
 function install_htop () {

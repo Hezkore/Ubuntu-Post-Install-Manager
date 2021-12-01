@@ -6,6 +6,7 @@ function show_misc_menu () {
 		"Folder_Setup" "Create common folder directories" "ON"
 		"Nautilus_New_Docs" "Add 'New Document' menu to Nautilus" "ON"
 		"Nautilus_Admin" "Add 'Open as Admin' option to Nautilus" "OFF"
+		"Nautilus_DOSBox" "Add 'Run with DOSbox' script to Nautilus" "ON"
 	)
 	generate_selection_menu "Miscellaneous Options" "${items[@]}"
 }
@@ -42,4 +43,9 @@ function nautilus_new_docs () {
 
 function nautilus_admin () {
 	sudo apt install nautilus-admin -y
+}
+
+function nautilus_dosbox () {
+	create_dir "$HOME/.local/share/nautilus/scripts"
+	wget -O "$HOME/.local/share/nautilus/scripts/Run with DOSBox" https://raw.githubusercontent.com/Hezkore/nautilus-dosbox/master/Run%20with%20DOSBox
 }
