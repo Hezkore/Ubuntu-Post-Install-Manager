@@ -7,7 +7,7 @@ function show_drivers_menu () {
 		"Install_Drivers" "Automatically install required Ubuntu drivers" "ON"
 		"Patch_NvFBC" "Patch NVidia GPU drivers to remove NVENC and NvFBC limitations" "OFF"
 	)
-	generate_selection_menu "Miscellaneous Options" "${items[@]}"
+	generate_selection_menu "Driver Options" "${items[@]}"
 }
 
 function add_gpu_ppa () {

@@ -14,12 +14,14 @@ CATEGORIES=(
 	"show_software_menu"		"3. Software"
 	"show_extensions_menu"		"4. Extensions"
 	"show_configuration_menu"	"5. Configuration"
+	"show_theme_menu"			"6. Theme"
 )
 source src/misc_menu.sh
 source src/drivers_menu.sh
 source src/software_menu.sh
 source src/extensions_menu.sh
 source src/configuration_menu.sh
+source src/theme_menu.sh
 
 # Make sure the system is compatible
 fetch_system_information

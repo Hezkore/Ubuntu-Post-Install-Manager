@@ -65,7 +65,7 @@ function show_software_menu () {
 		"Clean_APT" "Clean and remove APT redundant data" "ON"
 		"Update_Flatpak_Software" "Update all Flatpak software" "ON"
 	)
-	generate_selection_menu "Software" "${items[@]}"
+	generate_selection_menu "Software Options" "${items[@]}"
 }
 
 function remove_snap () {
