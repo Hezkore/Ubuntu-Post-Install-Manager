@@ -417,6 +417,8 @@ function install_vscode () {
 function install_wine () {
 	sudo apt install --install-recommends wine -y
 	sudo apt install winetricks -y
+	# Make sure there's a desktop file created
+	sudo cp /usr/share/doc/wine/examples/wine.desktop /usr/share/applications/wine.desktop
 }
 
 function install_virtualbox () {
