@@ -13,6 +13,8 @@ function show_software_menu () {
 		"Install_SPC" "Install software-properties-common" "ON"
 		"Install_Git" "Install GIT" "ON"
 		"Install_Build-Essential" "Install build-essential" "ON"
+		"Install_Build_Depend" "Install common build dependencies" "ON"
+		"Install_Meson" "Install Meson build system" "ON"
 		"Install_CMake" "Install CMake make system" "ON"
 		"Install_Ninja" "Install Ninja build system" "ON"
 		"Install_Python3" "Install Python3 and Pip" "ON"
@@ -58,6 +60,10 @@ function install_git () {
 	sudo apt install git -y
 }
 
+function install_meson () {
+	sudo apt install meson -y
+}
+
 function install_cmake () {
 	sudo apt install cmake -y
 }
@@ -95,6 +101,10 @@ function install_wget () {
 
 function install_build-essential () {
 	sudo apt install build-essential -y
+}
+
+function "install_build_depend" () {
+	sudo apt install libgl-dev libobs-dev libsimde-dev -y
 }
 
 function install_spc () {
@@ -184,6 +194,34 @@ function install_obs () {
 		sudo apt install obs-studio -y
 		return 0
 	else
+		return 1
+	fi
+}
+
+function install_obs_nvfbc_plugin () {
+	if bin_exists "git"; then
+		if bin_exists "meson"; then
+			if bin_exists "ninja"; then
+				git clone https://gitlab.com/fzwoch/obs-nvfbc.git ~/obs-nvfbc.git
+				cd ~/obs-nvfbc.git
+				meson build
+				ninja -C build
+				cd build
+				mkdir -p ~/.config/obs-studio/plugins/nvfbc/bin/64bit
+				mv nvfbc.so ~/.config/obs-studio/plugins/nvfbc/bin/64bit/
+				cd ..
+				sudo rm -rf ~/obs-nvfbc.git
+				return 0
+			else
+				LAST_ERROR="Ninja is not installed, cannot build project"
+				return 1
+			fi
+		else
+			LAST_ERROR="Meson is not installed, cannot build project"
+			return 1
+		fi
+	else
+		LAST_ERROR="Git is not installed, cannot clone Git repo key"
 		return 1
 	fi
 }
