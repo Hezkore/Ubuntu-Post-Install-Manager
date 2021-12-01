@@ -109,6 +109,11 @@ function config_mimeapps () {
 	fi
 }
 
+function config_flameshot () {
+	mkdir -p "$HOME/.config/flameshot"
+	sudo echo -e "[General]\ndisabledTrayIcon=true\nsaveAfterCopy=true\nshowHelp=false\nshowStartupLaunchMessage=false" > "$HOME/.config/flameshot/flameshot.ini"
+}
+
 function config_imwheel () {
 	if bin_exists "wget"; then
 		sudo mkdir -p /etc/X11/imwheel
@@ -119,4 +124,16 @@ function config_imwheel () {
 		LAST_ERROR="WGet is not installed, cannot download configuration"
 		return 1
 	fi
+}
+
+function config_telegram_start () {
+	sudo echo -e "[Desktop Entry]\nName=telegram\nIcon=telegram\nExec=telegram-desktop -startintray\nTerminal=false\nType=Application\nX-GNOME-Autostart-enabled=true\nX-GNOME-Autostart-Delay=1" > "$HOME/.config/autostart/Telegram.desktop"
+}
+
+function config_discord_start () {
+	sudo echo -e "[Desktop Entry]\nName=discord\nIcon=discord\nExec=discord --start-minimized\nTerminal=false\nType=Application\nX-GNOME-Autostart-enabled=true\nX-GNOME-Autostart-Delay=1" > "$HOME/.config/autostart/Discord.desktop"
+}
+
+function config_steam_start () {
+	sudo echo -e "[Desktop Entry]\nName=steam\nIcon=steam\nExec=steam -silent\nTerminal=false\nType=Application\nX-GNOME-Autostart-enabled=true" > "$HOME/.config/autostart/Steam-minimized.desktop"
 }
