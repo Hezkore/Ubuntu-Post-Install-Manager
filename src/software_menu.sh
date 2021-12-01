@@ -4,6 +4,7 @@
 function show_software_menu () {
 	items=(
 		"Remove_Snap" "Purge Snap store and software" "ON"
+		"Install_APT_HTTPS" "Install APT HTTPS support" "ON"
 		"Install_GNOME-Software" "Install GNOME software store" "ON"
 		"Install_Discover_Store" "Install KDE Discover software store" "OFF"
 		"Install_Flatpak" "Enable Flatpak support" "ON"
@@ -18,6 +19,7 @@ function show_software_menu () {
 		"Install_CMake" "Install CMake make system" "ON"
 		"Install_Ninja" "Install Ninja build system" "ON"
 		"Install_Python3" "Install Python3 and Pip" "ON"
+		"Install_NodeJS" "Install NodeJS via custom PPA" "ON"
 		"Install_Vim" "Install Vim CLI text editor" "ON"
 		"Install_Emacs" "Install Emacs CLI text editor" "ON"
 		"Install_Foliate" "Install Foliate EBook reader via custom PPA" "ON"
@@ -30,6 +32,8 @@ function show_software_menu () {
 		"Install_Spotify" "Install Spotify music player via custom PPA" "ON"
 		"Install_OBS" "Install OBS Studio via custom PPA" "ON"
 		"Install_OBS_NvFBC_Plugin" "Install OBS Studio NvFBC plugin for NVidia cards" "ON"
+		"Install_Edge_Browser" "Install Microsoft Edge Browser via custom PPA" "ON"
+		"Install_VSCode" "Install Visual Studio Code via custom PPA" "ON"
 	)
 	generate_selection_menu "Software" "${items[@]}"
 }
@@ -46,6 +50,10 @@ function remove_snap () {
 	sudo rm -rf ~/snap
 }
 
+function install_apt_https () {
+	sudo apt install apt-transport-https -y
+}
+
 function install_python3 () {
 	sudo apt install python3 -y
 	sudo apt install python3-pip -y
@@ -54,6 +62,17 @@ function install_python3 () {
 	python3 -m keyring --disable &> /dev/null
 	
 	pip install repolib
+}
+
+function install_nodejs () {
+	if bin_exists "curl"; then
+		curl -fsSL https://deb.nodesource.com/setup_17.x | sudo -E bash -
+		sudo apt install -y nodejs
+		return 0
+	else
+		LAST_ERROR="cURL is not installed, cannot download key"
+		return 1
+	fi
 }
 
 function install_git () {
@@ -103,8 +122,13 @@ function install_build-essential () {
 	sudo apt install build-essential -y
 }
 
-function "install_build_depend" () {
-	sudo apt install libgl-dev libobs-dev libsimde-dev -y
+function install_build_depend () {
+	sudo apt install \
+	libgl-dev \
+	libobs-dev \
+	libsimde-dev \
+	libxtst-dev \
+	libxmu-dev -y
 }
 
 function install_spc () {
@@ -222,6 +246,40 @@ function install_obs_nvfbc_plugin () {
 		fi
 	else
 		LAST_ERROR="Git is not installed, cannot clone Git repo key"
+		return 1
+	fi
+}
+
+function install_edge_browser () {
+	if bin_exists "curl"; then
+		curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+		sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
+		sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list'
+		sudo rm -rf microsoft.gpg
+		sudo rm -rf /etc/apt/sources.list.d/microsoft-edge.list
+		sudo apt update
+		sudo apt install microsoft-edge-stable -y
+		sudo rm -rf /etc/apt/sources.list.d/microsoft-edge.list
+		return 0
+	else
+		LAST_ERROR="cURL is not installed, cannot download key"
+		return 1
+	fi
+}
+
+function install_vscode () {
+	if bin_exists "curl"; then
+		curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+		sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
+		sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+		sudo rm -rf microsoft.gpg
+		sudo rm -rf /etc/apt/sources.list.d/microsoft-edge.list
+		sudo apt update
+		sudo apt install code -y
+		sudo rm -rf /etc/apt/sources.list.d/microsoft-edge.list
+		return 0
+	else
+		LAST_ERROR="cURL is not installed, cannot download key"
 		return 1
 	fi
 }
