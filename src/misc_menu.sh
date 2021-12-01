@@ -29,11 +29,14 @@ function folder_setup () {
 }
 
 function nautilus_new_docs () {
-	echo "Creating template files"
+	echo "Creating template for empty document"
 	touch ~/Templates/Empty\ Document
 	create_dir ~/Templates/Code
+	echo "Creating template for BlitzMax"
 	echo -e "SuperStrict\n\nFramework brl.standardio\n\nPrint(\"Hello World\")" > ~/Templates/Code/blitzmax.bmx
+	echo "Creating template for C++"
 	echo -e "#include <iostream>\n\nint main() {\n\tstd::cout << \"Hello World\";\n\treturn 0;\n}" > ~/Templates/Code/cpp.cpp
+	echo "Creating template for Bash"
 	echo -e "#"'!'"/bin/bash\n# -*- Mode: sh; coding: utf-8; indent-tabs-mode: t; tab-width: 4 -*-\n\n# My bash script\n\necho \"Hello World\"" > ~/Templates/Code/bash.sh
 }
 
