@@ -10,6 +10,11 @@ function show_software_menu () {
 		"Install_GNOME_Ext_Installer" "Install GNOME extension installer" "ON"
 		"Install_Discover_Store" "Install KDE Discover software store" "OFF"
 		"Install_Flatpak" "Enable Flatpak support" "ON"
+		"Install_Blender" "Install Blender via Flatpak" "ON"
+		"Install_Audacity" "Install Audacity via Flatpak" "ON"
+		"Install_Bitwarden" "Install Bitwarden via Flatpak" "ON"
+		"Install_Homebrew" "Enable Homebrew support" "ON"
+		"install_GitHub_CLI" "Install GitHub CLI via Homebrew" "ON"
 		"Install_DConf" "Install DConf editor" "ON"
 		"Install_Tweaks" "Install GNOME Tweaks" "ON"
 		"Install_GDebi" "Install GDebi DEB unpacker" "ON"
@@ -47,7 +52,7 @@ function show_software_menu () {
 		"Remove_KDE_Connect" "Remove KDE Connect" "ON"
 		"Update_APT" "Update APT software" "ON"
 		"Clean_APT" "Clean and remove APT redundant data" "ON"
-		"Update_Flatpak_Software" Update all Flatpak software"" "ON"
+		"Update_Flatpak_Software" "Update all Flatpak software" "ON"
 	)
 	generate_selection_menu "Software" "${items[@]}"
 }
@@ -133,6 +138,34 @@ function install_flatpak () {
 	sudo apt install gnome-software-plugin-flatpak -y
 	sudo apt install flatpak -y
 	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+}
+
+function install_blender () {
+	flatpak install org.blender.Blender -y
+}
+
+function install_audacity () {
+	flatpak install org.audacityteam.Audacity -y
+}
+
+function install_bitwarden () {
+	flatpak install bitwarden -y
+}
+
+function install_homebrew () {
+	if bin_exists "curl"; then
+		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" <<< \n
+		echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/$USER/.profile
+		eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+		return 0
+	else
+		LAST_ERROR="cURL is not installed, cannot download installer"
+		return 1
+	fi
+}
+
+function install_github_cli () {
+	brew install gh
 }
 
 function install_dconf () {
