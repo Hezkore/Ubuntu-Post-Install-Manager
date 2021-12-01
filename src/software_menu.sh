@@ -3,11 +3,25 @@
 
 function show_software_menu () {
 	items=(
-		"Remove_Snap" "Remove Snap store and software" "ON"
+		"Install_Drivers" "Install required Ubuntu drivers" "ON"
+		"Remove_Snap" "Purge Snap store and software" "ON"
+		"Install_GNOME-Software" "Install GNOME software store" "ON"
+		"Install_Discover_Store" "Install KDE Discover software store" "OFF"
+		"Install_Flatpak" "Enable Flatpak support" "ON"
+		"Install_Curl" "Install cURL CLI tool" "ON"
+		"Install_WGet" "Install WGet CLI tool" "ON"
+		"Install_SPC" "Install software-properties-common" "ON"
+		"Install_Git" "Install GIT" "ON"
+		"Install_Build-Essential" "Install build-essential" "ON"
+		"Install_CMake" "Install CMake make system" "ON"
+		"Install_Ninja" "Install Ninja build system" "ON"
 		"Install_Python3" "Install Python3 and Pip" "ON"
-		"Install_Git" "Install Git version control" "ON"
+		"Install_Vim" "Install Vim CLI text editor" "ON"
+		"Install_Emacs" "Install Emacs CLI text editor" "ON"
+		"Install_Foliate" "Install Foliate EBook reader via custom PPA" "ON"
+		"Install_KDENLIVE" "Install Kdenlive video editor via custom PPA" "ON"
 	)
-	generate_selection_menu "Install Software" "${items[@]}"
+	generate_selection_menu "Software" "${items[@]}"
 }
 
 function remove_snap () {
@@ -34,4 +48,71 @@ function install_python3 () {
 
 function install_git () {
 	sudo apt install git -y
+}
+
+function install_cmake () {
+	sudo apt install cmake -y
+}
+
+function install_ninja () {
+	sudo apt install ninja-build -y
+}
+
+function install_gnome-software () {
+	sudo apt install gnome-software -y
+}
+
+function install_discover_store () {
+	sudo apt-get install -y discover
+}
+
+function install_flatpak () {
+	sudo apt install gnome-software-plugin-flatpak -y
+	sudo apt install flatpak -y
+	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+}
+
+function install_curl () {
+	sudo apt install curl -y
+}
+
+function install_wget () {
+	sudo apt install wget -y
+}
+
+function install_build-essential () {
+	sudo apt install build-essential -y
+}
+
+function install_spc () {
+	sudo apt install software-properties-common -y
+}
+
+function install_drivers () {
+	sudo echo "Checking for drives..."
+	sudo ubuntu-drivers install
+}
+
+function install_vim () {
+	sudo apt install vim -y
+}
+
+function install_emacs () {
+	sudo apt install emacs -y
+}
+
+function install_foliate () {
+	if add_ppa "ppa:apandada1/foliate"; then
+		sudo apt install foliate -y
+	else
+		return 1
+	fi
+}
+
+function install_kdenlive () {
+	if add_ppa "ppa:kdenlive/kdenlive-stable"; then
+		sudo apt install kdenlive -y
+	else
+		return 1
+	fi
 }

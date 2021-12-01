@@ -5,6 +5,20 @@ function bin_exists () {
   command -v "$1" >/dev/null 2>&1
 }
 
+function add_ppa () {
+	if bin_exists "add-apt-repository"; then
+		sudo add-apt-repository $1 -y
+		# This isn't actually required anymore on newer APT
+		# But we'll have to detect that newer APT version!
+		sudo apt update
+		return 0
+	else
+		LAST_ERROR="Software-properties-common is not installed, cannot add custom PPA"
+		#echo "$LAST_ERROR"
+		return 1
+	fi
+}
+
 function create_dir () {
 	mkdir -p $1
 	if [[ -d $1 ]]; then
@@ -176,14 +190,14 @@ function generate_selection_menu () {
 	
 	choices=$(
 		whiptail \
+			--notags \
 			--ok-button "Confirm" \
 			--cancel-button "Back" \
 			--separate-output \
-			--checklist \
+			--checklist "$1" \
 			--title "Customize" \
-			"$1" \
-			0 0 \
-			"$item_count" -- "${items[@]}" \
+			$(( $LINES - 4 )) $(( $COLUMNS - 4 )) $(( $LINES - 12 )) \
+			"${items[@]}" \
 			3>&1 1>&2 2>&3
 	)
 	
