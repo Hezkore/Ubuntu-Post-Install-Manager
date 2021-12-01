@@ -19,7 +19,8 @@ function add_gpu_ppa () {
 }
 
 function install_drivers () {
-	sudo echo "Checking for drives..."
+	sudo echo "Run the GNOME application 'Additional Drivers' to see drivers in use"
+	sudo echo "Checking for new drives..."
 	sudo ubuntu-drivers install
 }
 

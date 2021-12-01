@@ -500,6 +500,7 @@ function install_imwheel () {
 				cd $HOME/imwheel
 				./configure
 				make
+				sudo cp imwheel /usr/local/bin/imwheel
 				sudo mv imwheel /usr/bin/
 				cd ..
 				sudo rm -rf $HOME/imwheel
