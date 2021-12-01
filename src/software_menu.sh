@@ -8,6 +8,8 @@ function show_software_menu () {
 		"Install_GNOME-Software" "Install GNOME software store" "ON"
 		"Install_Discover_Store" "Install KDE Discover software store" "OFF"
 		"Install_Flatpak" "Enable Flatpak support" "ON"
+		"Install_DConf" "Install DConf editor" "ON"
+		"Install_Tweaks" "Install GNOME Tweaks" "ON"
 		"Install_GDebi" "Install GDebi DEB unpacker" "ON"
 		"Install_Curl" "Install cURL CLI tool" "ON"
 		"Install_WGet" "Install WGet CLI tool" "ON"
@@ -25,6 +27,8 @@ function show_software_menu () {
 		"Install_Foliate" "Install Foliate EBook reader via custom PPA" "ON"
 		"Install_Kdenlive" "Install Kdenlive video editor via custom PPA" "ON"
 		"Install_Handbrake" "Install Handbrake video trimmer" "ON"
+		"Install_Krita" "Install Krita image editor via custom PPA" "ON"
+		"Install_Inscape" "Install Inscape via custom PPA" "ON"
 		"Install_Telegram" "Install Telegram messenger" "ON"
 		"Install_Discord" "Install Discord messenger" "ON"
 		"Install_Steam" "Install Steam game store" "ON"
@@ -34,6 +38,10 @@ function show_software_menu () {
 		"Install_OBS_NvFBC_Plugin" "Install OBS Studio NvFBC plugin for NVidia cards" "ON"
 		"Install_Edge_Browser" "Install Microsoft Edge Browser via custom PPA" "ON"
 		"Install_VSCode" "Install Visual Studio Code via custom PPA" "ON"
+		"Install_Wine" "Install Wine and Winetricks" "ON"
+		"Install_VirtualBox" "Install Virtual Box" "ON"
+		"Remove_Thunderbird" "Remove Thunderbird" "ON"
+		"Install_Geary" "Install Geary email client" "ON"
 	)
 	generate_selection_menu "Software" "${items[@]}"
 }
@@ -105,6 +113,14 @@ function install_flatpak () {
 	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 }
 
+function install_dconf () {
+	sudo apt install dconf-editor -y
+}
+
+function install_tweaks () {
+	sudo apt install gnome-tweaks -y
+}
+
 function install_gdebi () {
 	sudo apt install gdebi-core -y
 	sudo apt install gdebi -y
@@ -123,12 +139,35 @@ function install_build-essential () {
 }
 
 function install_build_depend () {
-	sudo apt install \
+	sudo apt install -y \
+	g++ \
+	sassc \
+	libx11-dev \
+	libxext-dev \
+	libxrandr-dev \
+	libxcursor-dev \
+	libxi-dev \
+	libxinerama-dev \
+	libxss-dev \
 	libgl-dev \
+	libgl1-mesa-dev \
+	libglu1-mesa-dev \
+	libdbus-1-dev \
+	libudev-dev \
+	libaudio-dev \
+	libasound2-dev \
+	libfreetype6-dev \
+	libxpm-dev \
+	libxft-dev \
+	libxxf86vm-dev \
+	libpulse-dev \
+	libopenal-dev \
+	libwebkit2gtk-4.0-dev \
+	libgtk-3-dev \
 	libobs-dev \
 	libsimde-dev \
 	libxtst-dev \
-	libxmu-dev -y
+	libxmu-dev
 }
 
 function install_spc () {
@@ -163,6 +202,24 @@ function install_kdenlive () {
 
 function install_handbrake () {
 	sudo apt install handbrake -y
+}
+
+function install_krita () {
+	if add_ppa "ppa:kritalime/ppa"; then
+		sudo apt install krita -y
+		return 0
+	else
+		return 1
+	fi
+}
+
+function install_inscape () {
+	if add_ppa "ppa:inkscape.dev/stable"; then
+		sudo apt install inkscape -y
+		return 0
+	else
+		return 1
+	fi
 }
 
 function install_telegram () {
@@ -282,4 +339,21 @@ function install_vscode () {
 		LAST_ERROR="cURL is not installed, cannot download key"
 		return 1
 	fi
+}
+
+function install_wine () {
+	sudo apt install --install-recommends wine -y
+	sudo apt install winetricks -y
+}
+
+function install_virtualbox () {
+	sudo apt install virtualbox -y
+}
+
+function remove_thunderbird () {
+	sudo apt remove thunderbird -y
+}
+
+function install_geary () {
+	sudo apt install geary -y
 }
