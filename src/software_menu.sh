@@ -49,6 +49,7 @@ function show_software_menu () {
 		"Install_GOverlay" "Install GOverlay via custom PPA" "ON"
 		"Install_Flameshot" "Install Flameshot screenshot tool" "ON"
 		"Install_Spotify" "Install Spotify music player via custom PPA" "ON"
+		"Install_Audacious" "Install Audacious music player" "ON"
 		"Install_OBS" "Install OBS Studio via custom PPA" "ON"
 		"Install_OBS_NvFBC_Plugin" "Install OBS Studio NvFBC plugin for NVidia cards" "ON"
 		"Install_Edge_Browser" "Install Microsoft Edge Browser via custom PPA" "ON"
@@ -397,6 +398,10 @@ function install_spotify () {
 		LAST_ERROR="cURL is not installed, cannot download key"
 		return 1
 	fi
+}
+
+function install_audacious () {
+	sudo apt install audacious -y
 }
 
 function install_obs () {
