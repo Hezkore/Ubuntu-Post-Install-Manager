@@ -69,6 +69,7 @@ function show_software_menu () {
 }
 
 function remove_snap () {
+	killall GeckoMain
 	sudo systemctl stop snapd.service
 	sudo systemctl disable snapd.service
 	snap remove --purge snap-store
@@ -78,7 +79,6 @@ function remove_snap () {
 	sudo apt-mark hold snapd
 	sudo rm -rf /var/cache/snapd/
 	sudo rm -rf ~/snap
-	killall firefox
 }
 
 function install_apt_https () {
@@ -496,13 +496,13 @@ function install_imwheel () {
 	if bin_exists "wget"; then
 		if bin_exists "git"; then
 			if bin_exists "make"; then
-				git clone https://github.com/ajh3/imwheel-exclude-patched.git ~/imwheel-exclude-patched.git
-				cd ~/imwheel-exclude-patched.git
-				~/imwheel-exclude-patched.git/configure
+				git clone https://github.com/ajh3/imwheel-exclude-patched.git $HOME/imwheel
+				cd $HOME/imwheel
+				./configure
 				make
 				sudo mv imwheel /usr/bin/
 				cd ..
-				sudo rm -rf ~/imwheel-exclude-patched.git
+				sudo rm -rf $HOME/imwheel
 				return 0
 			else
 				LAST_ERROR="Make is not installed, cannot build project"
