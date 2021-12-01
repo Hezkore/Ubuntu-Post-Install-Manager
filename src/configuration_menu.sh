@@ -3,6 +3,7 @@
 
 function show_configuration_menu () {
 	items=(
+		"Config_Git" "Configure Git username and email" "ON"
 		"Config_Mimeapps" "Configure and reset file type associations" "ON"
 		"Config_Flameshot" "Configure Flameshot to stay in the background" "ON"
 		"Config_IMWheel" "Configure IMWheel scroll wheel speed" "ON"
@@ -13,6 +14,32 @@ function show_configuration_menu () {
 		"Config_Geary_Start" "Configure Geary continuously check for incoming email" "ON"
 	)
 	generate_selection_menu "Configuration Options" "${items[@]}"
+}
+
+function config_git () {
+	if bin_exists "git"; then
+	
+		git_username=$(whiptail --inputbox "Enter your Git username" 0 0 --title "Git Configuration" 3>&1 1>&2 2>&3)
+		exitstatus=$?
+		if [ $exitstatus = 0 ]; then
+			git config --global user.name "$git_username"
+			echo "Username: $git_username"
+		fi
+		
+		git_usermail=$(whiptail --inputbox "Enter your Git E-Mail" 0 0 --title "Git Configuration" 3>&1 1>&2 2>&3)
+		exitstatus=$?
+		if [ $exitstatus = 0 ]; then
+			git config --global user.email $git_usermail
+			echo "E-Mail: $git_usermail"
+		fi
+		
+		whiptail --title "Git Configuration" --msgbox "Your Git config:\n$(git config --global --list)" 0 0
+		
+		return 0
+	else
+		LAST_ERROR="Git is not installed, cannot start configuration"
+		return 1
+	fi
 }
 
 function config_mimeapps () {

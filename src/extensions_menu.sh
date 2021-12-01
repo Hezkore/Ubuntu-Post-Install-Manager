@@ -19,7 +19,7 @@ function show_extensions_menu () {
 	generate_selection_menu "Extension Options" "${items[@]}"
 	
 	if (whiptail --yes-button "Later" --no-button "Now" --title "Notice!" --yesno "You must log out before these changes apply.\n\nLog out now?" 0 0); then
-		echo "Remember to reboot"
+		echo "Remember to log out or reboot"
 	else
 		gnome-session-quit --logout --no-prompt
 	fi
