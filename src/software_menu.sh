@@ -406,7 +406,7 @@ function install_audacious () {
 }
 
 function install_vlc () {
-	
+	sudo apt install vlc -y
 }
 
 function install_obs () {
