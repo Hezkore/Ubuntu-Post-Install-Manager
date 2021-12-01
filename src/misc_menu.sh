@@ -29,6 +29,7 @@ function folder_setup () {
 }
 
 function nautilus_new_docs () {
+	echo "Creating template files"
 	touch ~/Templates/Empty\ Document
 	mkdir ~/Templates/Code
 	echo -e "SuperStrict\n\nFramework brl.standardio\n\nPrint(\"Hello World\")" > ~/Templates/Code/blitzmax.bmx

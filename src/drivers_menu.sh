@@ -21,7 +21,6 @@ function add_gpu_ppa () {
 function install_drivers () {
 	sudo echo "Checking for drives..."
 	sudo ubuntu-drivers install
-	sudo update
 }
 
 function patch_nvfbc () {
