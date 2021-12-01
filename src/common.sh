@@ -196,7 +196,7 @@ function generate_selection_menu () {
 			--separate-output \
 			--checklist "$1" \
 			--title "Customize" \
-			$(( $LINES - 4 )) $(( $COLUMNS - 4 )) $(( $LINES - 12 )) \
+			0 0 0 \
 			"${items[@]}" \
 			3>&1 1>&2 2>&3
 	)

@@ -8,6 +8,7 @@ function show_software_menu () {
 		"Install_GNOME-Software" "Install GNOME software store" "ON"
 		"Install_Discover_Store" "Install KDE Discover software store" "OFF"
 		"Install_Flatpak" "Enable Flatpak support" "ON"
+		"Install_GDebi" "Install GDebi DEB unpacker" "ON"
 		"Install_Curl" "Install cURL CLI tool" "ON"
 		"Install_WGet" "Install WGet CLI tool" "ON"
 		"Install_SPC" "Install software-properties-common" "ON"
@@ -19,7 +20,10 @@ function show_software_menu () {
 		"Install_Vim" "Install Vim CLI text editor" "ON"
 		"Install_Emacs" "Install Emacs CLI text editor" "ON"
 		"Install_Foliate" "Install Foliate EBook reader via custom PPA" "ON"
-		"Install_KDENLIVE" "Install Kdenlive video editor via custom PPA" "ON"
+		"Install_Kdenlive" "Install Kdenlive video editor via custom PPA" "ON"
+		"Install_Handbrake" "Install Handbrake video trimmer" "ON"
+		"Install_Telegram" "Install Telegram messenger" "ON"
+		"Install_Discord" "Install Discord messenger" "ON"
 	)
 	generate_selection_menu "Software" "${items[@]}"
 }
@@ -72,6 +76,11 @@ function install_flatpak () {
 	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 }
 
+function install_gdebi () {
+	sudo apt install gdebi-core -y
+	sudo apt install gdebi -y
+}
+
 function install_curl () {
 	sudo apt install curl -y
 }
@@ -113,6 +122,32 @@ function install_kdenlive () {
 	if add_ppa "ppa:kdenlive/kdenlive-stable"; then
 		sudo apt install kdenlive -y
 	else
+		return 1
+	fi
+}
+
+function install_handbrake () {
+	sudo apt install handbrake -y
+}
+
+function install_telegram () {
+	sudo apt install telegram-desktop -y
+}
+
+function install_discord () {
+	if bin_exists "wget"; then
+		if bin_exists "gdebi"; then
+			wget -O ~/discord.deb "https://discordapp.com/api/download?platform=linux&format=deb"
+			sudo gdebi ~/discord.deb -n
+			sudo rm -rf ~/discord.deb
+			return 0
+		else
+			LAST_ERROR="GDebi is not installed, cannot extract DEB package"
+			return 1
+		fi
+		return 0
+	else
+		LAST_ERROR="WGet is not installed, cannot download DEB package"
 		return 1
 	fi
 }
