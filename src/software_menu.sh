@@ -78,6 +78,7 @@ function remove_snap () {
 	sudo apt-mark hold snapd
 	sudo rm -rf /var/cache/snapd/
 	sudo rm -rf ~/snap
+	killall firefox
 }
 
 function install_apt_https () {
