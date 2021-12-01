@@ -495,15 +495,13 @@ function install_imwheel () {
 	if bin_exists "wget"; then
 		if bin_exists "git"; then
 			if bin_exists "make"; then
-				git clone https://github.com/ajh3/imwheel-exclude-patched.git ~/.imwheel
-				cd ~/.imwheel/
-				~/.imwheel/configure
+				git clone https://github.com/ajh3/imwheel-exclude-patched.git ~/imwheel-exclude-patched.git
+				cd ~/imwheel-exclude-patched.git
+				~/imwheel-exclude-patched.git/configure
 				make
 				sudo mv imwheel /usr/bin/
-				cd ~
-				sudo mkdir -p /etc/X11/imwheel
-				wget -O imwheelrc https://raw.githubusercontent.com/Hezkore/Ubuntu-Post-Install-Manager/master/extra/imwheelrc
-				sudo mv imwheelrc /etc/X11/imwheel/
+				cd ..
+				sudo rm -rf ~/imwheel-exclude-patched.git
 				return 0
 			else
 				LAST_ERROR="Make is not installed, cannot build project"
