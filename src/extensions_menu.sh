@@ -17,6 +17,12 @@ function show_extensions_menu () {
 		"Install_Blur_My_Shell" "Install Blur My Shell" "ON"
 	)
 	generate_selection_menu "Extension Options" "${items[@]}"
+	
+	if (whiptail --yes-button "Later" --no-button "Now" --title "Notice!" --yesno "You must log out before these changes apply.\n\nLog out now?" 0 0); then
+		echo "Remember to reboot"
+	else
+		gnome-session-quit --logout --no-prompt
+	fi
 }
 
 function _install_ext_id () {
