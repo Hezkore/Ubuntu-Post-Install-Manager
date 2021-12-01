@@ -47,6 +47,7 @@ function show_software_menu () {
 		"Install_VSCode" "Install Visual Studio Code via custom PPA" "ON"
 		"Install_Wine" "Install Wine and Winetricks" "ON"
 		"Install_VirtualBox" "Install Virtual Box" "ON"
+		"Install_IMWheel" "Install custom IMWheel version" "ON"
 		"Remove_Thunderbird" "Remove Thunderbird" "ON"
 		"Install_Geary" "Install Geary email client" "ON"
 		"Remove_KDE_Connect" "Remove KDE Connect" "ON"
@@ -423,6 +424,33 @@ function install_wine () {
 
 function install_virtualbox () {
 	sudo apt install virtualbox -y
+}
+
+function install_imwheel () {
+	if bin_exists "wget"; then
+		if bin_exists "git"; then
+			if bin_exists "make"; then
+				git clone https://github.com/ajh3/imwheel-exclude-patched.git ~/.imwheel
+				cd ~/.imwheel/
+				~/.imwheel/configure
+				make
+				sudo mv imwheel /usr/bin/
+				cd ~
+				sudo mkdir -p /etc/X11/imwheel
+				wget -O imwheelrc https://raw.githubusercontent.com/Hezkore/Ubuntu-Post-Install-Manager/master/extra/imwheelrc
+				sudo mv imwheelrc /etc/X11/imwheel/
+			else
+				LAST_ERROR="Make is not installed, cannot build project"
+				return 1
+			fi
+		else
+			LAST_ERROR="Git is not installed, cannot clone Git repo key"
+			return 1
+		fi
+	else
+		LAST_ERROR="WGet is not installed, cannot download package"
+		return 1
+	fi
 }
 
 function remove_thunderbird () {
