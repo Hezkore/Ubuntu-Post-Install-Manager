@@ -9,14 +9,16 @@ function show_software_menu () {
 		"Install_GNOME_Shell_Ext_Support" "Install GNOME shell extension support" "ON"
 		"Install_GNOME_Ext_Installer" "Install GNOME extension installer" "ON"
 		"Install_Discover_Store" "Install KDE Discover software store" "OFF"
-		"Install_Flatpak" "Enable Flatpak support" "ON"
-		"Install_Blender" "Install Blender via Flatpak" "ON"
-		"Install_Audacity" "Install Audacity via Flatpak" "ON"
-		"Install_Bitwarden" "Install Bitwarden via Flatpak" "ON"
 		"Install_GDebi" "Install GDebi DEB unpacker" "ON"
 		"Install_Curl" "Install cURL CLI tool" "ON"
 		"Install_WGet" "Install WGet CLI tool" "ON"
 		"Install_SPC" "Install software-properties-common" "ON"
+		"Install_Edge_Browser" "Install Microsoft Edge Browser via custom PPA" "ON"
+		"Install_VSCode" "Install Visual Studio Code via custom PPA" "ON"
+		"Install_Flatpak" "Enable Flatpak support" "ON"
+		"Install_Blender" "Install Blender via Flatpak" "ON"
+		"Install_Audacity" "Install Audacity via Flatpak" "ON"
+		"Install_Bitwarden" "Install Bitwarden via Flatpak" "ON"
 		"Install_Git" "Install GIT" "ON"
 		"Install_Homebrew" "Enable Homebrew support" "ON"
 		"install_GitHub_CLI" "Install GitHub CLI via Homebrew" "ON"
@@ -53,8 +55,6 @@ function show_software_menu () {
 		"Install_VLC" "Install VLC media player" "ON"
 		"Install_OBS" "Install OBS Studio via custom PPA" "ON"
 		"Install_OBS_NvFBC_Plugin" "Install OBS Studio NvFBC plugin for NVidia cards" "ON"
-		"Install_Edge_Browser" "Install Microsoft Edge Browser via custom PPA" "ON"
-		"Install_VSCode" "Install Visual Studio Code via custom PPA" "ON"
 		"Install_Wine" "Install Wine and Winetricks" "ON"
 		"Install_VirtualBox" "Install VirtualBox" "ON"
 		"Install_IMWheel" "Install custom IMWheel version" "ON"
@@ -391,7 +391,7 @@ function install_flameshot () {
 
 function install_spotify () {
 	if bin_exists "curl"; then
-		curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add - 
+		curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | sudo apt-key add - 
 		echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 		sudo apt update
 		sudo apt install spotify-client -y
