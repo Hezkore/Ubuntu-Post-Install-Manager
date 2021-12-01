@@ -3,7 +3,6 @@
 
 function show_software_menu () {
 	items=(
-		"Install_Drivers" "Install required Ubuntu drivers" "ON"
 		"Remove_Snap" "Purge Snap store and software" "ON"
 		"Install_GNOME-Software" "Install GNOME software store" "ON"
 		"Install_Discover_Store" "Install KDE Discover software store" "OFF"
@@ -95,11 +94,6 @@ function install_build-essential () {
 
 function install_spc () {
 	sudo apt install software-properties-common -y
-}
-
-function install_drivers () {
-	sudo echo "Checking for drives..."
-	sudo ubuntu-drivers install
 }
 
 function install_vim () {

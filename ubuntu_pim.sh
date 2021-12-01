@@ -10,11 +10,13 @@ source src/common.sh
 # Main categories
 CATEGORIES=(
 	"show_misc_menu"			"1. Miscellaneous"
-	"show_software_menu"		"2. Software"
-	"show_extensions_menu"		"3. Extensions"
-	"show_configuration_menu"	"4. Configuration"
+	"show_drivers_menu"			"2. Drivers"
+	"show_software_menu"		"3. Software"
+	"show_extensions_menu"		"4. Extensions"
+	"show_configuration_menu"	"5. Configuration"
 )
 source src/misc_menu.sh
+source src/drivers_menu.sh
 source src/software_menu.sh
 source src/extensions_menu.sh
 source src/configuration_menu.sh
