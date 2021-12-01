@@ -4,13 +4,13 @@
 function show_configuration_menu () {
 	items=(
 		"Config_Mimeapps" "Configure and reset file type associations" "ON"
-		"Config_Flameshot" "Configure Flameshot to stay in background" "ON"
+		"Config_Flameshot" "Configure Flameshot to stay in the background" "ON"
 		"Config_IMWheel" "Configure IMWheel scroll wheel speed" "ON"
 		"Config_IMWheel_Start" "Configure IMWheel to start at login" "ON"
 		"Config_Telegram_Start" "Configure Telegram to start at login" "ON"
 		"Config_Discord_Start" "Configure Discord to start at login" "ON"
 		"Config_Steam_Start" "Configure Steam to start at login" "ON"
-		"Config_Geary_Start" "Configure Geary continuously check for new mail" "ON"
+		"Config_Geary_Start" "Configure Geary continuously check for incoming email" "ON"
 	)
 	generate_selection_menu "Configuration Options" "${items[@]}"
 }
