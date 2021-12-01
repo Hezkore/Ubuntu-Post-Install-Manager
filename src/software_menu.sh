@@ -23,6 +23,10 @@ function show_software_menu () {
 		"Install_Handbrake" "Install Handbrake video trimmer" "ON"
 		"Install_Telegram" "Install Telegram messenger" "ON"
 		"Install_Discord" "Install Discord messenger" "ON"
+		"Install_Steam" "Install Steam game store" "ON"
+		"Install_Lutris" "Install Lutris game manager via custom PPA" "ON"
+		"Install_Spotify" "Install Spotify music player" via custom PPA "ON"
+		"Install_OBS" "Install OBS Studio via custom PPA" "ON"
 	)
 	generate_selection_menu "Software" "${items[@]}"
 }
@@ -107,6 +111,7 @@ function install_emacs () {
 function install_foliate () {
 	if add_ppa "ppa:apandada1/foliate"; then
 		sudo apt install foliate -y
+		return 0
 	else
 		return 1
 	fi
@@ -115,6 +120,7 @@ function install_foliate () {
 function install_kdenlive () {
 	if add_ppa "ppa:kdenlive/kdenlive-stable"; then
 		sudo apt install kdenlive -y
+		return 0
 	else
 		return 1
 	fi
@@ -142,6 +148,41 @@ function install_discord () {
 		return 0
 	else
 		LAST_ERROR="WGet is not installed, cannot download DEB package"
+		return 1
+	fi
+}
+
+function install_steam () {
+	sudo apt install steam -y
+}
+
+function install_lutris () {
+	if add_ppa "ppa:lutris-team/lutris"; then
+		sudo apt install lutris -y
+		return 0
+	else
+		return 1
+	fi
+}
+
+function install_spotify () {
+	if bin_exists "curl"; then
+		curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add - 
+		echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+		sudo apt update
+		sudo apt install spotify-client -y
+		return 0
+	else
+		LAST_ERROR="cURL is not installed, cannot download key"
+		return 1
+	fi
+}
+
+function install_obs () {
+	if add_ppa "ppa:obsproject/obs-studio"; then
+		sudo apt install obs-studio -y
+		return 0
+	else
 		return 1
 	fi
 }
