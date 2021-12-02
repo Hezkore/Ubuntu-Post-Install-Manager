@@ -23,6 +23,7 @@ function show_configuration_menu () {
 		"Config_GNOME_Center" "Configure GNOME to place windows in the center instead of top left" "ON"
 		"Config_GNOME_NoAttach" "Configure GNOME to not attach modal dialogs" "ON"
 		"Config_GNOME_FileChooser" "Configure GNOME file chooser settings" "ON"
+		"Config_GNOME_Favorites" "Configure GNOME favorite apps" "ON"
 		
 		# GNOME keyboard shortcuts
 		"Config_GNOME_Shortcuts" "Configure GNOME keyboard shortcuts" "ON"
@@ -310,6 +311,17 @@ function config_gnome_filechooser () {
 	dconf write /org/gnome/nautilus/preferences/show-create-link true
 	dconf write /org/gnome/nautilus/preferences/default-folder-viewer "'icon-view'"
 	dconf write /org/gnome/nautilus/icon-view/default-zoom-level "'small'"
+}
+
+function config_gnome_favorites () {
+	if bin_exists "dconf"; then
+		echo "Applying configuration..."
+	else
+		LAST_ERROR="dconf is not installed, cannot change GNOME configuration"
+		return 1
+	fi
+	
+	dconf write /org/gnome/shell/favorite-apps "['org.gnome.Nautilus.desktop', 'microsoft-edge.desktop']"
 }
 
 function config_gnome_shortcuts () {
