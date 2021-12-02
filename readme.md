@@ -57,7 +57,7 @@ If the machine is not made for gaming, messaging or email, then I recommend you 
 
 *(You can also disable these later by running the application **"Startup Applications"**)*
 
-If the machine is made for gaming then I recommend reading the [Gaming](#gaming) section for some useful tips and guides.
+If the machine is made for gaming, then I recommend reading the [Gaming](#gaming) section for some useful tips and guides.
 
 Discord, Steam and Telegram will popup at start when they're nog signed into.\
 They will stop appearing once you've signed in.
