@@ -2,6 +2,7 @@
 # -*- Mode: sh; coding: utf-8; indent-tabs-mode: t; tab-width: 4 -*-
 
 TITLE="Ubuntu Post-Install Manager"
+VERSION="1.0"
 
 clear
 
