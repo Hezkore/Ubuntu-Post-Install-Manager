@@ -44,7 +44,7 @@ Most efficient might be right after install, as the script will update Ubuntu an
 I recommend doing all the steps in order, unless you know what you're doing.\
 The default options in each customization menu are the recommended options, which means you can simply press Enter to confirm.
 
-When asked to enter your password in the terminal you won't be able to see the password as you type.\
+When asked to enter your password in the terminal; you won't be able to see the password as you type.\
 This is a security feature in Linux.
 
 When installing the recommended software, you will be asked to enter your password in a popup screen twice.\
