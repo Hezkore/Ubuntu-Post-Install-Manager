@@ -7,6 +7,7 @@ function show_theme_menu () {
 		"Install_Fluent_Wallpapers" "Install and apply Fluent GTK wallpapers" "ON"
 		"Install_Vimix_Icons" "Install and apply Vimix icons" "OFF"
 		"Install_Windows_Icons" "Install and apply Windows icons" "ON"
+		"Install_Mouse_Cursor" "Install and apply mouse cursor" "ON"
 	)
 	generate_selection_menu "Theme Options" "${items[@]}"
 }
@@ -82,6 +83,17 @@ function install_fluent_wallpapers () {
 		fi
 	else
 		LAST_ERROR="Git is not installed, cannot download wallpapers"
+		return 1
+	fi
+}
+
+function install_mouse_cursor () {
+	if bin_exists "dconf"; then
+		echo "Applying default mouse cursor"
+		dconf write /org/gnome/desktop/interface/cursor-theme "'DMZ-Black'"
+		return 0
+	else
+		LAST_ERROR="dconf is not installed, cannot apply mouse theme"
 		return 1
 	fi
 }
