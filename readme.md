@@ -12,9 +12,8 @@ If you don't know what this means, then just make sure you click the cog in the 
 Some software - like IMWheel - does not work correctly in a Wayland session.
 
 ### • 20GB disk
-Ubuntu takes up almost 10GB on a fresh install.\
-With all the Ubuntu dependencies, updates and GPU drivers installed the size might balloon to 17GB.\
-So make sure Ubuntu is installed to a disk greater than at least 20GB, so that the script has some space to work with.
+Ubuntu takes up almost 10GB on a fresh install and has a tendency to balloon up to 17GB.\
+So make sure Ubuntu is installed to a disk greater 20GB, that way the script has some space to work with.
 
 ### • 1024x768 resolution
 Ubuntu doesn't work too well on resolutions lower than 1024x768.\
