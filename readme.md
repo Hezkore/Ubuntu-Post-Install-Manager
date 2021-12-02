@@ -45,8 +45,8 @@ The default options in each customization menu are the recommended options, whic
 When asked to enter your password in the terminal you won't be able to see the password as you type.\
 This is a security feature in Linux.
 
-When installing the recommended software you will be asked to enter your password in a popup screen twice.\
-I recommend you stay by the computer until you've gotten past those two password popups.
+When installing the recommended software, you will be asked to enter your password in a popup screen twice.\
+I recommend you stay by the computer until you've gotten past those two password popups.\
 *(Removing Snap and installing Flatpak creates a password request popup)*
 
 If the machine is not made for gaming, messaging or email, then I recommend unchecking these 4 options at the **"5. Configuration"** menu:
