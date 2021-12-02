@@ -541,7 +541,7 @@ function install_vscode () {
 		sudo apt update
 		sudo apt install code -y
 		
-		# Look if Edge exists
+		# Look if Code exists
 		if bin_exists "code"; then
 			echo "Visual Studio Code installed correctly"
 			return 0
