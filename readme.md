@@ -76,7 +76,7 @@ Hold **Super** then click and hold your **left mouse button** to drag any window
 Hold **Super** then click and hold the **right mouse button** instead to resize any window without having to grab the window edge.\
 *(Learn to use this!)*
 
-* Keyboard Shortcuts
+* Other keyboard Shortcuts
 	* Flameshot capture screenshot area
 		* **Shift + F1**
 	* Open Nautilus *(files)*
