@@ -1,6 +1,8 @@
 # Ubuntu Post-Install Manager
 A simple script that helps you get started with Ubuntu and GNOME.
 
+![demo](https://github.com/Hezkore/Ubuntu-Post-Install-Manager/blob/master/extra/demo.png?raw=true)
+
 ## Requires a X11 session
 If you don't know what this means, then just make sure you click the cog in the lower right corner when you're logging in and about to type your password, then select "Ubuntu on Xorg" and login as usual.
 
