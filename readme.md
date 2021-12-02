@@ -24,7 +24,7 @@ Ubuntu doesn't work too well on resolutions lower than 1024x768.\
 The ArcMenu GNOME extension also needs at least a height of 642 pixels, which is why no menu is displayed on 800x600.
 
 ## How to install & run
-Download the script by clicking the green **"[Code ▼](https://github.com/Hezkore/Ubuntu-Post-Install-Manager/archive/refs/heads/master.zip)"** button here on GitHub, then click **"Download Zip"** and save the file.\
+Download the script by clicking the green **"Code ▼"** button here on GitHub, then click **"[Download Zip](https://github.com/Hezkore/Ubuntu-Post-Install-Manager/archive/refs/heads/master.zip)"** and save the file.\
 The file - named **"Ubuntu-Post-Install-Manager-master.zip"** - will most likely save to **"/home/[user]/Downloads/"**.\
 Unpack the script by right clicking **"Ubuntu-Post-Install-Manager-master.zip"**  and selecting **"Extract Here"**, which creates the folder **"Ubuntu-Post-Install-Manager-master"**.\
 Enter the folder **"Ubuntu-Post-Install-Manager-master"**, then right click *(don't right click a file or folder)* and select **"Open in Terminal"**.\
