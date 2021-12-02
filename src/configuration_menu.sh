@@ -46,6 +46,12 @@ function show_configuration_menu () {
 		"Configure_GNOME_UI_Improvements" "Configure Gnome 4x UI Improvements GNOME Extension" "ON"
 	)
 	generate_selection_menu "Configuration Options" "${items[@]}"
+	
+	if (whiptail --yes-button "Later" --no-button "Now" --title "Notice!" --yesno "You must log out before these changes apply.\n\nLog out now?" 0 0); then
+		echo "Remember to log out or reboot"
+	else
+		gnome-session-quit --logout --no-prompt
+	fi
 }
 
 function config_git () {
