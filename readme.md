@@ -24,7 +24,7 @@ Download the script by clicking the green **"Code ▼"** button here on GitHub, 
 The file - named **"Ubuntu-Post-Install-Manager-master.zip"** - will most likely save to **"/home/[user]/Downloads/"**.\
 Unpack the script by right clicking **"Ubuntu-Post-Install-Manager-master.zip"**  and selecting **"Extract Here"**, which creates the folder **"Ubuntu-Post-Install-Manager-master"**.\
 Enter the folder **"Ubuntu-Post-Install-Manager-master"**, then right click *(don't right click a file or folder)* and select **"Open in Terminal"**.\
-In the newly opened terminal run the script by typing `./ubuntu_pim.sh` and pressing Enter.\
+In the newly opened terminal, type `./ubuntu_pim.sh` and press Enter, to run the script.\
 *(Pro tip: you can press **TAB** after you've written `./u` to autocomplete the remaining part of the command)*
 
 ## Navigation & usage
