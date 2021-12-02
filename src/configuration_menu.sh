@@ -427,11 +427,27 @@ function configure_dash_to_panel () {
 }
 
 function configure_clean_system_menu () {
-	echo "FIX ME"
+	if bin_exists "dconf"; then
+		echo "Applying configuration..."
+	else
+		LAST_ERROR="dconf is not installed, cannot change GNOME extension configuration"
+		return 1
+	fi
+	
+	_dconf_write clean-system-menu/power-button-position 1
+	_dconf_write clean-system-menu/power-button-positionnumber 0
+	_dconf_write clean-system-menu/power-button-visible false
 }
 
 function configure_panel_date_format () {
-	echo "FIX ME"
+	if bin_exists "dconf"; then
+		echo "Applying configuration..."
+	else
+		LAST_ERROR="dconf is not installed, cannot change GNOME extension configuration"
+		return 1
+	fi
+	
+	_dconf_write panel-date-format/format "'   %R\n%d-%m-%y'"
 }
 
 function configure_application_volume_mixer () {
