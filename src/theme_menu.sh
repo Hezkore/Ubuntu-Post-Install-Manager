@@ -73,7 +73,7 @@ function install_fluent_wallpapers () {
 			git clone -b Wallpaper https://github.com/vinceliuice/Fluent-gtk-theme.git "$dir"
 			"$dir/install-wallpapers.sh" -t building mountain flat gradient
 			
-			dconf write /org/gnome/desktop/background/picture-uri "'file:///$dir/wallpaper-1080p/Fluent-building-night.png'"
+			dconf write /org/gnome/desktop/background/picture-uri "'file:///$dir/wallpaper-1080p/Fluent-building-morning.png'"
 			
 			return 0
 		else
