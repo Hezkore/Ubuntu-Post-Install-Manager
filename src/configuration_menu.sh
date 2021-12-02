@@ -12,6 +12,7 @@ function show_configuration_menu () {
 		"Config_Discord_Start" "Configure Discord to start at login" "ON"
 		"Config_Steam_Start" "Configure Steam to start at login" "ON"
 		"Config_Geary_Start" "Configure Geary to check for incoming email" "ON"
+		"Config_Enabled_Ext" "Enable user extensions and disable built-in" "ON"
 	)
 	generate_selection_menu "Configuration Options" "${items[@]}"
 }
@@ -171,4 +172,43 @@ function config_steam_start () {
 
 function config_geary_start () {
 	sudo echo -e "[Desktop Entry]\nName=geary\nIcon=geary\nExec=geary --gapplication-service\nTerminal=false\nType=Application\nX-GNOME-Autostart-enabled=true" > "$HOME/.config/autostart/Geary.desktop"
+}
+
+function config_enabled_ext () {
+	if bin_exists "dconf"; then
+		# Make sure user extensions are enabled
+		dconf write /org/gnome/shell/disable-user-extensions false
+		
+		# Disable internal extensions
+		gnome-extensions disable ubuntu-dock@ubuntu.com
+		gnome-extensions disable workspace-indicator@gnome-shell-extensions.gcampax.github.com
+		gnome-extensions disable windowsNavigator@gnome-shell-extensions.gcampax.github.com
+		gnome-extensions disable window-list@gnome-shell-extensions.gcampax.github.com
+		gnome-extensions disable ubuntu-appindicators@ubuntu.com
+		gnome-extensions disable screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com
+		gnome-extensions disable places-menu@gnome-shell-extensions.gcampax.github.com
+		gnome-extensions disable native-window-placement@gnome-shell-extensions.gcampax.github.com
+		gnome-extensions disable launch-new-instance@gnome-shell-extensions.gcampax.github.com
+		gnome-extensions disable auto-move-windows@gnome-shell-extensions.gcampax.github.com
+		gnome-extensions disable apps-menu@gnome-shell-extensions.gcampax.github.com
+		
+		# Enable our extensions
+		gnome-extensions enable user-theme@gnome-shell-extensions.gcampax.github.com
+		gnome-extensions enable arcmenu@arcmenu.com
+		gnome-extensions enable trayIconsReloaded@selfmade.pl
+		gnome-extensions enable noannoyance@sindex.com
+		gnome-extensions enable dash-to-panel@jderose9.github.com
+		gnome-extensions enable clean-system-menu@astrapi.de
+		gnome-extensions enable panel-date-format@keiii.github.com
+		gnome-extensions enable volume-mixer@evermiss.net
+		gnome-extensions enable impatience@gfxmonk.net
+		gnome-extensions enable drive-menu@gnome-shell-extensions.gcampax.github.com
+		gnome-extensions enable no-overview@fthx
+		gnome-extensions enable blur-my-shell@aunetx
+		
+		rerturn 0
+	else
+		LAST_ERROR="dconf is not installed, cannot change GNOME configuration"
+		return 1
+	fi
 }
