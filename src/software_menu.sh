@@ -518,14 +518,22 @@ function install_imwheel () {
 	if bin_exists "wget"; then
 		if bin_exists "git"; then
 			if bin_exists "make"; then
-				git clone https://github.com/ajh3/imwheel-exclude-patched.git $HOME/imwheel
-				cd $HOME/imwheel
+				git clone https://github.com/ajh3/imwheel-exclude-patched.git "$HOME/imwheel"
+				cd "$HOME/imwheel"
 				./configure
 				make
 				sudo cp imwheel /usr/local/bin/imwheel
 				sudo mv imwheel /usr/bin/
 				cd ..
 				sudo rm -rf $HOME/imwheel
+				
+				if bin_exists "imwheel"; then
+					echo "IMWheel installed correctly"
+				else
+					echo "IMWheel did not install correctly!"
+					return 0
+				fi
+				
 				return 0
 			else
 				LAST_ERROR="Make is not installed, cannot build project"
