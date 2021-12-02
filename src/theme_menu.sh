@@ -91,11 +91,11 @@ function install_vimix_icons () {
 	if bin_exists "git"; then
 		if bin_exists "dconf"; then
 			
-			dir="$HOME/.local/share/ubuntu-post-install-manager/Fluent-gtk-theme-wallpapers"
+			dir="$HOME/.local/share/ubuntu-post-install-manager/vimix-icon-theme"
 			rm -rf "$dir"
 			mkdir -p "$dir"
 			
-			git clone https://github.com/vinceliuice/vimix-icon-theme.git "$dir/vimix-icon-theme"
+			git clone https://github.com/vinceliuice/vimix-icon-theme.git "$dir"
 			"$dir/install.sh" -a
 			
 			dconf write /org/gnome/desktop/interface/icon-theme "'Vimix-dark'"
