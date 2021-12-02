@@ -19,8 +19,8 @@ function show_configuration_menu () {
 		"Config_GNOME_Mouse" "Configure GNOME mouse to have zero acceleration" "ON"
 		"Config_GNOME_Weekdate" "Configure GNOME calendar to show week numbers" "ON"
 		"Config_GNOME_ResizeRight" "Configure GNOME to resize with right mouse button" "ON"
-		"Config_GNOME_NoMaximize" "Configure GNOME to never automatically maximize windows" "ON"
-		"Config_GNOME_Center" "Configure GNOME to place windows in the center instead of top left" "ON"
+		"Config_GNOME_NoMaximize" "Configure GNOME to never auto maximize windows" "ON"
+		"Config_GNOME_Center" "Configure GNOME to place windows in the center" "ON"
 		"Config_GNOME_NoAttach" "Configure GNOME to not attach modal dialogs" "ON"
 		"Config_GNOME_FileChooser" "Configure GNOME file chooser settings" "ON"
 		"Config_GNOME_Favorites" "Configure GNOME favorite apps" "ON"
@@ -41,9 +41,9 @@ function show_configuration_menu () {
 		#"Configure_Application_Volume_Mixer" "Configure Application Volume Mixer GNOME Extension" "ON"
 		"Configure_Impatience" "Configure Impatience GNOME Extension" "ON"
 		#"Configure_No_Overview" "Configure No Overview GNOME Extension" "ON"
-		"Configure_Game_Mode_Status_Icon" "Configure Game Mode Status Icon GNOME Extension" "ON"
+		"Configure_Game_Mode_Status_Icon" "Configure GameMode Status Icon GNOME Extension" "ON"
 		"Configure_Blur_My_Shell" "Configure Blur My Shell GNOME Extension" "ON"
-		"Configure_GNOME_UI_Improvements" "Configure Gnome 4x UI Improvements GNOME Extension" "ON"
+		"Configure_GNOME_UI_Improvements" "Configure UI Improvements GNOME Extension" "ON"
 	)
 	generate_selection_menu "Configuration Options" "${items[@]}"
 	
