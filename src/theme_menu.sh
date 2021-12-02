@@ -150,10 +150,23 @@ function install_mouse_cursor () {
 function install_font_segoeui () {
 	if bin_exists "wget"; then
 		
-		wget -O "SegoeUI-VF.zip" https://aka.ms/SegoeUIVariable
-		
-		
-		return 0
+		if bin_exists "dconf"; then
+			wget -O "SegoeUI-VF.zip" https://aka.ms/SegoeUIVariable
+			
+			mkdir "$HOME/.local/share/fonts"
+			unzip -o "SegoeUI-VF.zip" -d "$HOME/.local/share/fonts"
+			rm -rf SegoeUI-VF.zip
+			
+			dconf write /org/gnome/desktop/interface/font-name "'Segoe UI Variable Static Text 9.5"
+			dconf write /org/gnome/desktop/interface/document-font-name "'Sans 10'"
+			dconf write /org/gnome/desktop/interface/monospace-font-name "'Ubuntu Mono 13'"
+			dconf write /org/gnome/desktop/wm/preferences/titlebar-font "'Segoe UI Variable Static Text Semi-Bold 11'"
+			
+			return 0
+		else
+			LAST_ERROR="dconf is not installed, cannot apply font"
+			return 1
+		fi
 	else
 		LAST_ERROR="WGet is not installed, cannot download font"
 		return 1
