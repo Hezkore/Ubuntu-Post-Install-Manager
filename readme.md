@@ -65,7 +65,7 @@ If the machine is made for gaming, then I recommend reading the [Gaming](#gaming
 If Steam, Discord, Telegram or Geary is set to run at start; a login screen will automatically appear for each application when you log in.\
 They will stop appearing once you've signed in to the application.
 
-If Steam does not start minimized after you've logged in; it means you've got **"Run Steam when my computer starts"** enabled in your Steam settings.\
+If Steam does not start minimized after you've signed in; it means you've got **"Run Steam when my computer starts"** enabled in your Steam settings.\
 This is not the script, but rather how Steam normally works.\
 To fix this; disable **"Run Steam when my computer starts"** in Steam settings.
 You can run the script and check **"Configure Steam to run at start"** in step **"5. Configuration"** to have Steam start minimized.
