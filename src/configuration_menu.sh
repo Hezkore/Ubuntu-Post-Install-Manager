@@ -20,6 +20,7 @@ function show_configuration_menu () {
 		"Config_GNOME_NoMaximize" "Configure GNOME to never automatically maximize windows" "ON"
 		"Config_GNOME_Center" "Configure GNOME to place windows in the center instead of top left" "ON"
 		"Config_GNOME_NoAttach" "Configure GNOME to not attach modal dialogs" "ON"
+		"Config_GNOME_FileChooser" "Configure GNOME file chooser" "ON"
 		
 		# GNOME extensions
 		"Config_Enabled_Ext" "Enable user extensions and disable built-in" "ON"
@@ -264,6 +265,23 @@ function config_gnome_noattach () {
 	
 	dconf write /org/gnome/mutter/attach-modal-dialogs false
 	dconf write /org/gnome/shell/overrides/attach-modal-dialogs false
+}
+
+function config_gnome_filechooser () {
+	if bin_exists "dconf"; then
+		echo "Applying configuration..."
+	else
+		LAST_ERROR="dconf is not installed, cannot change GNOME extension configuration"
+		return 1
+	fi
+	
+	dconf write /org/gtk/settings/file-chooser/show-hidden false
+	dconf write /org/gtk/settings/file-chooser/sort-directories-first true
+	
+	# Not really related, but still recommended
+	dconf write /org/gnome/nautilus/preferences/show-create-link true
+	dconf write /org/gnome/nautilus/preferences/default-folder-viewer "'icon-view'"
+	dconf write /org/gnome/nautilus/icon-view/default-zoom-level "'small'"
 }
 
 function config_enabled_ext () {
