@@ -453,7 +453,7 @@ function configure_arcmenu () {
 	_dconf_write_ext arcmenu/border-color "'rgba(255,255,255,0)'"
 	_dconf_write_ext arcmenu/button-padding 0
 	#_dconf_write_ext arcmenu/custom-hot-corner-cmd ""
-	#_dconf_write_ext arcmenu/custom-menu-button-icon "''"
+	_dconf_write_ext arcmenu/custom-menu-button-icon "'Distro_Icon'"
 	_dconf_write_ext arcmenu/custom-menu-button-icon-size 23.0
 	_dconf_write_ext arcmenu/disable-category-arrows true
 	_dconf_write_ext arcmenu/disable-recently-installed-apps false
