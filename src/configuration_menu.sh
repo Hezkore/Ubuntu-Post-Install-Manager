@@ -13,6 +13,20 @@ function show_configuration_menu () {
 		"Config_Steam_Start" "Configure Steam to start at login" "ON"
 		"Config_Geary_Start" "Configure Geary to check for incoming email" "ON"
 		"Config_Enabled_Ext" "Enable user extensions and disable built-in" "ON"
+	
+		"Configure_User_Themes" "Configure User Themes" "ON"
+		"Configure_ArcMenu" "Configure ArcMenu" "ON"
+		"Configure_Tray_Icons_Reloaded" "Configure Tray Icons Reloaded" "ON"
+		"Configure_No_Annoyance" "Configure No Annoyance" "ON"
+		"Configure_Dash_to_Panel" "Configure Dash-to-Panel" "ON"
+		"Configure_Clean_System_Menu" "Configure Clean System Menu" "ON"
+		"Configure_Panel_Date_Format" "Configure Panel Date Format" "ON"
+		"Configure_Application_Volume_Mixer" "Configure Application Volume Mixer" "ON"
+		"Configure_Impatience" "Configure Impatience" "ON"
+		"Configure_No_Overview" "Configure No Overview" "ON"
+		"Configure_Game_Mode_Status_Icon" "Configure Game Mode Status Icon" "ON"
+		"Configure_Blur_My_Shell" "Configure Blur My Shell" "ON"
+		"Configure_GNOME_4x_UI_Improvements" "Configure Gnome 4x UI Improvements" "ON"
 	)
 	generate_selection_menu "Configuration Options" "${items[@]}"
 }
@@ -205,10 +219,162 @@ function config_enabled_ext () {
 		gnome-extensions enable drive-menu@gnome-shell-extensions.gcampax.github.com
 		gnome-extensions enable no-overview@fthx
 		gnome-extensions enable blur-my-shell@aunetx
+		gnome-extensions enable gnome-ui-tune@itstime.tech
 		
-		rerturn 0
+		return 0
 	else
 		LAST_ERROR="dconf is not installed, cannot change GNOME configuration"
 		return 1
 	fi
+}
+
+function configure_user_themes () {
+	echo "FIX ME"
+}
+
+function _dconf_write () {
+	echo "Writing $1 $2"
+	dconf write "/org/gnome/shell/extensions/$1" "$2"
+}
+
+function configure_arcmenu () {
+	if bin_exists "dconf"; then
+		echo "Applying configuration..."
+	else
+		LAST_ERROR="dconf is not installed, cannot change GNOME extension configuration"
+		return 1
+	fi
+	
+	_dconf_write arcmenu/alphabetize-all-programs true
+	_dconf_write arcmenu/arc-menu-icon 69
+	_dconf_write arcmenu/arc-menu-placement "'DTP'"
+	_dconf_write arcmenu/available-placement "[false, true, false]"
+	_dconf_write arcmenu/border-color "'rgba(255,255,255,0)'"
+	_dconf_write arcmenu/button-padding 0
+	#_dconf_write arcmenu/custom-hot-corner-cmd ""
+	#_dconf_write arcmenu/custom-menu-button-icon "''"
+	_dconf_write arcmenu/custom-menu-button-icon-size 23.0
+	_dconf_write arcmenu/disable-category-arrows true
+	_dconf_write arcmenu/disable-recently-installed-apps false
+	_dconf_write arcmenu/disable-scrollview-fade-effect true
+	_dconf_write arcmenu/disable-searchbox-border true
+	_dconf_write arcmenu/disable-tooltips true
+	_dconf_write arcmenu/distro-icon 0
+	_dconf_write arcmenu/enable-custom-arc-menu true
+	_dconf_write arcmenu/enable-horizontal-flip true
+	_dconf_write arcmenu/enable-large-icons true
+	_dconf_write arcmenu/enable-menu-button-arrow false
+	_dconf_write arcmenu/enable-sub-menus false
+	_dconf_write arcmenu/extra-categories "[(3, true), (0, false), (1, true), (2, false), (4, false)]"
+	_dconf_write arcmenu/force-menu-location "'Off'"
+	_dconf_write arcmenu/gap-adjustment -1
+	_dconf_write arcmenu/highlight-color "'rgba(255,255,255,0.0633333)'"
+	_dconf_write arcmenu/highlight-foreground-color "'rgb(246,245,244)'"
+	_dconf_write arcmenu/hot-corners "'Default'"
+	_dconf_write arcmenu/indicator-color "'rgb(41, 165, 249)'"
+	_dconf_write arcmenu/indicator-text-color "'rgba(196, 196, 196, 0.3)'"
+	_dconf_write arcmenu/menu-arrow-size 0
+	_dconf_write arcmenu/menu-border-size 1
+	_dconf_write arcmenu/menu-button-active-backgroundcolor "'rgba(255,18,18,0.18)'"
+	_dconf_write arcmenu/menu-button-border-radius 0
+	_dconf_write arcmenu/menu-button-color "'rgb(145,65,172)'"
+	_dconf_write arcmenu/menu-button-hover-backgroundcolor "'rgba(255,255,255,0.08)'"
+	_dconf_write arcmenu/menu-button-hover-color "'rgb(153,193,241)'"
+	_dconf_write arcmenu/menu-button-icon "'Custom_Icon'"
+	_dconf_write arcmenu/menu-button-override-border-radius true
+	_dconf_write arcmenu/menu-color "'rgba(255,255,255,0)'"
+	_dconf_write arcmenu/menu-corner-radius 0
+	_dconf_write arcmenu/menu-font-size 10
+	_dconf_write arcmenu/menu-foreground-color "'rgb(246,245,244)'"
+	_dconf_write arcmenu/menu-height 593
+	_dconf_write arcmenu/menu-hotkey "'Undefined'"
+	_dconf_write arcmenu/menu-layout "'Brisk'"
+	_dconf_write arcmenu/menu-margin 0
+	_dconf_write arcmenu/menu-width 366
+	_dconf_write arcmenu/multi-lined-labels false
+	_dconf_write arcmenu/override-hot-corners false
+	_dconf_write arcmenu/override-menu-button-active-background-color false
+	_dconf_write arcmenu/override-menu-button-active-color false
+	_dconf_write arcmenu/override-menu-button-color false
+	_dconf_write arcmenu/override-menu-button-hover-background-color false
+	_dconf_write arcmenu/override-menu-button-hover-color false
+	_dconf_write arcmenu/pinned-app-list "['System Monitor', '', 'gnome-system-monitor.desktop', 'Terminal', '', 'org.gnome.Terminal.desktop', 'Bitwarden', '', 'com.bitwarden.desktop.desktop', 'Mail', '', 'org.gnome.Geary.desktop', 'Steam', '', 'steam.desktop', 'Spotify', '', 'spotify.desktop', 'Lollypop', '', 'org.gnome.Lollypop.desktop', 'Audacious', '', 'audacious.desktop', 'Telegram', '', 'telegramdesktop.desktop', 'Discord', '', 'discord.desktop', 'Blender', '', 'org.blender.Blender.desktop', 'Krita', '', 'org.kde.krita.desktop', 'Kdenlive', '', 'org.kde.kdenlive.desktop', 'OBS', '', 'com.obsproject.Studio.desktop', 'VSCode', '', 'code.desktop']"
+	_dconf_write arcmenu/position-in-panel "'Left'"
+	_dconf_write arcmenu/power-options "[(0, true), (1, true), (4, true), (2, true), (3, true), (5, false), (6, false)]"
+	_dconf_write arcmenu/prefs-visible-page 0
+	#_dconf_write arcmenu/recently-installed-apps "[]"
+	_dconf_write arcmenu/remove-menu-arrow false
+	_dconf_write arcmenu/right-panel-width 200
+	_dconf_write arcmenu/search-provider-open-windows true
+	_dconf_write arcmenu/searchbar-default-top-location "'Top'"
+	_dconf_write arcmenu/separator-color "'rgba(255,255,255,0.0666667)'"
+	_dconf_write arcmenu/show-search-result-details true
+	_dconf_write arcmenu/vert-separator true
+	_dconf_write arcmenu/windows-disable-frequent-apps true
+	_dconf_write arcmenu/windows-disable-pinned-apps false
+	
+	_dconf_write arcmenu/reload-theme true
+}
+
+function configure_tray_icons_reloaded () {
+	if bin_exists "dconf"; then
+		echo "Applying configuration..."
+	else
+		LAST_ERROR="dconf is not installed, cannot change GNOME extension configuration"
+		return 1
+	fi
+	
+	_dconf_write trayIconsReloaded/icon-brightness=-20
+	_dconf_write trayIconsReloaded/icon-contrast=0
+	_dconf_write trayIconsReloaded/icon-margin-horizontal=0
+	_dconf_write trayIconsReloaded/icon-margin-vertical=0
+	_dconf_write trayIconsReloaded/icon-padding-horizontal=5
+	_dconf_write trayIconsReloaded/icon-padding-vertical=0
+	_dconf_write trayIconsReloaded/icon-saturation=0
+	_dconf_write trayIconsReloaded/icon-size=18
+	_dconf_write trayIconsReloaded/icons-limit=16
+	_dconf_write trayIconsReloaded/position-weight=20
+	_dconf_write trayIconsReloaded/tray-margin-left=0
+	_dconf_write trayIconsReloaded/tray-margin-right=0
+	_dconf_write trayIconsReloaded/tray-position='right'
+}
+
+function configure_no_annoyance () {
+	echo "FIX ME"
+}
+
+function configure_dash_to_panel () {
+	echo "FIX ME"
+}
+
+function configure_clean_system_menu () {
+	echo "FIX ME"
+}
+
+function configure_panel_date_format () {
+	echo "FIX ME"
+}
+
+function configure_application_volume_mixer () {
+	echo "FIX ME"
+}
+
+function configure_impatience () {
+	echo "FIX ME"
+}
+
+function configure_no_overview () {
+	echo "FIX ME"
+}
+
+function configure_game_mode_status_icon () {
+	echo "FIX ME"
+}
+
+function configure_blur_my_shell () {
+	echo "FIX ME"
+}
+
+function configure_gnome_4x_ui_improvements () {
+	echo "FIX ME"
 }

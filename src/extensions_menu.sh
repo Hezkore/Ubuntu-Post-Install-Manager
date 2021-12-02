@@ -7,7 +7,7 @@ function show_extensions_menu () {
 		"Install_ArcMenu" "Install ArcMenu" "ON"
 		"Install_Tray_Icons_Reloaded" "Install Tray Icons Reloaded" "ON"
 		"Install_No_Annoyance" "Install No Annoyance" "ON"
-		"Install_Dash-to-Panel" "Install Dash-to-Panel" "ON"
+		"Install_Dash_to_Panel" "Install Dash-to-Panel" "ON"
 		"Install_Clean_System_Menu" "Install Clean System Menu" "ON"
 		"Install_Panel_Date_Format" "Install Panel Date Format" "ON"
 		"Install_Application_Volume_Mixer" "Install Application Volume Mixer" "ON"
@@ -15,6 +15,7 @@ function show_extensions_menu () {
 		"Install_No_Overview" "Install No Overview" "ON"
 		"Install_Game_Mode_Status_Icon" "Install Game Mode Status Icon" "ON"
 		"Install_Blur_My_Shell" "Install Blur My Shell" "ON"
+		"Install_GNOME_4x_UI_Improvements" "Install Gnome 4x UI Improvements" "ON"
 	)
 	generate_selection_menu "Extension Options" "${items[@]}"
 	
@@ -51,7 +52,7 @@ function install_no_annoyance () {
 	_install_ext_id 1236
 }
 
-function install_dash-to-panel () {
+function install_dash_to_panel () {
 	_install_ext_id 1160
 }
 
@@ -81,4 +82,8 @@ function install_game_mode_status_icon () {
 
 function install_blur_my_shell () {
 	_install_ext_id 3193
+}
+
+function Install_gnome_4x_ui_improvements () {
+	_install_ext_id 4158
 }
