@@ -86,6 +86,7 @@ Hold **Super** then click and hold the **right mouse button** to to resize a win
 		* **Super + E**
 	* Open Terminal
 		* **Super + T**
+		* **Ctr + Alt + T**
 	* Open System Monitor
 		* **Ctrl + Alt + Delete**
 		* **Ctrl + Shift + Escape**
