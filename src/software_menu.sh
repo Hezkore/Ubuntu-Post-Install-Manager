@@ -57,6 +57,7 @@ function show_software_menu () {
 		"Install_Lollypop" "Install Lollypop music player" "ON"
 		"Remove_Rhythmbox" "Remove Rhythmbox music player" "ON"
 		"Install_VLC" "Install VLC media player" "ON"
+		"Install_Kodi" "Install Kodi media player" "ON"
 		"Install_OBS" "Install OBS Studio via custom PPA" "ON"
 		"Install_OBS_NvFBC_Plugin" "Install OBS Studio NvFBC plugin for NVidia cards" "ON"
 		"Install_Wine" "Install Wine and Winetricks" "ON"
@@ -435,6 +436,10 @@ function remove_rhythmbox () {
 
 function install_vlc () {
 	sudo apt install vlc -y
+}
+
+function install_kodi () {
+	sudo apt install kodi -y
 }
 
 function install_obs () {
