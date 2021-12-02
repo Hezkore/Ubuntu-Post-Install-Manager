@@ -54,6 +54,7 @@ function show_software_menu () {
 		"Install_Spotify" "Install Spotify music player via custom PPA" "ON"
 		"Install_Audacious" "Install Audacious music player" "ON"
 		"Install_Lollypop" "Install Lollypop music player" "ON"
+		"Remove_Rhythmbox" "Remove Rhythmbox music player" "ON"
 		"Install_VLC" "Install VLC media player" "ON"
 		"Install_OBS" "Install OBS Studio via custom PPA" "ON"
 		"Install_OBS_NvFBC_Plugin" "Install OBS Studio NvFBC plugin for NVidia cards" "ON"
@@ -414,6 +415,10 @@ function install_audacious () {
 
 function install_lollypop () {
 	sudo apt install lollypop -y
+}
+
+function remove_rhythmbox () {
+	sudo apt remove rhythmbox -y
 }
 
 function install_vlc () {
