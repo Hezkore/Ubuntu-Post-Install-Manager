@@ -60,9 +60,9 @@ If the machine is not made for gaming, messaging or email, then I recommend unch
 
 If the machine is made for gaming then I recommend reading the [Gaming](#gaming) section for some useful tips and guides.
 
-If you've logged into Steam but Steam is still not starting minimized, it means you've got "Run Steam when my computer starts" enabled in your Steam settings.\
+If you've logged into Steam but Steam is still not starting minimized, it means you've got *"Run Steam when my computer starts"* enabled in your Steam settings.\
 This is not the script, but rather how Steam normally works.\
-To fix this, disable "Run Steam when my computer starts" in Steam settings.
+To fix this, disable *"Run Steam when my computer starts"* in Steam settings.
 
 If you're new to the GNOME file browser *(aka. Nautilus)*; clicking the top directory path does not let you edit, you instead press **CTRL + L** to edit it.\
 *(Good for copying or pasting paths)*
