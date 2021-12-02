@@ -341,6 +341,11 @@ function install_discord () {
 
 function install_steam () {
 	sudo apt install steam -y
+	
+	# Check if a "Games" folder exists and add a Steam shortcut
+	if [[ -d "$HOME/Games"  ]]; then
+		ln -s "$HOME/.steam/debian-installation" "$HOME/Games/Steam"
+	fi
 }
 
 function install_lutris () {
