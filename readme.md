@@ -1,6 +1,8 @@
 # Ubuntu Post-Install Manager
 A simple script that helps you get started with Ubuntu and GNOME.
 
+**Make sure to read everything below!**
+
 ![demo](https://github.com/Hezkore/Ubuntu-Post-Install-Manager/blob/master/extra/demo.png?raw=true)
 
 ## Requirements
