@@ -481,15 +481,35 @@ function install_obs_nvfbc_plugin () {
 
 function install_edge_browser () {
 	if bin_exists "curl"; then
+	
+		## Setup
 		curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
 		sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
-		sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-dev.list'
-		sudo rm -rf microsoft.gpg
-		sudo rm -rf /etc/apt/sources.list.d/microsoft-edge.list
+		sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge-stable.list'
+		sudo rm microsoft.gpg
+		
+		## Install
 		sudo apt update
 		sudo apt install microsoft-edge-stable -y
-		sudo rm -rf /etc/apt/sources.list.d/microsoft-edge.list
-		return 0
+		
+		# Attempt to make Edge less annoying
+		mkdir -p "$HOME/.config/microsoft-edge"
+		touch "$HOME/.config/microsoft-edge/First Run"
+		
+		# Look if Edge exists
+		if bin_exists "microsoft-edge"; then
+			echo "Edge Browser installed correctly"
+			return 0
+		else
+			# One last try...
+			if bin_exists "microsoft-edge-stable"; then
+				echo "Edge Browser installed correctly"
+				return 0
+			else
+				LAST_ERROR="Edge Browser was not installed, you might want to install FireFox instead via 'sudo apt install firefox'"
+				return 1
+			fi
+		fi
 	else
 		LAST_ERROR="cURL is not installed, cannot download key"
 		return 1
@@ -502,11 +522,17 @@ function install_vscode () {
 		sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
 		sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
 		sudo rm -rf microsoft.gpg
-		sudo rm -rf /etc/apt/sources.list.d/microsoft-edge.list
 		sudo apt update
 		sudo apt install code -y
-		sudo rm -rf /etc/apt/sources.list.d/microsoft-edge.list
-		return 0
+		
+		# Look if Edge exists
+		if bin_exists "code"; then
+			echo "Visual Studio Code installed correctly"
+			return 0
+		else
+			LAST_ERROR="Visual Studio Code was not installed"
+			return 1
+		fi
 	else
 		LAST_ERROR="cURL is not installed, cannot download key"
 		return 1
