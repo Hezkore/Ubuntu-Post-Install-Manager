@@ -110,7 +110,7 @@ To enable Linux support for all Steam games *(via Proton)*, start Steam and clic
 				* "Low Bandwidth Mode"
 				* "Low Performance Mode"
 
-Visit [ProtonDB](https://www.protondb.com/) to find out if your favorite games runs on Linux.
+Visit [ProtonDB.com](https://www.protondb.com/) to find out if your favorite games runs on Linux.
 
 Adding a non-Steam game to Steam lets you use Proton with local games, you can also use Lutris for gaming.
 
