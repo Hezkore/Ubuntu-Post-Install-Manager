@@ -75,8 +75,8 @@ If you're new to the GNOME file browser *(aka. Nautilus)* you'll quickly notice 
 
 The **"*Windows* key"**  is usually called the **"*Super* key"** in Linux.
 
-Hold **Super** then click and hold your **left mouse button** to drag any window around without having to grab the title bar.\
-Hold **Super** then click and hold the **right mouse button** instead to resize any window without having to grab the window edge.\
+Hold **Super** then click and hold your **left mouse button** to drag any window around without having to grab the window's title bar.\
+Hold **Super** then click and hold the **right mouse button** to to resize any window without having to grab the window's edge.\
 *(Learn to use this!)*
 
 * Other keyboard Shortcuts
