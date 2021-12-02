@@ -49,7 +49,7 @@ When installing the recommended software, you will be asked to enter your passwo
 I recommend you stay by the computer until you've gotten past those two password popups.\
 *(Removing Snap and installing Flatpak creates a password request popup)*
 
-If the machine is not made for gaming, messaging or email, then I recommend unchecking these options:\
+If the machine is not made for gaming, messaging or email, then I recommend unchecking these options:
 * Step **"5. Configuration"**
 	* "Configure Geary to check for incoming email"
 	* "Configure Telegram to start at login"
