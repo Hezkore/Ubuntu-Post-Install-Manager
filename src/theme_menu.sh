@@ -12,5 +12,19 @@ function show_theme_menu () {
 }
 
 function install_fluent_theme () {
+	if bin_exists "git"; then
+		echo "Downloading theme..."
+	else
+		LAST_ERROR="Git is not installed, cannot download theme"
+		return 1
+	fi
 	
+	dir="$HOME/.local/share/ubuntu-post-install-manager/Fluent-gtk-theme"
+	rm -rf "$dir"
+	mkdir -p "$dir"
+	
+	git clone https://github.com/vinceliuice/Fluent-gtk-theme.git "$dir"
+	
+	"$dir/install.sh" -t all --tweaks round noborder square
+	"$dir/install.sh" -t all --tweaks noborder square
 }
