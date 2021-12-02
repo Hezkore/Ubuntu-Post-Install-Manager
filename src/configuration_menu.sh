@@ -478,7 +478,7 @@ function configure_game_mode_status_icon () {
 		return 1
 	fi
 	
-	_dconf_write gamemode/active-color 'rgb(115,210,22)'
+	_dconf_write gamemode/active-color "'rgb(115,210,22)'"
 	_dconf_write gamemode/active-tint false
 	_dconf_write gamemode/always-show-icon false
 	_dconf_write gamemode/emit-notifications false
