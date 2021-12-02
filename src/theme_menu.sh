@@ -87,6 +87,30 @@ function install_fluent_wallpapers () {
 	fi
 }
 
+function install_vimix_icons () {
+	if bin_exists "git"; then
+		if bin_exists "dconf"; then
+			
+			dir="$HOME/.local/share/ubuntu-post-install-manager/Fluent-gtk-theme-wallpapers"
+			rm -rf "$dir"
+			mkdir -p "$dir"
+			
+			git clone https://github.com/vinceliuice/vimix-icon-theme.git "$dir/vimix-icon-theme"
+			"$dir/install.sh" -a
+			
+			dconf write /org/gnome/desktop/interface/icon-theme "'Vimix-dark'"
+			
+			return 0
+		else
+			LAST_ERROR="dconf is not installed, cannot apply icons"
+			return 1
+		fi
+	else
+		LAST_ERROR="Git is not installed, cannot download icons"
+		return 1
+	fi
+}
+
 function install_mouse_cursor () {
 	if bin_exists "dconf"; then
 		echo "Applying default mouse cursor"
