@@ -11,7 +11,7 @@ Ubuntu starts a Wayland session by default, *which is not supported*.\
 If you don't know what this means, then just log out, click your user and click the cog in the lower right corner.\
 Make sure **"Ubuntu on Xorg"** is selected and login as usual.\
 ![xorg](https://github.com/Hezkore/Ubuntu-Post-Install-Manager/blob/master/extra/xorg.jpg?raw=true)\
-Wayland is the future for Linux.\
+Wayland is the future for Linux and you may still use it.\
 But some software - like IMWheel - does not work correctly in a Wayland session.
 
 ### • 20GB disk
