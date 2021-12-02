@@ -3,10 +3,20 @@ A simple script that helps you get started with Ubuntu and GNOME.
 
 ![demo](https://github.com/Hezkore/Ubuntu-Post-Install-Manager/blob/master/extra/demo.png?raw=true)
 
-## Requires a X11 session
+## Requirements
+### • X11 session
 If you don't know what this means, then just make sure you click the cog in the lower right corner when you're logging in and about to type your password, then select "Ubuntu on Xorg" and login as usual.
 
 The reason for this is because some of the software - like IMWheel - does not work correctly in a Wayland session.
+
+### • 20GB disk
+Ubuntu takes up almost 10GB on a fresh install.\
+With all the Ubuntu dependencies, updates and GPU drivers installed the size might balloon to 17GB.\
+So make sure Ubuntu is installed to a disk greater than at least 20GB, so that the script has some space to work with.
+
+### • 1024x768 resolution
+Ubuntu doesn't work too well on resolutions lower than 1024x768.\
+The ArcMenu GNOME extension also needs at least a height of 642 pixels, which is why no menu is displayed on 800x600.
 
 ## How to install & run
 Download the script by clicking the green **"Code ▼"** button here on GitHub, then click **"Download Zip"** and save the file.\
