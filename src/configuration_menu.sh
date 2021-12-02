@@ -528,19 +528,21 @@ function configure_tray_icons_reloaded () {
 		return 1
 	fi
 	
-	_dconf_write_ext trayIconsReloaded/icon-brightness -20
-	_dconf_write_ext trayIconsReloaded/icon-contrast 0
 	_dconf_write_ext trayIconsReloaded/icon-margin-horizontal 0
 	_dconf_write_ext trayIconsReloaded/icon-margin-vertical 0
 	_dconf_write_ext trayIconsReloaded/icon-padding-horizontal 5
 	_dconf_write_ext trayIconsReloaded/icon-padding-vertical 0
-	_dconf_write_ext trayIconsReloaded/icon-saturation 0
 	_dconf_write_ext trayIconsReloaded/icon-size 18
 	_dconf_write_ext trayIconsReloaded/icons-limit 16
 	_dconf_write_ext trayIconsReloaded/position-weight 20
 	_dconf_write_ext trayIconsReloaded/tray-margin-left 0
 	_dconf_write_ext trayIconsReloaded/tray-margin-right 0
 	_dconf_write_ext trayIconsReloaded/tray-position "'right'"
+	
+	# Let the user adjust this
+	#_dconf_write_ext trayIconsReloaded/icon-brightness -20
+	#_dconf_write_ext trayIconsReloaded/icon-contrast 0
+	#_dconf_write_ext trayIconsReloaded/icon-saturation 0
 }
 
 function configure_no_annoyance () {
