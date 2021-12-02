@@ -475,7 +475,7 @@ function configure_arcmenu () {
 	_dconf_write_ext arcmenu/indicator-color "'rgb(41, 165, 249)'"
 	_dconf_write_ext arcmenu/indicator-text-color "'rgba(196, 196, 196, 0.3)'"
 	_dconf_write_ext arcmenu/menu-arrow-size 0
-	_dconf_write_ext arcmenu/menu-border-size 1
+	_dconf_write_ext arcmenu/menu-border-size 0
 	_dconf_write_ext arcmenu/menu-button-active-backgroundcolor "'rgba(255,18,18,0.18)'"
 	_dconf_write_ext arcmenu/menu-button-border-radius 0
 	_dconf_write_ext arcmenu/menu-button-color "'rgb(145,65,172)'"
@@ -483,7 +483,7 @@ function configure_arcmenu () {
 	_dconf_write_ext arcmenu/menu-button-hover-color "'rgb(153,193,241)'"
 	_dconf_write_ext arcmenu/menu-button-icon "'Custom_Icon'"
 	_dconf_write_ext arcmenu/menu-button-override-border-radius true
-	_dconf_write_ext arcmenu/menu-color "'rgba(255,255,255,0)'"
+	_dconf_write_ext arcmenu/menu-color "'rgba(32,32,32,0.98)'"
 	_dconf_write_ext arcmenu/menu-corner-radius 0
 	_dconf_write_ext arcmenu/menu-font-size 10
 	_dconf_write_ext arcmenu/menu-foreground-color "'rgb(246,245,244)'"
