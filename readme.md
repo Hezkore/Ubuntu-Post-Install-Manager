@@ -7,13 +7,17 @@ A simple script that helps you get started with Ubuntu and GNOME.
 
 ## Requirements
 ### • X11 session
-If you don't know what this means, then just make sure you click the cog in the lower right corner when you're logging in and about to type your password, then select "Ubuntu on Xorg" and login as usual.\
+Ubuntu starts a Wayland session by default, *which is not supported*.\
+If you don't know what this means, then just log out, click your user and click the cog in the lower right corner.\
+Make sure **"Ubuntu on Xorg"** is selected and login as usual.\
 ![xorg](https://github.com/Hezkore/Ubuntu-Post-Install-Manager/blob/master/extra/xorg.jpg?raw=true)\
-Some software - like IMWheel - does not work correctly in a Wayland session.
+Wayland is the future for Linux.\
+But some software - like IMWheel - does not work correctly in a Wayland session.
 
 ### • 20GB disk
-Ubuntu takes up almost 10GB on a fresh install and has a tendency to balloon up to 17GB.\
-So make sure Ubuntu is installed to a disk greater 20GB, that way the script has some space to work with.
+Ubuntu takes up almost 10GB on a fresh install, and has a tendency to balloon up to 17GB.\
+So make sure Ubuntu is installed to a disk greater than 20GB.\
+That way the script has some space to work with.
 
 ### • 1024x768 resolution
 Ubuntu doesn't work too well on resolutions lower than 1024x768.\
