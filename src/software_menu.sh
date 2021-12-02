@@ -24,6 +24,7 @@ function show_software_menu () {
 		"install_GitHub_CLI" "Install GitHub CLI via Homebrew" "ON"
 		"Install_DConf" "Install DConf editor" "ON"
 		"Install_Tweaks" "Install GNOME Tweaks" "ON"
+		"Install_UnZip" "Install UnZip" "ON"
 		"Install_Build-Essential" "Install build-essential" "ON"
 		"Install_Build_Depend" "Install common build dependencies" "ON"
 		"Install_Meson" "Install Meson build system" "ON"
@@ -207,6 +208,10 @@ function install_dconf () {
 
 function install_tweaks () {
 	sudo apt install gnome-tweaks -y
+}
+
+function install_unzip () {
+	sudo apt-get install unzip -y
 }
 
 function install_gdebi () {

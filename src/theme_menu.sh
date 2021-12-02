@@ -8,6 +8,7 @@ function show_theme_menu () {
 		"Install_Vimix_Icons" "Install and apply Vimix icons" "OFF"
 		"Install_Windows_Icons" "Install and apply Windows icons" "ON"
 		"Install_Mouse_Cursor" "Install and apply mouse cursor" "ON"
+		"Install_Font_SegoeUI" "Install and apply Segoe UI font" "ON"
 	)
 	generate_selection_menu "Theme Options" "${items[@]}"
 }
@@ -142,6 +143,19 @@ function install_mouse_cursor () {
 		return 0
 	else
 		LAST_ERROR="dconf is not installed, cannot apply mouse theme"
+		return 1
+	fi
+}
+
+function install_font_segoeui () {
+	if bin_exists "wget"; then
+		
+		wget -O "SegoeUI-VF.zip" https://aka.ms/SegoeUIVariable
+		
+		
+		return 0
+	else
+		LAST_ERROR="WGet is not installed, cannot download font"
 		return 1
 	fi
 }
