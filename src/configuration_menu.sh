@@ -23,6 +23,9 @@ function show_configuration_menu () {
 		"Config_GNOME_NoAttach" "Configure GNOME to not attach modal dialogs" "ON"
 		"Config_GNOME_FileChooser" "Configure GNOME file chooser settings" "ON"
 		
+		# GNOME keyboard shortcuts
+		"Config_GNOME_Shortcuts" "Configure GNOME keyboard shortcuts" "ON"
+		
 		# GNOME extensions
 		"Config_Enabled_Ext" "Enable user extensions and disable built-in" "ON"
 		"Configure_Ding" "Configure DING GNOME Extension" "ON"
@@ -295,6 +298,50 @@ function config_gnome_filechooser () {
 	dconf write /org/gnome/nautilus/preferences/show-create-link true
 	dconf write /org/gnome/nautilus/preferences/default-folder-viewer "'icon-view'"
 	dconf write /org/gnome/nautilus/icon-view/default-zoom-level "'small'"
+}
+
+function config_gnome_shortcuts () {
+	if bin_exists "dconf"; then
+		echo "Applying configuration..."
+	else
+		LAST_ERROR="dconf is not installed, cannot change GNOME extension configuration"
+		return 1
+	fi
+	
+	# Flameshot screenshot via Shift F1
+	echo "Flamshot screenshot - Shift F1"
+	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding "'<Shift>F1'"
+	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command "'flameshot gui'"
+	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name "'Capture area'"
+	
+	# Open Nautilus via Super E
+	echo "Nautilus - Super E"
+	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/binding "'<Super>E'"
+	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/command "'nautilus -w'"
+	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/name "'Open file browser'"
+	
+	# Open Terminal via Super T
+	echo "Terminal - Super T"
+	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/binding "'<Super>T'"
+	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/command "'gnome-terminal'"
+	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/name "'Open terminal'"
+	
+	# Disable Ctrl Alt Delete as Log out
+	echo "Disable Log out"
+	dconf write /org/gnome/settings-daemon/plugins/media-keys/logout "@as []"
+	
+	# Open system monitor via Cltr Shift Escape AND Ctrl Alt Dlete
+	echo "System Monitor - Ctrl Shift Escape & Ctrl Alt Delete"
+	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/binding "'<Primary><Shift>Escape'"
+	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/command "'gnome-system-monitor'"
+	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/name "'Open system monitor'"
+	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/binding "'<Primary><Alt>Delete'"
+	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/command "'gnome-system-monitor'"
+	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/name "'Open system monitor ALT'"
+	
+	# Apply
+	echo "Adding shortcuts"
+	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/']"
 }
 
 function config_enabled_ext () {
