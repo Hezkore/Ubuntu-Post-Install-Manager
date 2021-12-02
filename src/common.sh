@@ -101,7 +101,7 @@ function show_system_warnings () {
 
 function show_main_menu () {
 	category=$(whiptail --ok-button "Run" --cancel-button "Exit" --notags \
-	--title "$TITLE v$VERSION" --menu "" 0 0 0 "${CATEGORIES[@]}" 3>&1 1>&2 2>&3)
+	--title "$TITLE v$VERSION" --menu "\nMake sure to read the README" 0 0 0 "${CATEGORIES[@]}" 3>&1 1>&2 2>&3)
 	
 	if [ $? -gt 0 ]; then # User pressed Cancel
         quit
