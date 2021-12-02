@@ -16,6 +16,9 @@ function show_configuration_menu () {
 		# GNOME itself
 		"Config_GNOME_Mouse" "Configure GNOME mouse to have zero acceleration" "ON"
 		"Config_GNOME_Weekdate" "Configure GNOME calendar to show week numbers" "ON"
+		"Config_GNOME_ResizeRight" "Configure GNOME to resize with right mouse button" "ON"
+		"Config_GNOME_NoMaximize" "Configure GNOME to never automatically maximize windows" "ON"
+		"Config_GNOME_Center" "Configure GNOME to place windows in the center instead of top left" "ON"
 		
 		# GNOME extensions
 		"Config_Enabled_Ext" "Enable user extensions and disable built-in" "ON"
@@ -215,6 +218,39 @@ function config_gnome_weekdate () {
 	fi
 	
 	dconf write /org/gnome/desktop/calendar/show-weekdate true
+}
+
+function config_gnome_resizeright () {
+	if bin_exists "dconf"; then
+		echo "Applying configuration..."
+	else
+		LAST_ERROR="dconf is not installed, cannot change GNOME extension configuration"
+		return 1
+	fi
+	
+	dconf write /org/gnome/desktop/wm/preferences/resize-with-right-button true
+}
+
+function config_gnome_nomaximize () {
+	if bin_exists "dconf"; then
+		echo "Applying configuration..."
+	else
+		LAST_ERROR="dconf is not installed, cannot change GNOME extension configuration"
+		return 1
+	fi
+	
+	dconf write /org/gnome/mutter/auto-maximize false
+}
+
+function config_gnome_center () {
+	if bin_exists "dconf"; then
+		echo "Applying configuration..."
+	else
+		LAST_ERROR="dconf is not installed, cannot change GNOME extension configuration"
+		return 1
+	fi
+	
+	dconf write /org/gnome/mutter/center-new-windows true
 }
 
 function config_enabled_ext () {
