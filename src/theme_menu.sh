@@ -98,7 +98,31 @@ function install_vimix_icons () {
 			git clone https://github.com/vinceliuice/vimix-icon-theme.git "$dir"
 			"$dir/install.sh" -a
 			
-			dconf write /org/gnome/desktop/interface/icon-theme "'Vimix-dark'"
+			dconf write /org/gnome/desktop/interface/icon-theme "'Vimix'"
+			
+			return 0
+		else
+			LAST_ERROR="dconf is not installed, cannot apply icons"
+			return 1
+		fi
+	else
+		LAST_ERROR="Git is not installed, cannot download icons"
+		return 1
+	fi
+}
+
+function install_windows_icons () {
+	if bin_exists "git"; then
+		if bin_exists "dconf"; then
+			
+			dir="$HOME/.local/share/ubuntu-post-install-manager/win11-icon-theme"
+			rm -rf "$dir"
+			mkdir -p "$dir"
+			
+			git clone https://github.com/yeyushengfan258/Win11-icon-theme.git "$dir"
+			"$dir/install.sh" -a
+			
+			dconf write /org/gnome/desktop/interface/icon-theme "'Win11'"
 			
 			return 0
 		else
