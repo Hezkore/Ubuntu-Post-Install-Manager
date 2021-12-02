@@ -298,7 +298,6 @@ function configure_arcmenu () {
 	_dconf_write arcmenu/override-menu-button-color false
 	_dconf_write arcmenu/override-menu-button-hover-background-color false
 	_dconf_write arcmenu/override-menu-button-hover-color false
-	_dconf_write arcmenu/pinned-app-list "['System Monitor', '', 'gnome-system-monitor.desktop', 'Terminal', '', 'org.gnome.Terminal.desktop', 'Bitwarden', '', 'com.bitwarden.desktop.desktop', 'Mail', '', 'org.gnome.Geary.desktop', 'Steam', '', 'steam.desktop', 'Spotify', '', 'spotify.desktop', 'Lollypop', '', 'org.gnome.Lollypop.desktop', 'Audacious', '', 'audacious.desktop', 'Telegram', '', 'telegramdesktop.desktop', 'Discord', '', 'discord.desktop', 'Blender', '', 'org.blender.Blender.desktop', 'Krita', '', 'org.kde.krita.desktop', 'Kdenlive', '', 'org.kde.kdenlive.desktop', 'OBS', '', 'com.obsproject.Studio.desktop', 'VSCode', '', 'code.desktop']"
 	_dconf_write arcmenu/position-in-panel "'Left'"
 	_dconf_write arcmenu/power-options "[(0, true), (1, true), (4, true), (2, true), (3, true), (5, false), (6, false)]"
 	_dconf_write arcmenu/prefs-visible-page 0
@@ -312,6 +311,10 @@ function configure_arcmenu () {
 	_dconf_write arcmenu/vert-separator true
 	_dconf_write arcmenu/windows-disable-frequent-apps true
 	_dconf_write arcmenu/windows-disable-pinned-apps false
+	
+	# Add pinned app based on what's installed
+	# TODO
+	_dconf_write arcmenu/pinned-app-list "['System Monitor', '', 'gnome-system-monitor.desktop', 'Terminal', '', 'org.gnome.Terminal.desktop', 'Bitwarden', '', 'com.bitwarden.desktop.desktop', 'Mail', '', 'org.gnome.Geary.desktop', 'Steam', '', 'steam.desktop', 'Spotify', '', 'spotify.desktop', 'Lollypop', '', 'org.gnome.Lollypop.desktop', 'Audacious', '', 'audacious.desktop', 'Telegram', '', 'telegramdesktop.desktop', 'Discord', '', 'discord.desktop', 'Blender', '', 'org.blender.Blender.desktop', 'Krita', '', 'org.kde.krita.desktop', 'Kdenlive', '', 'org.kde.kdenlive.desktop', 'OBS', '', 'com.obsproject.Studio.desktop', 'VSCode', '', 'code.desktop']"
 	
 	_dconf_write arcmenu/reload-theme true
 }
