@@ -400,6 +400,7 @@ function config_enabled_ext () {
 		gnome-extensions enable no-overview@fthx
 		gnome-extensions enable blur-my-shell@aunetx
 		gnome-extensions enable gnome-ui-tune@itstime.tech
+		gnome-extensions enable gamemode@christian.kellner.me
 		
 		return 0
 	else
