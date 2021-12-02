@@ -48,8 +48,14 @@ function install_fluent_theme () {
 			fi
 			
 			# Apply
-			dconf write /org/gnome/desktop/interface/gtk-theme "'Fluent-round-$color-light-compact'"
-			dconf write /org/gnome/shell/extensions/user-theme/name "'Fluent-$color-dark'"
+			if [ $color = "default" ]; then
+					dconf write /org/gnome/desktop/interface/gtk-theme "'Fluent-round-light-compact'"
+				dconf write /org/gnome/shell/extensions/user-theme/name "'Fluent-dark'"
+			else
+				dconf write /org/gnome/desktop/interface/gtk-theme "'Fluent-round-$color-light-compact'"
+				dconf write /org/gnome/shell/extensions/user-theme/name "'Fluent-$color-dark'"
+			fi
+			
 			# gedit needs to change as well, otherwise it's just all black
 			dconf write /org/gnome/gedit/preferences/editor/scheme "'Yaru-dark'"
 			
