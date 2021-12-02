@@ -496,18 +496,18 @@ function install_edge_browser () {
 		
 		# Look if Edge exists
 		if bin_exists "microsoft-edge"; then
-			echo "Edge Browser installed correctly"
+			echo "Microsoft Edge installed correctly"
 			return 0
 		else
 			# One last try...
 			if bin_exists "microsoft-edge-stable"; then
-				echo "Edge Browser installed correctly"
+				echo "Microsoft Edge installed correctly"
 				return 0
 			else
 				# Remove the repo to avoid errors
 				sudo rm -f "/etc/apt/sources.list.d/microsoft-edge.list"
 				
-				LAST_ERROR="Edge Browser was not installed"
+				LAST_ERROR="Microsoft Edge was not installed"
 				return 1
 			fi
 		fi
