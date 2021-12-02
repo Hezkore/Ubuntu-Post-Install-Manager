@@ -12,6 +12,7 @@ function show_software_menu () {
 		"Install_Curl" "Install cURL CLI tool" "ON"
 		"Install_Edge_Browser" "Install Microsoft Edge Browser via custom PPA" "ON"
 		"Install_FireFox" "Install FireFox Browser" "ON"
+		"Install_Chrome" "Install Chrome Browser via custom PPA" "ON"
 		"Install_VSCode" "Install Visual Studio Code via custom PPA" "ON"
 		"Install_GDebi" "Install GDebi DEB unpacker" "ON"
 		"Install_WGet" "Install WGet CLI tool" "ON"
@@ -515,6 +516,17 @@ function install_edge_browser () {
 
 function install_firefox () {
 	sudo apt install firefox -y
+}
+
+function install_chrome () {
+	if bin_exists "wget"; then
+		wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+		sudo dpkg -i google-chrome-stable_current_amd64.deb
+		rm -f google-chrome-stable_current_amd64.deb
+	else
+		LAST_ERROR="WGet is not installed, cannot download DEB package"
+		return 1
+	fi
 }
 
 function install_vscode () {
