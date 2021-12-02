@@ -15,7 +15,7 @@ function show_extensions_menu () {
 		"Install_No_Overview" "Install No Overview" "ON"
 		"Install_Game_Mode_Status_Icon" "Install Game Mode Status Icon" "ON"
 		"Install_Blur_My_Shell" "Install Blur My Shell" "ON"
-		"Install_GNOME_4x_UI_Improvements" "Install Gnome 4x UI Improvements" "ON"
+		"Install_GNOME_UI_Improvements" "Install Gnome 4x UI Improvements" "ON"
 	)
 	generate_selection_menu "Extension Options" "${items[@]}"
 	
@@ -84,6 +84,6 @@ function install_blur_my_shell () {
 	_install_ext_id 3193
 }
 
-function Install_gnome_4x_ui_improvements () {
+function install_gnome_ui_improvements () {
 	_install_ext_id 4158
 }

@@ -3,7 +3,7 @@
 
 function show_configuration_menu () {
 	items=(
-		"Config_Git" "Configure Git username and email" "ON"
+		"Config_Git" "Configure Git username and email" "OFF"
 		"Config_Mimeapps" "Configure and reset file type associations" "ON"
 		"Config_Flameshot" "Configure Flameshot to stay in the background" "ON"
 		"Config_IMWheel" "Configure IMWheel scroll wheel speed" "ON"
@@ -43,7 +43,7 @@ function show_configuration_menu () {
 		#"Configure_No_Overview" "Configure No Overview GNOME Extension" "ON"
 		"Configure_Game_Mode_Status_Icon" "Configure Game Mode Status Icon GNOME Extension" "ON"
 		"Configure_Blur_My_Shell" "Configure Blur My Shell GNOME Extension" "ON"
-		"Configure_GNOME_4x_UI_Improvements" "Configure Gnome 4x UI Improvements GNOME Extension" "ON"
+		"Configure_GNOME_UI_Improvements" "Configure Gnome 4x UI Improvements GNOME Extension" "ON"
 	)
 	generate_selection_menu "Configuration Options" "${items[@]}"
 }
@@ -705,7 +705,7 @@ function configure_blur_my_shell () {
 	_dconf_write_ext blur-my-shell/static-blur true
 }
 
-function configure_gnome_4x_ui_improvements () {
+function configure_gnome_ui_improvements () {
 	if bin_exists "dconf"; then
 		echo "Applying configuration..."
 	else
