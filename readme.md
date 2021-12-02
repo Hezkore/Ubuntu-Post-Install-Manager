@@ -76,6 +76,17 @@ Hold **Super** then click and hold your **left mouse button** to drag any window
 Hold **Super** then click and hold the **right mouse button** instead to resize any window without having to grab the window edge.\
 *(Learn to use this!)*
 
+* Keyboard Shortcuts
+	* Flameshot capture screenshot area
+		* **Shift + F1**
+	* Open Nautilus *(files)*
+		* **Super + E**
+	* Open Terminal
+		* **Super + T**
+	* Open System Monitor
+		* **Ctrl + Alt + Delete**
+		* **Ctrl + Shift + Escape**
+
 ## Gaming
 To enable Linux support for all Steam games (via Proton):
 * Steam >
