@@ -3,12 +3,12 @@
 
 function show_theme_menu () {
 	items=(
-		"Install_Fluent_Theme" "Install and apply the Fluent GTK theme" "ON"
-		"Install_Fluent_Wallpapers" "Install and apply Fluent GTK wallpapers" "ON"
-		"Install_Vimix_Icons" "Install and apply Vimix icons" "OFF"
-		"Install_Windows_Icons" "Install and apply Windows icons" "ON"
-		"Install_Mouse_Cursor" "Install and apply mouse cursor" "ON"
-		"Install_Font_SegoeUI" "Install and apply Segoe UI font" "ON"
+		"Install_Fluent_Theme" "Download, install and apply the Fluent GTK theme" "ON"
+		"Install_Fluent_Wallpapers" "Download, install and apply Fluent GTK wallpapers" "ON"
+		"Install_Vimix_Icons" "Download, install and apply Vimix icons" "OFF"
+		"Install_Windows_Icons" "Download, install and apply Windows icons" "ON"
+		"Install_Mouse_Cursor" "Download, install and apply mouse cursor" "ON"
+		"Install_Font_SegoeUI" "Download, install and apply Segoe UI font" "ON"
 	)
 	generate_selection_menu "Theme Options" "${items[@]}"
 }
