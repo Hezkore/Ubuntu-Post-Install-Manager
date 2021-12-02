@@ -92,7 +92,7 @@ Hold **Super** then click and hold the **right mouse button** to to resize a win
 		* **Ctrl + Shift + Escape**
 
 ## Gaming
-To enable Linux support for all Steam games (via Proton), start Steam and click:
+To enable Linux support for all Steam games *(via Proton)*, start Steam and click:
 * Steam >
 	* Settings >
 		* Steam Play >
