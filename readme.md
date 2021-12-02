@@ -62,7 +62,7 @@ If the machine is not made for gaming, messaging or email, then I recommend you 
 
 If the machine is made for gaming, then I recommend reading the [Gaming](#gaming) section for some useful tips and guides.
 
-If Steam, Discord, Telegram or Geary is set to run at start; a login screen will automatically appear when you log in.
+If Steam, Discord, Telegram or Geary is set to run at start; a login screen will automatically appear for each application when you log in.
 They will stop appearing once you've signed in to the application.
 
 If Steam does not start minimized after you've logged in; it means you've got **"Run Steam when my computer starts"** enabled in your Steam settings.\
