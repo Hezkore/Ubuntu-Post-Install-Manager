@@ -31,27 +31,17 @@ function show_configuration_menu () {
 		# GNOME extensions
 		"Config_Enabled_Ext" "Enable user extensions and disable built-in" "ON"
 		"Configure_Ding" "Configure DING GNOME Extension" "ON"
-		#"Configure_User_Themes" "Configure User Themes GNOME Extension" "ON"
 		"Configure_ArcMenu" "Configure ArcMenu GNOME Extension" "ON"
 		"Configure_Tray_Icons_Reloaded" "Configure Tray Icons Reloaded GNOME Extension" "ON"
-		#"Configure_No_Annoyance" "Configure No Annoyance GNOME Extension" "ON"
 		"Configure_Dash_to_Panel" "Configure Dash-to-Panel GNOME Extension" "ON"
 		"Configure_Clean_System_Menu" "Configure Clean System Menu GNOME Extension" "ON"
 		"Configure_Panel_Date_Format" "Configure Panel Date Format GNOME Extension" "ON"
-		#"Configure_Application_Volume_Mixer" "Configure Application Volume Mixer GNOME Extension" "ON"
 		"Configure_Impatience" "Configure Impatience GNOME Extension" "ON"
-		#"Configure_No_Overview" "Configure No Overview GNOME Extension" "ON"
 		"Configure_Game_Mode_Status_Icon" "Configure GameMode Status Icon GNOME Extension" "ON"
 		"Configure_Blur_My_Shell" "Configure Blur My Shell GNOME Extension" "ON"
 		"Configure_GNOME_UI_Improvements" "Configure UI Improvements GNOME Extension" "ON"
 	)
 	generate_selection_menu "Configuration Options" "${items[@]}"
-	
-	if (whiptail --yes-button "Later" --no-button "Now" --title "Notice!" --yesno "You must log out before these changes apply.\n\nLog out now?" 0 0); then
-		echo "Remember to log out or reboot"
-	else
-		gnome-session-quit --logout --no-prompt
-	fi
 }
 
 function config_git () {
@@ -177,6 +167,7 @@ function config_mimeapps () {
 function config_flameshot () {
 	mkdir -p "$HOME/.config/flameshot"
 	sudo echo -e "[General]\ndisabledTrayIcon=true\nsaveAfterCopy=true\nshowHelp=false\nshowStartupLaunchMessage=false" > "$HOME/.config/flameshot/flameshot.ini"
+	NEEDS_RESTART=true
 }
 
 function config_imwheel () {
@@ -184,6 +175,7 @@ function config_imwheel () {
 		sudo mkdir -p /etc/X11/imwheel
 		wget -O imwheelrc https://raw.githubusercontent.com/Hezkore/Ubuntu-Post-Install-Manager/master/extra/imwheelrc
 		sudo mv imwheelrc /etc/X11/imwheel/
+		NEEDS_RESTART=true
 		return 0
 	else
 		LAST_ERROR="WGet is not installed, cannot download configuration"
@@ -193,22 +185,27 @@ function config_imwheel () {
 
 function config_imwheel_start () {
 	sudo echo -e "[Desktop Entry]\nName=IMWheel\nIcon=imwheel\nExec=imwheel -d -b 45\nTerminal=false\nType=Application\nX-GNOME-Autostart-enabled=true" > "$HOME/.config/autostart/imwheel.desktop"
+	NEEDS_RESTART=true
 }
 
 function config_telegram_start () {
 	sudo echo -e "[Desktop Entry]\nName=Telegram\nIcon=telegram\nExec=telegram-desktop -startintray\nTerminal=false\nType=Application\nX-GNOME-Autostart-enabled=true\nX-GNOME-Autostart-Delay=1" > "$HOME/.config/autostart/Telegram.desktop"
+	NEEDS_RESTART=true
 }
 
 function config_discord_start () {
 	sudo echo -e "[Desktop Entry]\nName=Discord\nIcon=discord\nExec=discord --start-minimized\nTerminal=false\nType=Application\nX-GNOME-Autostart-enabled=true\nX-GNOME-Autostart-Delay=2" > "$HOME/.config/autostart/Discord.desktop"
+	NEEDS_RESTART=true
 }
 
 function config_steam_start () {
 	sudo echo -e "[Desktop Entry]\nName=Steam\nIcon=steam\nExec=steam -silent\nTerminal=false\nType=Application\nX-GNOME-Autostart-enabled=true\nX-GNOME-Autostart-Delay=3" > "$HOME/.config/autostart/Steam-minimized.desktop"
+	NEEDS_RESTART=true
 }
 
 function config_geary_start () {
 	sudo echo -e "[Desktop Entry]\nName=Geary\nIcon=geary\nExec=geary --gapplication-service\nTerminal=false\nType=Application\nX-GNOME-Autostart-enabled=true" > "$HOME/.config/autostart/Geary.desktop"
+	NEEDS_RESTART=true
 }
 
 function config_geary_settings () {
@@ -408,6 +405,9 @@ function config_enabled_ext () {
 		gnome-extensions enable gnome-ui-tune@itstime.tech
 		gnome-extensions enable gamemode@christian.kellner.me
 		
+		# A restart here might not be required, but just to be safe...
+		NEEDS_RESTART=true
+		
 		return 0
 	else
 		LAST_ERROR="dconf is not installed, cannot change GNOME configuration"
@@ -432,10 +432,6 @@ function configure_ding () {
 	_dconf_write_ext ding/icon-size "'large'"
 	_dconf_write_ext ding/show-home false
 	_dconf_write_ext ding/show-volumes true
-}
-
-function configure_user_themes () {
-	echo "FIX ME"
 }
 
 function configure_arcmenu () {
@@ -517,6 +513,7 @@ function configure_arcmenu () {
 	# TODO
 	_dconf_write_ext arcmenu/pinned-app-list "['System Monitor', '', 'gnome-system-monitor.desktop', 'Terminal', '', 'org.gnome.Terminal.desktop', 'Bitwarden', '', 'com.bitwarden.desktop.desktop', 'Mail', '', 'org.gnome.Geary.desktop', 'Steam', '', 'steam.desktop', 'Spotify', '', 'spotify.desktop', 'Lollypop', '', 'org.gnome.Lollypop.desktop', 'Audacious', '', 'audacious.desktop', 'Telegram', '', 'telegramdesktop.desktop', 'Discord', '', 'discord.desktop', 'Blender', '', 'org.blender.Blender.desktop', 'Krita', '', 'org.kde.krita.desktop', 'Kdenlive', '', 'org.kde.kdenlive.desktop', 'OBS', '', 'com.obsproject.Studio.desktop', 'VSCode', '', 'code.desktop']"
 	
+	# This is required for ArcMenu to update
 	_dconf_write_ext arcmenu/reload-theme true
 }
 
@@ -539,14 +536,10 @@ function configure_tray_icons_reloaded () {
 	_dconf_write_ext trayIconsReloaded/tray-margin-right 0
 	_dconf_write_ext trayIconsReloaded/tray-position "'right'"
 	
-	# Let the user adjust this
+	# Let the user adjust these
 	#_dconf_write_ext trayIconsReloaded/icon-brightness -20
 	#_dconf_write_ext trayIconsReloaded/icon-contrast 0
 	#_dconf_write_ext trayIconsReloaded/icon-saturation 0
-}
-
-function configure_no_annoyance () {
-	echo "Nothing to configure"
 }
 
 function configure_dash_to_panel () {
@@ -656,10 +649,6 @@ function configure_panel_date_format () {
 	_dconf_write_ext panel-date-format/format "'   %R\n%d-%m-%y'"
 }
 
-function configure_application_volume_mixer () {
-	echo "Nothing to configure"
-}
-
 function configure_impatience () {
 	if bin_exists "dconf"; then
 		echo "Applying configuration..."
@@ -670,10 +659,6 @@ function configure_impatience () {
 		LAST_ERROR="dconf is not installed, cannot change GNOME extension configuration"
 		return 1
 	fi
-}
-
-function configure_no_overview () {
-	echo "Nothing to configure"
 }
 
 function configure_game_mode_status_icon () {
@@ -712,6 +697,9 @@ function configure_blur_my_shell () {
 	_dconf_write_ext blur-my-shell/hidetopbar false
 	_dconf_write_ext blur-my-shell/sigma 55
 	_dconf_write_ext blur-my-shell/static-blur true
+	
+	# Might not be required, but again, just to be safe
+	NEEDS_RESTART=true
 }
 
 function configure_gnome_ui_improvements () {

@@ -18,17 +18,13 @@ function show_extensions_menu () {
 		"Install_GNOME_UI_Improvements" "Install Gnome 4x UI Improvements" "ON"
 	)
 	generate_selection_menu "Extension Options" "${items[@]}"
-	
-	if (whiptail --yes-button "Later" --no-button "Now" --title "Notice!" --yesno "You must log out before these changes apply.\n\nLog out now?" 0 0); then
-		echo "Remember to log out or reboot"
-	else
-		gnome-session-quit --logout --no-prompt
-	fi
 }
 
 function _install_ext_id () {
 	if bin_exists "gnome-shell-extension-installer"; then
 		gnome-shell-extension-installer $1 <<< ${GNOME_VER_INT}
+		# Always signal restart after an extension is installed
+		NEEDS_RESTART=true
 		return 0
 	else
 		LAST_ERROR="GNOME Shell Extension Installer is not installed, cannot download extension"

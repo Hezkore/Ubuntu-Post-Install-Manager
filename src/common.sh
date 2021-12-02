@@ -111,7 +111,7 @@ function show_main_menu () {
 }
 
 function notify_error () {
-	#notify-send "Error when running action!"
+	notify-send "Error when running action!"
 	echo -ne '\007' # Beep sound
 	
 	sleep 0.5
@@ -133,7 +133,7 @@ function notify_error () {
 }
 
 function notify_complete () {
-	#notify-send "Ubuntu Post-Install Script Done"
+	notify-send "Ubuntu Post-Install Script Done"
 	echo -ne '\007' # Beep sound
 	
 	sleep 0.5
@@ -201,8 +201,12 @@ function generate_selection_menu () {
 			3>&1 1>&2 2>&3
 	)
 	
+	# Reset
+	NEEDS_RESTART=false
 	ERROR_COUNT=0
 	ACTION_COUNT=0
+	
+	# Run actions
 	if [ -z "$choices" ]; then
 		return
 	else
@@ -211,5 +215,15 @@ function generate_selection_menu () {
 		done
 	fi
 	
+	# Notify the user that all actions are complete
 	notify_complete
+	
+	# Did an action signal restart needed?
+	if $NEEDS_RESTART; then
+		if (whiptail --yes-button "Later" --no-button "Now" --title "Important!" --yesno "You need to restart or log out before running the next step.\n\nLog out now?" 0 0); then
+			echo "Remember to log out or reboot"
+		else
+			gnome-session-quit --logout --no-prompt
+		fi
+	fi
 }
