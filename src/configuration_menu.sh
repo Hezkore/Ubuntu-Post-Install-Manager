@@ -15,7 +15,7 @@ function show_configuration_menu () {
 		
 		# GNOME itself
 		"Config_GNOME_Mouse" "Configure GNOME mouse to have zero acceleration" "ON"
-		"Config_GNOME_Weekday" "Configure GNOME calendar to show weekdays" "ON"
+		"Config_GNOME_Weekdate" "Configure GNOME calendar to show week numbers" "ON"
 		
 		# GNOME extensions
 		"Config_Enabled_Ext" "Enable user extensions and disable built-in" "ON"
@@ -206,7 +206,7 @@ function config_gnome_mouse () {
 	dconf write /org/gnome/desktop/peripherals/mouse/speed -0.1
 }
 
-function config_gnome_weekday () {
+function config_gnome_weekdate () {
 	if bin_exists "dconf"; then
 		echo "Applying configuration..."
 	else
@@ -214,7 +214,7 @@ function config_gnome_weekday () {
 		return 1
 	fi
 	
-	dconf write /org/gnome/desktop/interface/clock-show-weekday true
+	dconf write /org/gnome/desktop/calendar/show-weekdate true
 }
 
 function config_enabled_ext () {
