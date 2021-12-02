@@ -66,7 +66,7 @@ If you've logged into Steam but Steam is still not starting minimized, it means 
 This is not the script, but rather how Steam normally works.\
 To fix this, disable **"Run Steam when my computer starts"** in Steam settings, and check **"Configure Steam to start at login"** in step **"5. Configuration"**.
 
-If you're new to the GNOME file browser *(aka. Nautilus)*; clicking the top directory path does not let you edit, you instead press **CTRL + L** to edit it.\
+If you're new to the GNOME file browser *(aka. Nautilus)* you'll quickly notice that clicking the path does nothing, you instead need to press **CTRL + L** to edit it.\
 *(Good for copying or pasting paths)*
 
 The **"*Windows* key"**  is usually called the **"*Super* key"** in Linux.
