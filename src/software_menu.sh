@@ -12,7 +12,7 @@ function show_software_menu () {
 		"Install_Curl" "Install cURL CLI tool" "ON"
 		"Install_Edge_Browser" "Install Microsoft Edge Browser via custom PPA" "ON"
 		"Install_FireFox" "Install FireFox Browser" "ON"
-		"Install_Chrome" "Install Chrome Browser via custom PPA" "ON"
+		"Install_Chrome" "Install Chrome Browser via DEB" "ON"
 		"Install_VSCode" "Install Visual Studio Code via custom PPA" "ON"
 		"Install_GDebi" "Install GDebi DEB unpacker" "ON"
 		"Install_WGet" "Install WGet CLI tool" "ON"
@@ -504,6 +504,9 @@ function install_edge_browser () {
 				echo "Edge Browser installed correctly"
 				return 0
 			else
+				# Remove the repo to avoid errors
+				sudo rm -f "/etc/apt/sources.list.d/edge.list"
+				
 				LAST_ERROR="Edge Browser was not installed"
 				return 1
 			fi
@@ -543,6 +546,9 @@ function install_vscode () {
 			echo "Visual Studio Code installed correctly"
 			return 0
 		else
+			# Remove the repo to avoid errors
+			sudo rm -f "/etc/apt/sources.list.d/vscode.list"
+				
 			LAST_ERROR="Visual Studio Code was not installed"
 			return 1
 		fi
