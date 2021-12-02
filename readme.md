@@ -117,7 +117,7 @@ Adding a non-Steam game to Steam lets you use Proton with local games, you can a
 You can enable Game Mode in Steam by right clicking any game > Properties ... > Launch Options > Write `gamemoderun %command%`.\
 I have not noticed any performance increase using Game Mode.
 
-Use GOverlay to enable in-game a FPS counter, effects and many other things.\
+Use GOverlay to enable a in-game FPS counter, effects and many other things.\
 Start the application **"GOverlay"** and check **"Global Enable"** in the MangoHud tab, and make sure the **"Hide"** checkbox is checked in the **"Visual"** section.\
 Don't forget to click **"Save"** at the bottom of the window and restart!\
 Then just press **Right Shift + F12** in-game to toggle MangoHud.\
