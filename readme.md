@@ -68,7 +68,7 @@ They will stop appearing once you've signed in to the application.
 If Steam does not start minimized after you've signed in; it means you've got **"Run Steam when my computer starts"** enabled in your Steam settings.\
 This is not the script, but rather how Steam normally works.\
 To fix this; disable **"Run Steam when my computer starts"** in Steam settings.\
-You can run the script and check **"Configure Steam to run at start"** in step **"5. Configuration"** to have Steam start minimized.
+You can run the script and check **"Configure Steam to run at start"** in step **"5. Configuration"** to have Steam start minimized at start.
 
 If you're new to the GNOME file browser *(aka. Nautilus)* you'll quickly notice that clicking the path does nothing, you instead need to press **CTRL + L** to edit it.\
 *(Good for copying or pasting paths)*
