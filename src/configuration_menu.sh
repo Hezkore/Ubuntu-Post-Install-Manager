@@ -391,10 +391,10 @@ function configure_dash_to_panel () {
 	_dconf_write dash-to-panel/multi-monitors false
 	_dconf_write dash-to-panel/overview-click-to-exit false
 	_dconf_write dash-to-panel/panel-anchors "'{"0":"MIDDLE"}'"
-	_dconf_write dash-to-panel/panel-element-positions "'{"0":[{"element":"showAppsButton","visible":false,"position":"stackedTL"},{"element":"activitiesButton","visible":false,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"stackedTL"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":true,"position":"stackedBR"}]}'"
+	_dconf_write dash-to-panel/panel-element-positions "'{\"0\":[{\"element\":\"showAppsButton\",\"visible\":false,\"position\":\"stackedTL\"},{\"element\":\"activitiesButton\",\"visible\":false,\"position\":\"stackedTL\"},{\"element\":\"leftBox\",\"visible\":true,\"position\":\"stackedTL\"},{\"element\":\"taskbar\",\"visible\":true,\"position\":\"stackedTL\"},{\"element\":\"centerBox\",\"visible\":true,\"position\":\"stackedBR\"},{\"element\":\"rightBox\",\"visible\":true,\"position\":\"stackedBR\"},{\"element\":\"systemMenu\",\"visible\":true,\"position\":\"stackedBR\"},{\"element\":\"dateMenu\",\"visible\":true,\"position\":\"stackedBR\"},{\"element\":\"desktopButton\",\"visible\":true,\"position\":\"stackedBR\"}]}'"
 	_dconf_write dash-to-panel/panel-element-positions-monitors-sync true
-	_dconf_write dash-to-panel/panel-lengths "'{"0":100}'"
-	_dconf_write dash-to-panel/panel-sizes "'{"0":48}'"
+	_dconf_write dash-to-panel/panel-lengths "'{\"0\":100}'"
+	_dconf_write dash-to-panel/panel-sizes "'{\"0\":48}'"
 	_dconf_write dash-to-panel/primary-monitor 0
 	_dconf_write dash-to-panel/secondarymenu-contains-showdetails true
 	_dconf_write dash-to-panel/show-appmenu false
