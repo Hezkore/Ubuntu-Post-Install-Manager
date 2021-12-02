@@ -485,9 +485,39 @@ function configure_game_mode_status_icon () {
 }
 
 function configure_blur_my_shell () {
-	echo "FIX ME"
+	if bin_exists "dconf"; then
+		echo "Applying configuration..."
+	else
+		LAST_ERROR="dconf is not installed, cannot change GNOME extension configuration"
+		return 1
+	fi
+	
+	_dconf_write blur-my-shell/appfolder-dialog-opacity 0.0
+	_dconf_write blur-my-shell/blur-appfolders false
+	_dconf_write blur-my-shell/blur-dash false
+	_dconf_write blur-my-shell/blur-lockscreen false
+	_dconf_write blur-my-shell/blur-overview false
+	_dconf_write blur-my-shell/blur-panel true
+	_dconf_write blur-my-shell/blur-window-list false
+	_dconf_write blur-my-shell/brightness 1.0
+	_dconf_write blur-my-shell/dash-opacity 0.0
+	_dconf_write blur-my-shell/debug false
+	_dconf_write blur-my-shell/hacks-level 0
+	_dconf_write blur-my-shell/hidetopbar false
+	_dconf_write blur-my-shell/sigma 55
+	_dconf_write blur-my-shell/static-blur true
 }
 
 function configure_gnome_4x_ui_improvements () {
-	echo "FIX ME"
+	if bin_exists "dconf"; then
+		echo "Applying configuration..."
+	else
+		LAST_ERROR="dconf is not installed, cannot change GNOME extension configuration"
+		return 1
+	fi
+	
+	_dconf_write gnome-ui-tune/always-show-thumbnails true
+	_dconf_write gnome-ui-tune/increase-thumbnails-size true
+	_dconf_write gnome-ui-tune/overview-firefox-pip false
+	_dconf_write gnome-ui-tune/restore-thumbnails-background true
 }
