@@ -16,7 +16,7 @@ function install_fluent_theme () {
 		if bin_exists "dconf"; then
 			# Ask for color
 			color=$(whiptail --ok-button "Apply" --cancel-button "Abort" --notags \
-				--title "Theme Configuration" --menu "Select theme color" 0 0 0  \
+				--title "Theme Configuration" --menu "Select theme color to apply" 0 0 0  \
 				"default" "Default" \
 				"purple" "Purple" \
 				"pink" "Pink" \
@@ -58,6 +58,30 @@ function install_fluent_theme () {
 		fi
 	else
 		LAST_ERROR="Git is not installed, cannot download theme"
+		return 1
+	fi
+}
+
+function install_fluent_wallpapers () {
+	if bin_exists "git"; then
+		if bin_exists "dconf"; then
+			
+			dir="$HOME/.local/share/ubuntu-post-install-manager/Fluent-gtk-theme-wallpapers"
+			rm -rf "$dir"
+			mkdir -p "$dir"
+			
+			git clone -b Wallpaper https://github.com/vinceliuice/Fluent-gtk-theme.git "$dir"
+			"$dir/install-wallpapers.sh" -t building mountain flat gradient
+			
+			dconf write /org/gnome/desktop/background/picture-uri "'file:///$dir/wallpaper-1080p/Fluent-building-night.png'"
+			
+			return 0
+		else
+			LAST_ERROR="dconf is not installed, cannot apply wallpaper"
+			return 1
+		fi
+	else
+		LAST_ERROR="Git is not installed, cannot download wallpapers"
 		return 1
 	fi
 }
