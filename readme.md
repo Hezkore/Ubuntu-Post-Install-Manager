@@ -70,7 +70,7 @@ This is not the script, but rather how Steam normally works.\
 To fix this; disable **"Run Steam when my computer starts"** in Steam settings.\
 You can run the script and check **"Configure Steam to run at start"** in step **"5. Configuration"** to have Steam start minimized at start.
 
-If you're new to the GNOME file browser *(aka. Nautilus)* you'll quickly notice that clicking the path does nothing, you instead need to press **CTRL + L** to edit it.\
+If you're new to the GNOME file browser *(aka. Nautilus)* you'll quickly notice that clicking the current directory path at the top does nothing, you instead need to press **CTRL + L** to edit it.\
 *(Good for copying or pasting paths)*
 
 The **"*Windows* key"**  is usually called the **"*Super* key"** in Linux.
