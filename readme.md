@@ -101,10 +101,10 @@ To enable Linux support for all Steam games *(via Proton)*, start Steam and clic
 		* Shader Pre-Caching
 			* "Enable Shader Pre-Caching"
 			* "Allow background processing of Vulkan shaders"
-		* (recommended)
+		* *(recommended)*
 			* Interface >
 				* Change "Select which Steam window appears when the program starst." to "Library"
-				* Disable "Run Steam when my computer starts" (see [Notes](#notes) for more info)
+				* Disable "Run Steam when my computer starts" *(see [Notes](#notes)* for more info)
 				* Disable "Notify me about additions or changes to my games, new releases, and upcoming releases."
 			* Library >
 				* "Low Bandwidth Mode"
