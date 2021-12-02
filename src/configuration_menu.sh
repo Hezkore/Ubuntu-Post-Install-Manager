@@ -207,7 +207,7 @@ function config_geary_settings () {
 	if bin_exists "dconf"; then
 		echo "Applying configuration..."
 	else
-		LAST_ERROR="dconf is not installed, cannot change GNOME extension configuration"
+		LAST_ERROR="dconf is not installed, cannot change GNOME application configuration"
 		return 1
 	fi
 	
@@ -219,7 +219,7 @@ function config_gnome_mouse () {
 	if bin_exists "dconf"; then
 		echo "Applying configuration..."
 	else
-		LAST_ERROR="dconf is not installed, cannot change GNOME extension configuration"
+		LAST_ERROR="dconf is not installed, cannot change GNOME configuration"
 		return 1
 	fi
 	
@@ -231,7 +231,7 @@ function config_gnome_weekdate () {
 	if bin_exists "dconf"; then
 		echo "Applying configuration..."
 	else
-		LAST_ERROR="dconf is not installed, cannot change GNOME extension configuration"
+		LAST_ERROR="dconf is not installed, cannot change GNOME configuration"
 		return 1
 	fi
 	
@@ -242,7 +242,7 @@ function config_gnome_resizeright () {
 	if bin_exists "dconf"; then
 		echo "Applying configuration..."
 	else
-		LAST_ERROR="dconf is not installed, cannot change GNOME extension configuration"
+		LAST_ERROR="dconf is not installed, cannot change GNOME configuration"
 		return 1
 	fi
 	
@@ -253,7 +253,7 @@ function config_gnome_nomaximize () {
 	if bin_exists "dconf"; then
 		echo "Applying configuration..."
 	else
-		LAST_ERROR="dconf is not installed, cannot change GNOME extension configuration"
+		LAST_ERROR="dconf is not installed, cannot change GNOME configuration"
 		return 1
 	fi
 	
@@ -264,7 +264,7 @@ function config_gnome_center () {
 	if bin_exists "dconf"; then
 		echo "Applying configuration..."
 	else
-		LAST_ERROR="dconf is not installed, cannot change GNOME extension configuration"
+		LAST_ERROR="dconf is not installed, cannot change GNOME configuration"
 		return 1
 	fi
 	
@@ -275,7 +275,7 @@ function config_gnome_noattach () {
 	if bin_exists "dconf"; then
 		echo "Applying configuration..."
 	else
-		LAST_ERROR="dconf is not installed, cannot change GNOME extension configuration"
+		LAST_ERROR="dconf is not installed, cannot change GNOME configuration"
 		return 1
 	fi
 	
@@ -287,7 +287,7 @@ function config_gnome_filechooser () {
 	if bin_exists "dconf"; then
 		echo "Applying configuration..."
 	else
-		LAST_ERROR="dconf is not installed, cannot change GNOME extension configuration"
+		LAST_ERROR="dconf is not installed, cannot change GNOME configuration"
 		return 1
 	fi
 	
@@ -304,7 +304,7 @@ function config_gnome_shortcuts () {
 	if bin_exists "dconf"; then
 		echo "Applying configuration..."
 	else
-		LAST_ERROR="dconf is not installed, cannot change GNOME extension configuration"
+		LAST_ERROR="dconf is not installed, cannot change GNOME configuration"
 		return 1
 	fi
 	
