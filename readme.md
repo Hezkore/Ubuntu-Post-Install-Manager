@@ -51,6 +51,10 @@ When installing the recommended software, you will be asked to enter your passwo
 I recommend you stay by the computer until you've gotten past those two password popups.\
 *(Removing Snap and installing Flatpak creates a password request popup)*
 
+FireFox, Microsoft Edge and Google Chrome are all installed by default.\
+You can uncheck the ones you don't want to install during step **"3. Software"**.\
+If you find yourself without a browser; type `sudo apt install firefox` into a terminal to install FireFox.
+
 If the machine is not made for gaming, messaging or email, then I recommend you *NOT* check these options:
 * Step **"5. Configuration"**
 	* Uncheck "Configure Geary to check for incoming email"
