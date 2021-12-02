@@ -17,7 +17,7 @@ function show_configuration_menu () {
 		"Configure_User_Themes" "Configure User Themes" "ON"
 		"Configure_ArcMenu" "Configure ArcMenu" "ON"
 		"Configure_Tray_Icons_Reloaded" "Configure Tray Icons Reloaded" "ON"
-		"Configure_No_Annoyance" "Configure No Annoyance" "ON"
+		#"Configure_No_Annoyance" "Configure No Annoyance" "ON"
 		"Configure_Dash_to_Panel" "Configure Dash-to-Panel" "ON"
 		"Configure_Clean_System_Menu" "Configure Clean System Menu" "ON"
 		"Configure_Panel_Date_Format" "Configure Panel Date Format" "ON"
@@ -340,11 +340,90 @@ function configure_tray_icons_reloaded () {
 }
 
 function configure_no_annoyance () {
-	echo "FIX ME"
+	echo "Nothing to configure"
 }
 
 function configure_dash_to_panel () {
-	echo "FIX ME"
+	if bin_exists "dconf"; then
+		echo "Applying configuration..."
+	else
+		LAST_ERROR="dconf is not installed, cannot change GNOME extension configuration"
+		return 1
+	fi
+	
+	_dconf_write animate-appicon-hover false
+	_dconf_write animate-appicon-hover-animation-convexity "{'RIPPLE': 2.0, 'PLANK': 1.0, 'SIMPLE': 0.0}"
+	_dconf_write animate-appicon-hover-animation-duration "{'SIMPLE': uint32 160, 'RIPPLE': 130, 'PLANK': 100}"
+	_dconf_write animate-appicon-hover-animation-extent "{'RIPPLE': 4, 'PLANK': 4, 'SIMPLE': 1}"
+	_dconf_write animate-appicon-hover-animation-travel "{'SIMPLE': 0.040000000000000001, 'RIPPLE': 0.40000000000000002, 'PLANK': 0.0}"
+	_dconf_write animate-appicon-hover-animation-type "'SIMPLE'"
+	_dconf_write animate-appicon-hover-animation-zoom "{'SIMPLE': 1.1000000000000001, 'RIPPLE': 1.25, 'PLANK': 2.0}"
+	_dconf_write appicon-margin 0
+	_dconf_write appicon-padding 12
+	_dconf_write available-monitors "[0]"
+	_dconf_write click-action "'TOGGLE-SHOWPREVIEW'"
+	_dconf_write desktop-line-custom-color "'rgba(0,0,0,0.0)'"
+	_dconf_write desktop-line-use-custom-color true
+	_dconf_write dot-color-1 "'#529cd5'"
+	_dconf_write dot-color-2 "'#529cd5'"
+	_dconf_write dot-color-3 "'#529cd5'"
+	_dconf_write dot-color-4 "'#529cd5'"
+	_dconf_write dot-color-dominant true
+	_dconf_write dot-color-override false
+	_dconf_write dot-color-unfocused-1 "'#9a9996'"
+	_dconf_write dot-color-unfocused-2 "'#9a9996'"
+	_dconf_write dot-color-unfocused-3 "'#9a9996'"
+	_dconf_write dot-color-unfocused-4 "'#9a9996'"
+	_dconf_write dot-color-unfocused-different true
+	_dconf_write dot-position "'BOTTOM'"
+	_dconf_write dot-size 3
+	_dconf_write dot-style-focused "'SEGMENTED'"
+	_dconf_write dot-style-unfocused "'DOTS'"
+	_dconf_write focus-highlight true
+	_dconf_write focus-highlight-color "'#ffffff'"
+	_dconf_write focus-highlight-dominant true
+	_dconf_write focus-highlight-opacity 5
+	_dconf_write group-apps true
+	_dconf_write hide-overview-on-startup false
+	_dconf_write hotkeys-overlay-combo "'TEMPORARILY'"
+	_dconf_write leftbox-padding 15
+	_dconf_write leftbox-size 0
+	_dconf_write multi-monitors false
+	_dconf_write overview-click-to-exit false
+	_dconf_write panel-anchors "'{"0":"MIDDLE"}'"
+	_dconf_write panel-element-positions "'{"0":[{"element":"showAppsButton","visible":false,"position":"stackedTL"},{"element":"activitiesButton","visible":false,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"stackedTL"},{"element":"centerBox","visible":true,"position":"stackedBR"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"dateMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":true,"position":"stackedBR"}]}'"
+	_dconf_write panel-element-positions-monitors-sync true
+	_dconf_write panel-lengths "'{"0":100}'"
+	_dconf_write panel-sizes "'{"0":48}'"
+	_dconf_write primary-monitor 0
+	_dconf_write secondarymenu-contains-showdetails true
+	_dconf_write show-appmenu false
+	_dconf_write show-apps-icon-file "''"
+	_dconf_write show-favorites true
+	_dconf_write show-favorites-all-monitors true
+	_dconf_write show-running-apps true
+	_dconf_write show-showdesktop-hover true
+	_dconf_write show-showdesktop-time 500
+	_dconf_write show-tooltip false
+	_dconf_write showdesktop-button-width 8
+	_dconf_write status-icon-padding 6
+	_dconf_write stockgs-keep-top-panel false
+	_dconf_write stockgs-panelbtn-click-only true
+	_dconf_write trans-bg-color "'#ffffff'"
+	_dconf_write trans-dynamic-anim-target 1.0
+	_dconf_write trans-dynamic-behavior "'MAXIMIZED_WINDOWS'"
+	_dconf_write trans-gradient-bottom-color "'#ffffff'"
+	_dconf_write trans-gradient-bottom-opacity 0.0
+	_dconf_write trans-gradient-top-color "'#ffffff'"
+	_dconf_write trans-gradient-top-opacity 0.0
+	_dconf_write trans-panel-opacity 0.80000000000000004
+	_dconf_write trans-use-custom-bg false
+	_dconf_write trans-use-custom-gradient false
+	_dconf_write trans-use-custom-opacity true
+	_dconf_write trans-use-dynamic-opacity false
+	_dconf_write tray-padding 4
+	_dconf_write tray-size 0
+	_dconf_write window-preview-title-position "'TOP'"
 }
 
 function configure_clean_system_menu () {
