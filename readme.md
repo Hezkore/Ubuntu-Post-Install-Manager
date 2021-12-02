@@ -51,10 +51,10 @@ I recommend you stay by the computer until you've gotten past those two password
 
 If the machine is not made for gaming, messaging or email, then I recommend unchecking these options:
 * Step **"5. Configuration"**
-	* "Configure Geary to check for incoming email"
-	* "Configure Telegram to start at login"
-	* "Configure Discord to start at login"
-	* "Configure Steam to start at login"
+	* Uncheck "Configure Geary to check for incoming email"
+	* Uncheck "Configure Telegram to start at login"
+	* Uncheck "Configure Discord to start at login"
+	* Uncheck "Configure Steam to start at login"
 
 *(You can always change this later by running the application **"Startup Applications"**)*
 
