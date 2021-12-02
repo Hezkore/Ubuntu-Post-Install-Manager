@@ -12,6 +12,7 @@ function show_configuration_menu () {
 		"Config_Discord_Start" "Configure Discord to start at login" "ON"
 		"Config_Steam_Start" "Configure Steam to start at login" "ON"
 		"Config_Geary_Start" "Configure Geary to check for incoming email" "ON"
+		"Config_Geary_Settings" "Configure Geary settings" "ON"
 		
 		# GNOME itself
 		"Config_GNOME_Mouse" "Configure GNOME mouse to have zero acceleration" "ON"
@@ -20,7 +21,7 @@ function show_configuration_menu () {
 		"Config_GNOME_NoMaximize" "Configure GNOME to never automatically maximize windows" "ON"
 		"Config_GNOME_Center" "Configure GNOME to place windows in the center instead of top left" "ON"
 		"Config_GNOME_NoAttach" "Configure GNOME to not attach modal dialogs" "ON"
-		"Config_GNOME_FileChooser" "Configure GNOME file chooser" "ON"
+		"Config_GNOME_FileChooser" "Configure GNOME file chooser settings" "ON"
 		
 		# GNOME extensions
 		"Config_Enabled_Ext" "Enable user extensions and disable built-in" "ON"
@@ -197,6 +198,18 @@ function config_steam_start () {
 
 function config_geary_start () {
 	sudo echo -e "[Desktop Entry]\nName=Geary\nIcon=geary\nExec=geary --gapplication-service\nTerminal=false\nType=Application\nX-GNOME-Autostart-enabled=true" > "$HOME/.config/autostart/Geary.desktop"
+}
+
+function config_geary_settings () {
+	if bin_exists "dconf"; then
+		echo "Applying configuration..."
+	else
+		LAST_ERROR="dconf is not installed, cannot change GNOME extension configuration"
+		return 1
+	fi
+	
+	dconf write /org/gnome/Geary/startup-notifications true
+	dconf write /org/gnome/Geary/optional-plugins "['sent-sound']"
 }
 
 function config_gnome_mouse () {
