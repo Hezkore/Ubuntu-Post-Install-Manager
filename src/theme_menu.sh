@@ -121,7 +121,7 @@ function install_windows_icons () {
 			mkdir -p "$dir"
 			
 			git clone https://github.com/yeyushengfan258/Win11-icon-theme.git "$dir"
-			"$dir/install.sh" -a
+			"$dir/install.sh" -w
 			
 			dconf write /org/gnome/desktop/interface/icon-theme "'Win11'"
 			
