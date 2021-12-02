@@ -11,6 +11,7 @@ function show_software_menu () {
 		"Install_Discover_Store" "Install KDE Discover software store" "OFF"
 		"Install_Curl" "Install cURL CLI tool" "ON"
 		"Install_Edge_Browser" "Install Microsoft Edge Browser via custom PPA" "ON"
+		"Install_FireFox" "Install FireFox Browser" "ON"
 		"Install_VSCode" "Install Visual Studio Code via custom PPA" "ON"
 		"Install_GDebi" "Install GDebi DEB unpacker" "ON"
 		"Install_WGet" "Install WGet CLI tool" "ON"
@@ -502,7 +503,7 @@ function install_edge_browser () {
 				echo "Edge Browser installed correctly"
 				return 0
 			else
-				LAST_ERROR="Edge Browser was not installed, you might want to install FireFox instead via 'sudo apt install firefox'"
+				LAST_ERROR="Edge Browser was not installed"
 				return 1
 			fi
 		fi
@@ -510,6 +511,10 @@ function install_edge_browser () {
 		LAST_ERROR="cURL is not installed, cannot download key"
 		return 1
 	fi
+}
+
+function install_firefox () {
+	sudo apt install firefox -y
 }
 
 function install_vscode () {
