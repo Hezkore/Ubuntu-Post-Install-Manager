@@ -157,10 +157,13 @@ function install_font_segoeui () {
 			unzip -o "SegoeUI-VF.zip" -d "$HOME/.local/share/fonts"
 			rm -rf SegoeUI-VF.zip
 			
-			dconf write /org/gnome/desktop/interface/font-name "'Segoe UI Variable Static Text 9.5"
+			dconf write /org/gnome/desktop/interface/font-name "'Segoe UI Variable Static Text 9.5'"
 			dconf write /org/gnome/desktop/interface/document-font-name "'Sans 10'"
 			dconf write /org/gnome/desktop/interface/monospace-font-name "'Ubuntu Mono 13'"
 			dconf write /org/gnome/desktop/wm/preferences/titlebar-font "'Segoe UI Variable Static Text Semi-Bold 11'"
+			
+			dconf write /org/gnome/desktop/interface/font-antialiasing "'rgba'"
+			dconf write /org/gnome/desktop/interface/font-hinting "'slight'"
 			
 			return 0
 		else
