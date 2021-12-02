@@ -460,7 +460,7 @@ function configure_arcmenu () {
 	_dconf_write_ext arcmenu/disable-scrollview-fade-effect true
 	_dconf_write_ext arcmenu/disable-searchbox-border true
 	_dconf_write_ext arcmenu/disable-tooltips true
-	_dconf_write_ext arcmenu/distro-icon 0
+	_dconf_write_ext arcmenu/distro-icon 5
 	_dconf_write_ext arcmenu/enable-custom-arc-menu true
 	_dconf_write_ext arcmenu/enable-horizontal-flip true
 	_dconf_write_ext arcmenu/enable-large-icons true
