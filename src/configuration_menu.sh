@@ -14,7 +14,7 @@ function show_configuration_menu () {
 		"Config_Geary_Start" "Configure Geary to check for incoming email" "ON"
 		
 		# GNOME itself
-		"Config_GNOME_" "Enable user extensions and disable built-in" "ON"
+		"Config_GNOME_Mouse" "Configure GNOME mouse to have zero acceleration" "ON"
 		
 		# GNOME extensions
 		"Config_Enabled_Ext" "Enable user extensions and disable built-in" "ON"
@@ -191,6 +191,18 @@ function config_steam_start () {
 
 function config_geary_start () {
 	sudo echo -e "[Desktop Entry]\nName=Geary\nIcon=geary\nExec=geary --gapplication-service\nTerminal=false\nType=Application\nX-GNOME-Autostart-enabled=true" > "$HOME/.config/autostart/Geary.desktop"
+}
+
+function config_gnome_mouse () {
+	if bin_exists "dconf"; then
+		echo "Applying configuration..."
+	else
+		LAST_ERROR="dconf is not installed, cannot change GNOME extension configuration"
+		return 1
+	fi
+	
+	dconf write /org/gnome/desktop/peripherals/mouse/accel-profile "'flat'"
+	dconf write /org/gnome/desktop/peripherals/mouse/speed -0.1
 }
 
 function config_enabled_ext () {
