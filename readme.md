@@ -92,7 +92,11 @@ Hold **Super** then click and hold the **right mouse button** to to resize a win
 		* **Ctrl + Shift + Escape**
 
 ## Gaming
-To enable Linux support for all Steam games *(via Proton)*, start Steam and click:
+Wine and Proton let's you run Windows software and games on Linux.\
+Wine is commonly used applications, while Proton *(based on Wine)* is mainly used for games.\
+You can read more about Proton [here](https://www.gamingonlinux.com/2019/07/a-simple-guide-to-steam-play-valves-technology-for-playing-windows-games-on-linux/).
+
+To enable Proton in Steam; start Steam and click:
 * Steam >
 	* Settings >
 		* Steam Play >
