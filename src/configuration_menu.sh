@@ -12,9 +12,10 @@ function show_configuration_menu () {
 		"Config_Discord_Start" "Configure Discord to start at login" "ON"
 		"Config_Steam_Start" "Configure Steam to start at login" "ON"
 		"Config_Geary_Start" "Configure Geary to check for incoming email" "ON"
+		
+		# GNOME extensions
 		"Config_Enabled_Ext" "Enable user extensions and disable built-in" "ON"
-	
-		"Configure_User_Themes" "Configure User Themes GNOME Extension" "ON"
+		#"Configure_User_Themes" "Configure User Themes GNOME Extension" "ON"
 		"Configure_ArcMenu" "Configure ArcMenu GNOME Extension" "ON"
 		"Configure_Tray_Icons_Reloaded" "Configure Tray Icons Reloaded GNOME Extension" "ON"
 		#"Configure_No_Annoyance" "Configure No Annoyance GNOME Extension" "ON"
