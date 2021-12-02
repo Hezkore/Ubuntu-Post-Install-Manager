@@ -23,7 +23,7 @@ function show_configuration_menu () {
 		"Configure_Panel_Date_Format" "Configure Panel Date Format GNOME Extension" "ON"
 		#"Configure_Application_Volume_Mixer" "Configure Application Volume Mixer GNOME Extension" "ON"
 		"Configure_Impatience" "Configure Impatience GNOME Extension" "ON"
-		"Configure_No_Overview" "Configure No Overview GNOME Extension" "ON"
+		#"Configure_No_Overview" "Configure No Overview GNOME Extension" "ON"
 		"Configure_Game_Mode_Status_Icon" "Configure Game Mode Status Icon GNOME Extension" "ON"
 		"Configure_Blur_My_Shell" "Configure Blur My Shell GNOME Extension" "ON"
 		"Configure_GNOME_4x_UI_Improvements" "Configure Gnome 4x UI Improvements GNOME Extension" "ON"
@@ -455,15 +455,33 @@ function configure_application_volume_mixer () {
 }
 
 function configure_impatience () {
-	echo "FIX ME"
+	if bin_exists "dconf"; then
+		echo "Applying configuration..."
+		# Odd place for an extension to store its settings
+		dconf write /org/gnome/shell/extensions/net/gfxmonk/impatience/speed-factor 0.88409703504043125
+		return 0
+	else
+		LAST_ERROR="dconf is not installed, cannot change GNOME extension configuration"
+		return 1
+	fi
 }
 
 function configure_no_overview () {
-	echo "FIX ME"
+	echo "Nothing to configure"
 }
 
 function configure_game_mode_status_icon () {
-	echo "FIX ME"
+	if bin_exists "dconf"; then
+		echo "Applying configuration..."
+	else
+		LAST_ERROR="dconf is not installed, cannot change GNOME extension configuration"
+		return 1
+	fi
+	
+	_dconf_write gamemode/active-color 'rgb(115,210,22)'
+	_dconf_write gamemode/active-tint false
+	_dconf_write gamemode/always-show-icon false
+	_dconf_write gamemode/emit-notifications false
 }
 
 function configure_blur_my_shell () {
