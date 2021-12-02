@@ -51,20 +51,21 @@ I recommend you stay by the computer until you've gotten past those two password
 If the machine is not made for gaming, messaging or email, then I recommend you *NOT* check these options:
 * Step **"5. Configuration"**
 	* Uncheck "Configure Geary to check for incoming email"
-	* Uncheck "Configure Telegram to start at login"
-	* Uncheck "Configure Discord to start at login"
-	* Uncheck "Configure Steam to start at login"
+	* Uncheck "Configure Telegram to run at start"
+	* Uncheck "Configure Discord to run at start"
+	* Uncheck "Configure Steam to run at start"
 
 *(You can also disable these later by running the application **"Startup Applications"**)*
 
 If the machine is made for gaming, then I recommend reading the [Gaming](#gaming) section for some useful tips and guides.
 
-Discord, Steam and Telegram will popup at start when they're nog signed into.\
-They will stop appearing once you've signed in.
+If Steam, Discord, Telegram or Geary is set to run at start; a login screen will automatically appear when you log in.
+They will stop appearing once you've signed in to the application.
 
-If you've logged into Steam but Steam is still not starting minimized, it means you've got **"Run Steam when my computer starts"** enabled in your Steam settings.\
+If Steam does not start minimized after you've logged in; it means you've got **"Run Steam when my computer starts"** enabled in your Steam settings.\
 This is not the script, but rather how Steam normally works.\
-To fix this, disable **"Run Steam when my computer starts"** in Steam settings, and check **"Configure Steam to start at login"** in step **"5. Configuration"**.
+To fix this; disable **"Run Steam when my computer starts"** in Steam settings.
+You can run the script and check **"Configure Steam to run at start"** in step **"5. Configuration"** to have Steam start minimized.
 
 If you're new to the GNOME file browser *(aka. Nautilus)* you'll quickly notice that clicking the path does nothing, you instead need to press **CTRL + L** to edit it.\
 *(Good for copying or pasting paths)*
