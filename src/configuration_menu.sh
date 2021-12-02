@@ -13,6 +13,7 @@ function show_configuration_menu () {
 		"Config_Steam_Start" "Configure Steam to start at login" "ON"
 		"Config_Geary_Start" "Configure Geary to check for incoming email" "ON"
 		"Config_Geary_Settings" "Configure Geary settings" "ON"
+		"Config_Lollypop_Window" "Configure Lollypop window size" "ON"
 		
 		# GNOME itself
 		"Config_GNOME_Mouse" "Configure GNOME mouse to have zero acceleration" "ON"
@@ -213,6 +214,17 @@ function config_geary_settings () {
 	
 	dconf write /org/gnome/Geary/startup-notifications true
 	dconf write /org/gnome/Geary/optional-plugins "['sent-sound']"
+}
+
+function config_lollypop_window () {
+	if bin_exists "dconf"; then
+		echo "Applying configuration..."
+	else
+		LAST_ERROR="dconf is not installed, cannot change GNOME application configuration"
+		return 1
+	fi
+	
+	dconf write /org/gnome/Lollypop/window-size "[1280, 720]"
 }
 
 function config_gnome_mouse () {
