@@ -75,6 +75,7 @@ function show_software_menu () {
 function remove_snap () {
 	killall GeckoMain
 	sudo systemctl stop snapd.service
+	echo -ne '\007' # Beep sound
 	sudo systemctl disable snapd.service
 	snap remove --purge snap-store
 	sudo apt autoremove --purge snapd gnome-software-plugin-snap -y
@@ -153,6 +154,7 @@ function install_discover_store () {
 function install_flatpak () {
 	sudo apt install gnome-software-plugin-flatpak -y
 	sudo apt install flatpak -y
+	echo -ne '\007' # Beep sound
 	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 }
 
