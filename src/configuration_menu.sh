@@ -447,7 +447,7 @@ function configure_arcmenu () {
 	fi
 	
 	_dconf_write_ext arcmenu/alphabetize-all-programs true
-	_dconf_write_ext arcmenu/arc-menu-icon 69
+	_dconf_write_ext arcmenu/arc-menu-icon 5
 	_dconf_write_ext arcmenu/arc-menu-placement "'DTP'"
 	_dconf_write_ext arcmenu/available-placement "[false, true, false]"
 	_dconf_write_ext arcmenu/border-color "'rgba(255,255,255,0)'"
