@@ -15,6 +15,7 @@ function show_configuration_menu () {
 		
 		# GNOME itself
 		"Config_GNOME_Mouse" "Configure GNOME mouse to have zero acceleration" "ON"
+		"Config_GNOME_Weekday" "Configure GNOME calendar to show weekdays" "ON"
 		
 		# GNOME extensions
 		"Config_Enabled_Ext" "Enable user extensions and disable built-in" "ON"
@@ -203,6 +204,17 @@ function config_gnome_mouse () {
 	
 	dconf write /org/gnome/desktop/peripherals/mouse/accel-profile "'flat'"
 	dconf write /org/gnome/desktop/peripherals/mouse/speed -0.1
+}
+
+function config_gnome_weekday () {
+	if bin_exists "dconf"; then
+		echo "Applying configuration..."
+	else
+		LAST_ERROR="dconf is not installed, cannot change GNOME extension configuration"
+		return 1
+	fi
+	
+	dconf write /org/gnome/desktop/interface/clock-show-weekday true
 }
 
 function config_enabled_ext () {
