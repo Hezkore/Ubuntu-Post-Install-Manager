@@ -37,7 +37,7 @@ Press TAB to move your selection between the lower two menu buttons.\
 Press Enter to confirm your selection.\
 Press Space to toggle a option on or off in the customize menu.
 
-## Notice
+## Notes
 You can run the script right after you've installed Ubuntu, or after you've updated Ubuntu and your drivers.\
 Most efficient might be right after install, as the script will update Ubuntu and your drivers on its own.
 
