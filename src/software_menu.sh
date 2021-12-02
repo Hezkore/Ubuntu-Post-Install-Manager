@@ -485,7 +485,7 @@ function install_edge_browser () {
 	if bin_exists "curl"; then
 		curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
 		sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
-		sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/edge.list'
+		sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge.list'
 		sudo rm -f microsoft.gpg
 		sudo apt update
 		sudo apt install microsoft-edge-stable -y
@@ -505,7 +505,7 @@ function install_edge_browser () {
 				return 0
 			else
 				# Remove the repo to avoid errors
-				sudo rm -f "/etc/apt/sources.list.d/edge.list"
+				sudo rm -f "/etc/apt/sources.list.d/microsoft-edge.list"
 				
 				LAST_ERROR="Edge Browser was not installed"
 				return 1
@@ -536,7 +536,7 @@ function install_vscode () {
 	if bin_exists "curl"; then
 		curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
 		sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
-		sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+		sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/code.list'
 		sudo rm -rf microsoft.gpg
 		sudo apt update
 		sudo apt install code -y
@@ -547,7 +547,7 @@ function install_vscode () {
 			return 0
 		else
 			# Remove the repo to avoid errors
-			sudo rm -f "/etc/apt/sources.list.d/vscode.list"
+			sudo rm -f "/etc/apt/sources.list.d/code.list"
 				
 			LAST_ERROR="Visual Studio Code was not installed"
 			return 1
