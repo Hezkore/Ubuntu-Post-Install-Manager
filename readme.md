@@ -60,6 +60,9 @@ If the machine is not made for gaming, messaging or email, then I recommend unch
 
 If the machine is made for gaming then I recommend reading the [Gaming](#gaming) section for some useful tips and guides.
 
+Discord, Steam and Telegram will popup at start when they're nog signed into.\
+They will stop appearing once you've signed in.
+
 If you've logged into Steam but Steam is still not starting minimized, it means you've got **"Run Steam when my computer starts"** enabled in your Steam settings.\
 This is not the script, but rather how Steam normally works.\
 To fix this, disable **"Run Steam when my computer starts"** in Steam settings, and check **"Configure Steam to start at login"** in step **"5. Configuration"**.
