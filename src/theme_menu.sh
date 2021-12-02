@@ -10,3 +10,7 @@ function show_theme_menu () {
 	)
 	generate_selection_menu "Theme Options" "${items[@]}"
 }
+
+function install_fluent_theme () {
+	
+}

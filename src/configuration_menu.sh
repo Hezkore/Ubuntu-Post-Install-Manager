@@ -13,8 +13,12 @@ function show_configuration_menu () {
 		"Config_Steam_Start" "Configure Steam to start at login" "ON"
 		"Config_Geary_Start" "Configure Geary to check for incoming email" "ON"
 		
+		# GNOME itself
+		"Config_GNOME_" "Enable user extensions and disable built-in" "ON"
+		
 		# GNOME extensions
 		"Config_Enabled_Ext" "Enable user extensions and disable built-in" "ON"
+		"Configure_Ding" "Configure DING GNOME Extension" "ON"
 		#"Configure_User_Themes" "Configure User Themes GNOME Extension" "ON"
 		"Configure_ArcMenu" "Configure ArcMenu GNOME Extension" "ON"
 		"Configure_Tray_Icons_Reloaded" "Configure Tray Icons Reloaded GNOME Extension" "ON"
@@ -229,10 +233,24 @@ function config_enabled_ext () {
 	fi
 }
 
+function configure_ding () {
+	if bin_exists "dconf"; then
+		echo "Applying configuration..."
+	else
+		LAST_ERROR="dconf is not installed, cannot change GNOME extension configuration"
+		return 1
+	fi
+	
+	_dconf_write ding/icon-size "'large'"
+	_dconf_write ding/show-home false
+	_dconf_write ding/show-volumes true
+}
+
 function configure_user_themes () {
 	echo "FIX ME"
 }
 
+# Used internally
 function _dconf_write () {
 	echo "Writing $1 $2"
 	dconf write "/org/gnome/shell/extensions/$1" "$2"
