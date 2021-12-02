@@ -119,6 +119,6 @@ I have not noticed any performance increase using Game Mode.
 
 Use GOverlay to enable a in-game FPS counter, effects and many other things.\
 Start the application **"GOverlay"** and check **"Global Enable"** in the MangoHud tab, and make sure the **"Hide"** checkbox is checked in the **"Visual"** section.\
-Don't forget to click **"Save"** at the bottom of the window and restart!\
-Then just press **Right Shift + F12** in-game to toggle MangoHud.\
+Don't forget to click **"Save"** at the bottom of the window and restart/log out!\
+Press **Right Shift + F12** in-game to toggle MangoHud.\
 Any effects you've added via vkBasalt can be toggled by pressing the **Home** key.
