@@ -14,19 +14,19 @@ function show_configuration_menu () {
 		"Config_Geary_Start" "Configure Geary to check for incoming email" "ON"
 		"Config_Enabled_Ext" "Enable user extensions and disable built-in" "ON"
 	
-		"Configure_User_Themes" "Configure User Themes" "ON"
-		"Configure_ArcMenu" "Configure ArcMenu" "ON"
-		"Configure_Tray_Icons_Reloaded" "Configure Tray Icons Reloaded" "ON"
-		#"Configure_No_Annoyance" "Configure No Annoyance" "ON"
-		"Configure_Dash_to_Panel" "Configure Dash-to-Panel" "ON"
-		"Configure_Clean_System_Menu" "Configure Clean System Menu" "ON"
-		"Configure_Panel_Date_Format" "Configure Panel Date Format" "ON"
-		"Configure_Application_Volume_Mixer" "Configure Application Volume Mixer" "ON"
-		"Configure_Impatience" "Configure Impatience" "ON"
-		"Configure_No_Overview" "Configure No Overview" "ON"
-		"Configure_Game_Mode_Status_Icon" "Configure Game Mode Status Icon" "ON"
-		"Configure_Blur_My_Shell" "Configure Blur My Shell" "ON"
-		"Configure_GNOME_4x_UI_Improvements" "Configure Gnome 4x UI Improvements" "ON"
+		"Configure_User_Themes" "Configure User Themes GNOME Extension" "ON"
+		"Configure_ArcMenu" "Configure ArcMenu GNOME Extension" "ON"
+		"Configure_Tray_Icons_Reloaded" "Configure Tray Icons Reloaded GNOME Extension" "ON"
+		#"Configure_No_Annoyance" "Configure No Annoyance GNOME Extension" "ON"
+		"Configure_Dash_to_Panel" "Configure Dash-to-Panel GNOME Extension" "ON"
+		"Configure_Clean_System_Menu" "Configure Clean System Menu GNOME Extension" "ON"
+		"Configure_Panel_Date_Format" "Configure Panel Date Format GNOME Extension" "ON"
+		#"Configure_Application_Volume_Mixer" "Configure Application Volume Mixer GNOME Extension" "ON"
+		"Configure_Impatience" "Configure Impatience GNOME Extension" "ON"
+		"Configure_No_Overview" "Configure No Overview GNOME Extension" "ON"
+		"Configure_Game_Mode_Status_Icon" "Configure Game Mode Status Icon GNOME Extension" "ON"
+		"Configure_Blur_My_Shell" "Configure Blur My Shell GNOME Extension" "ON"
+		"Configure_GNOME_4x_UI_Improvements" "Configure Gnome 4x UI Improvements GNOME Extension" "ON"
 	)
 	generate_selection_menu "Configuration Options" "${items[@]}"
 }
@@ -451,7 +451,7 @@ function configure_panel_date_format () {
 }
 
 function configure_application_volume_mixer () {
-	echo "FIX ME"
+	echo "Nothing to configure"
 }
 
 function configure_impatience () {
