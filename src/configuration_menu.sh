@@ -19,6 +19,7 @@ function show_configuration_menu () {
 		"Config_GNOME_ResizeRight" "Configure GNOME to resize with right mouse button" "ON"
 		"Config_GNOME_NoMaximize" "Configure GNOME to never automatically maximize windows" "ON"
 		"Config_GNOME_Center" "Configure GNOME to place windows in the center instead of top left" "ON"
+		"Config_GNOME_NoAttach" "Configure GNOME to not attach modal dialogs" "ON"
 		
 		# GNOME extensions
 		"Config_Enabled_Ext" "Enable user extensions and disable built-in" "ON"
@@ -251,6 +252,18 @@ function config_gnome_center () {
 	fi
 	
 	dconf write /org/gnome/mutter/center-new-windows true
+}
+
+function config_gnome_noattach () {
+	if bin_exists "dconf"; then
+		echo "Applying configuration..."
+	else
+		LAST_ERROR="dconf is not installed, cannot change GNOME extension configuration"
+		return 1
+	fi
+	
+	dconf write /org/gnome/mutter/attach-modal-dialogs false
+	dconf write /org/gnome/shell/overrides/attach-modal-dialogs false
 }
 
 function config_enabled_ext () {
