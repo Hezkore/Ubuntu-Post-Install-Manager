@@ -250,6 +250,13 @@ function config_gnome_mouse () {
 }
 
 function config_gnome_middle_paste () {
+	if bin_exists "dconf"; then
+		echo "Applying configuration..."
+	else
+		LAST_ERROR="dconf is not installed, cannot change GNOME configuration"
+		return 1
+	fi
+	
 	dconf write /org/gnome/desktop/interface/gtk-enable-primary-paste false
 }
 
