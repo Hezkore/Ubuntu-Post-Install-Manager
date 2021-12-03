@@ -173,8 +173,19 @@ function exec_action () {
 }
 
 function generate_selection_menu () {
-	# We need to strip out the title from the array
 	items_raw=("$@")
+	
+	# Ask if the user wants the recommended options
+	rec_options=true
+	if [[ "${items_raw[@]}" =~ "ON" ]]; then
+		if (whiptail --title "Recommended Options" --yes-button "Recommended" --no-button "Empty" --yesno "What options do you want to start with?" 0 0); then
+			rec_options=true
+		else
+			rec_options=false
+		fi
+	fi
+	
+	# We need to strip out the title from the array
 	items=()
 	item_count=0
 	index=0
@@ -184,7 +195,16 @@ function generate_selection_menu () {
 			item_count="$(($item_count+1))"
 		fi
 		if (( index > 1 )); then
-			items+=("$i")
+			# Do we want the recommended options?
+			if ! $rec_options; then
+				if [ "$i" = "ON" ]; then
+					items+=("OFF")
+				else
+					items+=("$i")
+				fi
+			else
+				items+=("$i")
+			fi
 		fi
 	done
 	
@@ -210,20 +230,25 @@ function generate_selection_menu () {
 	if [ -z "$choices" ]; then
 		return
 	else
-		for choice in $choices; do
-			exec_action $choice
-		done
+		# Ask if really ready
+		if (whiptail --title "Are You Sure?" --yesno "Do you really want to start?" 0 0); then
+			for choice in $choices; do
+				exec_action $choice
+			done
+			
+			# Notify the user that all actions are complete
+			notify_complete
+		else
+			return 0
+		fi
 	fi
-	
-	# Notify the user that all actions are complete
-	notify_complete
 	
 	# Did an action signal restart needed?
 	if $NEEDS_RESTART; then
-		if (whiptail --yes-button "Later" --no-button "Now" --title "Important!" --yesno "You need to restart or log out before running the next step.\n\nLog out now?" 0 0); then
-			echo "Remember to log out or reboot"
-		else
+		if (whiptail --yes-button "Now" --no-button "Later" --defaultno --title "Important!" --yesno "You need to restart or log out before running the next step.\n\nLog out now?" 0 0); then
 			gnome-session-quit --logout --no-prompt
+		else
+			echo "Remember to log out or reboot"
 		fi
 	fi
 }
