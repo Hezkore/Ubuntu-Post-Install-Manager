@@ -51,7 +51,7 @@ function show_software_menu () {
 		"Install_Radeontop" "Install Radeontop Radeon GPU monitor" "ON"
 		"Install_GameMode" "Install Game Mode" "ON"
 		"Install_Mangohud" "Install Mangohud via custom PPA" "ON"
-		"Install_vkBasalt" "Install vkBasalt via custom PPA" "ON"
+		"Install_vkBasalt" "Install vkBasalt via custom PPA" "OFF"
 		"Install_GOverlay" "Install GOverlay via custom PPA" "ON"
 		"Install_Flameshot" "Install Flameshot screenshot tool" "ON"
 		"Install_Spotify" "Install Spotify music player via custom PPA" "ON"
@@ -238,8 +238,16 @@ function install_build-essential () {
 
 function install_build_depend () {
 	sudo apt install -y \
+	ffmpeg \
 	g++ \
 	sassc \
+	libx11-xcb-dev \
+	libavutil-dev \
+	libavformat-dev \
+	libavdevice-dev \
+	libavcodec-dev \
+	libavfilter-dev \
+	libdrm-dev \
 	libx11-dev \
 	libxext-dev \
 	libxrandr-dev \
