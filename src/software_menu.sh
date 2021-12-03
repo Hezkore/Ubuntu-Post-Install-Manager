@@ -45,6 +45,7 @@ function show_software_menu () {
 		"Install_Discord" "Install Discord messenger" "ON"
 		"Install_Steam" "Install Steam game store" "ON"
 		"Install_Lutris" "Install Lutris game manager via custom PPA" "ON"
+		"Install_Heroic" "Install Heroic Epic Games launcher via DEB" "ON"
 		"Install_DOSBox" "Install DOSBox x86 emulator with DOS" "ON"
 		"Install_Htop" "Install Htop system monitor" "ON"
 		"Install_Nvtop" "Install Nvtop NVidia GPU monitor" "ON"
@@ -368,6 +369,44 @@ function install_lutris () {
 	fi
 }
 
+function install_heroic () {
+	if bin_exists "curl"; then
+		if bin_exists "wget"; then
+			if bin_exists "gdebi"; then
+				
+				echo "Downloading latest DEB..."
+				curl -s https://api.github.com/repos/Heroic-Games-Launcher/HeroicGamesLauncher/releases/latest \
+				| grep "browser_download_url.*deb" \
+				| cut -d : -f 2,3 \
+				| tr -d \" \
+				| wget -O heroic.deb -qi -
+				
+				echo "Extracting DEB..."
+				sudo gdebi heroic.deb -n
+				sudo rm -rf heroic.deb
+				
+				if bin_exists "heroic"; then
+					echo "Heroic installed sucessfully"
+					return 0
+				else
+					LAST_ERROR="Heroic was not installed"
+					return 1
+				fi
+			else
+				LAST_ERROR="GDebi is not installed, cannot extract DEB package"
+				return 1
+			fi
+			return 0
+		else
+			LAST_ERROR="WGet is not installed, cannot download DEB package"
+			return 1
+		fi
+	else
+		LAST_ERROR="cURL is not installed, cannot download DEB package"
+		return 1
+	fi
+}
+
 function install_dosbox () {
 	sudo apt install dosbox -y
 }
@@ -504,12 +543,12 @@ function install_edge_browser () {
 		
 		# Look if Edge exists
 		if bin_exists "microsoft-edge"; then
-			echo "Microsoft Edge installed correctly"
+			echo "Microsoft Edge installed sucessfully"
 			return 0
 		else
 			# One last try...
 			if bin_exists "microsoft-edge-stable"; then
-				echo "Microsoft Edge installed correctly"
+				echo "Microsoft Edge installed sucessfully"
 				return 0
 			else
 				# Remove the repo to avoid errors
@@ -531,7 +570,9 @@ function install_firefox () {
 
 function install_chrome () {
 	if bin_exists "wget"; then
+		echo "Downloading latest DEB..."
 		wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+		echo "Extracting DEB..."
 		sudo dpkg -i google-chrome-stable_current_amd64.deb
 		rm -f google-chrome-stable_current_amd64.deb
 	else
@@ -551,7 +592,7 @@ function install_vscode () {
 		
 		# Look if Code exists
 		if bin_exists "code"; then
-			echo "Visual Studio Code installed correctly"
+			echo "Visual Studio Code installed sucessfully"
 			return 0
 		else
 			# Remove the repo to avoid errors
@@ -591,9 +632,9 @@ function install_imwheel () {
 				sudo rm -rf $HOME/imwheel
 				
 				if bin_exists "imwheel"; then
-					echo "IMWheel installed correctly"
+					echo "IMWheel installed sucessfully"
 				else
-					echo "IMWheel did not install correctly!"
+					echo "IMWheel did not install sucessfully!"
 					return 0
 				fi
 				
