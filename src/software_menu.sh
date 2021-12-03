@@ -44,8 +44,9 @@ function show_software_menu () {
 		"Install_Telegram" "Install Telegram messenger" "ON"
 		"Install_Discord" "Install Discord messenger" "ON"
 		"Install_Steam" "Install Steam game store" "ON"
-		"Install_Lutris" "Install Lutris game manager via custom PPA" "ON"
 		"Install_Heroic" "Install Heroic Epic Games launcher via DEB" "ON"
+		"Install_Minigalaxy" "Install Minigalaxy GOG launcher via DEB" "ON"
+		"Install_Lutris" "Install Lutris game manager via custom PPA" "ON"
 		"Install_DOSBox" "Install DOSBox x86 emulator with DOS" "ON"
 		"Install_Htop" "Install Htop system monitor" "ON"
 		"Install_Nvtop" "Install Nvtop NVidia GPU monitor" "ON"
@@ -390,6 +391,44 @@ function install_heroic () {
 					return 0
 				else
 					LAST_ERROR="Heroic was not installed"
+					return 1
+				fi
+			else
+				LAST_ERROR="GDebi is not installed, cannot extract DEB package"
+				return 1
+			fi
+			return 0
+		else
+			LAST_ERROR="WGet is not installed, cannot download DEB package"
+			return 1
+		fi
+	else
+		LAST_ERROR="cURL is not installed, cannot download DEB package"
+		return 1
+	fi
+}
+
+function install_minigalaxy () {
+	if bin_exists "curl"; then
+		if bin_exists "wget"; then
+			if bin_exists "gdebi"; then
+				
+				echo "Downloading latest DEB..."
+				curl -s https://api.github.com/repos/sharkwouter/minigalaxy/releases/latest \
+				| grep "browser_download_url.*deb" \
+				| cut -d : -f 2,3 \
+				| tr -d \" \
+				| wget -O minigalaxy.deb -qi -
+				
+				echo "Extracting DEB..."
+				sudo gdebi minigalaxy.deb -n
+				sudo rm -rf minigalaxy.deb
+				
+				if bin_exists "minigalaxy"; then
+					echo "Minigalaxy installed sucessfully"
+					return 0
+				else
+					LAST_ERROR="Minigalaxy was not installed"
 					return 1
 				fi
 			else
