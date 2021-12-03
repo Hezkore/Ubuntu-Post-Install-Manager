@@ -387,7 +387,7 @@ function install_heroic () {
 				sudo rm -rf heroic.deb
 				
 				if bin_exists "heroic"; then
-					echo "Heroic installed sucessfully"
+					echo "Heroic installed successfully"
 					return 0
 				else
 					LAST_ERROR="Heroic was not installed"
@@ -425,7 +425,7 @@ function install_minigalaxy () {
 				sudo rm -rf minigalaxy.deb
 				
 				if bin_exists "minigalaxy"; then
-					echo "Minigalaxy installed sucessfully"
+					echo "Minigalaxy installed successfully"
 					return 0
 				else
 					LAST_ERROR="Minigalaxy was not installed"
@@ -582,12 +582,12 @@ function install_edge_browser () {
 		
 		# Look if Edge exists
 		if bin_exists "microsoft-edge"; then
-			echo "Microsoft Edge installed sucessfully"
+			echo "Microsoft Edge installed successfully"
 			return 0
 		else
 			# One last try...
 			if bin_exists "microsoft-edge-stable"; then
-				echo "Microsoft Edge installed sucessfully"
+				echo "Microsoft Edge installed successfully"
 				return 0
 			else
 				# Remove the repo to avoid errors
@@ -631,7 +631,7 @@ function install_vscode () {
 		
 		# Look if Code exists
 		if bin_exists "code"; then
-			echo "Visual Studio Code installed sucessfully"
+			echo "Visual Studio Code installed successfully"
 			return 0
 		else
 			# Remove the repo to avoid errors
@@ -671,9 +671,9 @@ function install_imwheel () {
 				sudo rm -rf $HOME/imwheel
 				
 				if bin_exists "imwheel"; then
-					echo "IMWheel installed sucessfully"
+					echo "IMWheel installed successfully"
 				else
-					echo "IMWheel did not install sucessfully!"
+					echo "IMWheel did not install successfully!"
 					return 0
 				fi
 				
