@@ -61,7 +61,7 @@ function install_fluent_theme () {
 			
 			return 0
 		else
-			LAST_ERROR="dconf is not installed, cannot apply theme"
+			LAST_ERROR="DConf is not installed, cannot apply theme"
 			return 1
 		fi
 	else
@@ -85,7 +85,7 @@ function install_fluent_wallpapers () {
 			
 			return 0
 		else
-			LAST_ERROR="dconf is not installed, cannot apply wallpaper"
+			LAST_ERROR="DConf is not installed, cannot apply wallpaper"
 			return 1
 		fi
 	else
@@ -109,7 +109,7 @@ function install_vimix_icons () {
 			
 			return 0
 		else
-			LAST_ERROR="dconf is not installed, cannot apply icons"
+			LAST_ERROR="DConf is not installed, cannot apply icons"
 			return 1
 		fi
 	else
@@ -133,7 +133,7 @@ function install_windows_icons () {
 			
 			return 0
 		else
-			LAST_ERROR="dconf is not installed, cannot apply icons"
+			LAST_ERROR="DConf is not installed, cannot apply icons"
 			return 1
 		fi
 	else
@@ -148,7 +148,7 @@ function install_mouse_cursor () {
 		dconf write /org/gnome/desktop/interface/cursor-theme "'DMZ-Black'"
 		return 0
 	else
-		LAST_ERROR="dconf is not installed, cannot apply mouse theme"
+		LAST_ERROR="DConf is not installed, cannot apply mouse theme"
 		return 1
 	fi
 }
@@ -173,7 +173,7 @@ function install_font_segoeui () {
 			
 			return 0
 		else
-			LAST_ERROR="dconf is not installed, cannot apply font"
+			LAST_ERROR="DConf is not installed, cannot apply font"
 			return 1
 		fi
 	else
