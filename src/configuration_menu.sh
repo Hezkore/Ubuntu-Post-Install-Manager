@@ -184,26 +184,31 @@ function config_imwheel () {
 }
 
 function config_imwheel_start () {
+	echo "Creating autostart desktop entry..."
 	sudo echo -e "[Desktop Entry]\nName=IMWheel\nIcon=imwheel\nExec=imwheel -d -b 45\nTerminal=false\nType=Application\nX-GNOME-Autostart-enabled=true" > "$HOME/.config/autostart/imwheel.desktop"
 	NEEDS_LOGOUT=true
 }
 
 function config_telegram_start () {
+	echo "Creating autostart desktop entry..."
 	sudo echo -e "[Desktop Entry]\nName=Telegram\nIcon=telegram\nExec=telegram-desktop -startintray\nTerminal=false\nType=Application\nX-GNOME-Autostart-enabled=true\nX-GNOME-Autostart-Delay=1" > "$HOME/.config/autostart/Telegram.desktop"
 	NEEDS_LOGOUT=true
 }
 
 function config_discord_start () {
+	echo "Creating autostart desktop entry..."
 	sudo echo -e "[Desktop Entry]\nName=Discord\nIcon=discord\nExec=discord --start-minimized\nTerminal=false\nType=Application\nX-GNOME-Autostart-enabled=true\nX-GNOME-Autostart-Delay=2" > "$HOME/.config/autostart/Discord.desktop"
 	NEEDS_LOGOUT=true
 }
 
 function config_steam_start () {
+	echo "Creating autostart desktop entry..."
 	sudo echo -e "[Desktop Entry]\nName=Steam\nIcon=steam\nExec=steam -silent\nTerminal=false\nType=Application\nX-GNOME-Autostart-enabled=true\nX-GNOME-Autostart-Delay=3" > "$HOME/.config/autostart/Steam-minimized.desktop"
 	NEEDS_LOGOUT=true
 }
 
 function config_geary_start () {
+	echo "Creating autostart desktop entry..."
 	sudo echo -e "[Desktop Entry]\nName=Geary\nIcon=geary\nExec=geary --gapplication-service\nTerminal=false\nType=Application\nX-GNOME-Autostart-enabled=true" > "$HOME/.config/autostart/Geary.desktop"
 	NEEDS_LOGOUT=true
 }
