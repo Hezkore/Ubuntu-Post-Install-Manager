@@ -232,7 +232,7 @@ function generate_selection_menu () {
 		return
 	else
 		# Ask if really ready
-		if (whiptail --title "Are You Sure?" --yesno "Do you really want to start?" 0 0); then
+		if (whiptail --title "Are You Sure?" --yesno "Do you really want to start ${#choices[@]} action(s)?" 0 0); then
 			for choice in $choices; do
 				exec_action $choice
 			done
