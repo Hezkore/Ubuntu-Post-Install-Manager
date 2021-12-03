@@ -167,7 +167,7 @@ function config_mimeapps () {
 function config_flameshot () {
 	mkdir -p "$HOME/.config/flameshot"
 	sudo echo -e "[General]\ndisabledTrayIcon=true\nsaveAfterCopy=true\nshowHelp=false\nshowStartupLaunchMessage=false" > "$HOME/.config/flameshot/flameshot.ini"
-	NEEDS_RESTART=true
+	NEEDS_LOGOUT=true
 }
 
 function config_imwheel () {
@@ -175,7 +175,7 @@ function config_imwheel () {
 		sudo mkdir -p /etc/X11/imwheel
 		wget -O imwheelrc https://raw.githubusercontent.com/Hezkore/Ubuntu-Post-Install-Manager/master/extra/imwheelrc
 		sudo mv imwheelrc /etc/X11/imwheel/
-		NEEDS_RESTART=true
+		NEEDS_LOGOUT=true
 		return 0
 	else
 		LAST_ERROR="WGet is not installed, cannot download configuration"
@@ -185,27 +185,27 @@ function config_imwheel () {
 
 function config_imwheel_start () {
 	sudo echo -e "[Desktop Entry]\nName=IMWheel\nIcon=imwheel\nExec=imwheel -d -b 45\nTerminal=false\nType=Application\nX-GNOME-Autostart-enabled=true" > "$HOME/.config/autostart/imwheel.desktop"
-	NEEDS_RESTART=true
+	NEEDS_LOGOUT=true
 }
 
 function config_telegram_start () {
 	sudo echo -e "[Desktop Entry]\nName=Telegram\nIcon=telegram\nExec=telegram-desktop -startintray\nTerminal=false\nType=Application\nX-GNOME-Autostart-enabled=true\nX-GNOME-Autostart-Delay=1" > "$HOME/.config/autostart/Telegram.desktop"
-	NEEDS_RESTART=true
+	NEEDS_LOGOUT=true
 }
 
 function config_discord_start () {
 	sudo echo -e "[Desktop Entry]\nName=Discord\nIcon=discord\nExec=discord --start-minimized\nTerminal=false\nType=Application\nX-GNOME-Autostart-enabled=true\nX-GNOME-Autostart-Delay=2" > "$HOME/.config/autostart/Discord.desktop"
-	NEEDS_RESTART=true
+	NEEDS_LOGOUT=true
 }
 
 function config_steam_start () {
 	sudo echo -e "[Desktop Entry]\nName=Steam\nIcon=steam\nExec=steam -silent\nTerminal=false\nType=Application\nX-GNOME-Autostart-enabled=true\nX-GNOME-Autostart-Delay=3" > "$HOME/.config/autostart/Steam-minimized.desktop"
-	NEEDS_RESTART=true
+	NEEDS_LOGOUT=true
 }
 
 function config_geary_start () {
 	sudo echo -e "[Desktop Entry]\nName=Geary\nIcon=geary\nExec=geary --gapplication-service\nTerminal=false\nType=Application\nX-GNOME-Autostart-enabled=true" > "$HOME/.config/autostart/Geary.desktop"
-	NEEDS_RESTART=true
+	NEEDS_LOGOUT=true
 }
 
 function config_geary_settings () {
@@ -406,7 +406,7 @@ function config_enabled_ext () {
 		gnome-extensions enable gamemode@christian.kellner.me
 		
 		# A restart here might not be required, but just to be safe...
-		NEEDS_RESTART=true
+		NEEDS_LOGOUT=true
 		
 		return 0
 	else
@@ -699,7 +699,7 @@ function configure_blur_my_shell () {
 	_dconf_write_ext blur-my-shell/static-blur true
 	
 	# Might not be required, but again, just to be safe
-	NEEDS_RESTART=true
+	NEEDS_LOGOUT=true
 }
 
 function configure_gnome_ui_improvements () {

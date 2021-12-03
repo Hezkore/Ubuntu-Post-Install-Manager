@@ -222,6 +222,7 @@ function generate_selection_menu () {
 	)
 	
 	# Reset
+	NEEDS_LOGOUT=false
 	NEEDS_RESTART=false
 	ERROR_COUNT=0
 	ACTION_COUNT=0
@@ -243,12 +244,20 @@ function generate_selection_menu () {
 		fi
 	fi
 	
-	# Did an action signal restart needed?
+	# Did an action signal that a restart or log out is needed?
 	if $NEEDS_RESTART; then
-		if (whiptail --yes-button "Now" --no-button "Later" --defaultno --title "Important!" --yesno "You need to restart or log out before running the next step.\n\nLog out now?" 0 0); then
-			gnome-session-quit --logout --no-prompt
+		if (whiptail --yes-button "Now" --no-button "Later" --defaultno --title "Important!" --yesno "You MUST restart for the changes to take effect.\nThis is required.\n\nRestart now?" 0 0); then
+			gnome-session-quit --reboot --no-prompt
 		else
-			echo "Remember to log out or reboot"
+			echo "It's important that you reboot!"
+		fi
+	else
+		if $NEEDS_LOGOUT; then
+			if (whiptail --yes-button "Now" --no-button "Later" --defaultno --title "Important!" --yesno "You need to restart or log out for the changes to take effect.\nThis is required before running the next step.\n\nLog out now?" 0 0); then
+				gnome-session-quit --logout --no-prompt
+			else
+				echo "Remember to log out or reboot"
+			fi
 		fi
 	fi
 }

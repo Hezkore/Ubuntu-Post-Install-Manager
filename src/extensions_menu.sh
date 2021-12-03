@@ -24,7 +24,7 @@ function _install_ext_id () {
 	if bin_exists "gnome-shell-extension-installer"; then
 		gnome-shell-extension-installer $1 <<< ${GNOME_VER_INT}
 		# Always signal restart after an extension is installed
-		NEEDS_RESTART=true
+		NEEDS_LOGOUT=true
 		return 0
 	else
 		LAST_ERROR="GNOME Shell Extension Installer is not installed, cannot download extension"
