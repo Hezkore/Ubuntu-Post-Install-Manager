@@ -42,7 +42,9 @@ You can run the script right after you've installed Ubuntu, or after you've upda
 Most efficient might be right after install, as the script will update Ubuntu and your drivers on its own.
 
 I recommend doing all the steps in order, unless you know what you're doing.\
-The default options in each customization menu are the recommended options, which means you can simply press Enter to confirm.
+The default recommended options will install things a typical home computer might need.\
+If you know what you're doing; you can deselect some of the items.\
+*(Watch out! Some are vital system tools)*
 
 When asked to enter your password in the terminal; you won't be able to see the password as you type.\
 This is a security feature in Linux.
