@@ -17,6 +17,7 @@ function show_configuration_menu () {
 		
 		# GNOME itself
 		"Config_GNOME_Mouse" "Configure GNOME mouse to have zero acceleration" "ON"
+		"Config_GNOME_Middle_Paste" "Configure GNOME no middle mouse button paste" "ON"
 		"Config_GNOME_Weekdate" "Configure GNOME calendar to show week numbers" "ON"
 		"Config_GNOME_ResizeRight" "Configure GNOME to resize with right mouse button" "ON"
 		"Config_GNOME_NoMaximize" "Configure GNOME to never auto maximize windows" "ON"
@@ -246,6 +247,10 @@ function config_gnome_mouse () {
 	
 	dconf write /org/gnome/desktop/peripherals/mouse/accel-profile "'flat'"
 	dconf write /org/gnome/desktop/peripherals/mouse/speed -0.1
+}
+
+function config_gnome_middle_paste () {
+	dconf write /org/gnome/desktop/interface/gtk-enable-primary-paste false
 }
 
 function config_gnome_weekdate () {
