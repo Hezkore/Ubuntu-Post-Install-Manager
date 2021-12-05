@@ -16,7 +16,7 @@ function show_gaming_menu () {
 		"Install_Protontricks" "Install Protontricks via PIP" "ON"
 		"Install_Quake_3" "Install [io]Quake 3 via Game Data Packager" "ON"
 		"Install_Quake_3_Hi-Res_Textures" "Install Hi-Res Textures for Quake 3" "ON"
-		"Install_Quake_3_CFG" "Install custom autoexec Quake 3 config" "ON"
+		"Install_Quake_3_CFG" "Install custom Hi-Res Quake 3 config" "ON"
 	)
 	generate_selection_menu "Gaming Options" "${items[@]}"
 }
@@ -240,13 +240,29 @@ function install_quake_3_cfg () {
 bind b \"addbot grunt 5\"
 bind mouse2 \"+zoom\"
 
-set com_maxfps \"128\"
+set cg_fov \"110\"
+set cg_zoomfov \"38\"
+set cg_zoomScaling \"0\"
+set cg_zoomSensitivity \"1.35\"
+
+set cl_renderer \"opengl2\"
+set cl_mouseAccel \"0\"
+set cl_mouseAccelStyle \"0\"
+set cl_mouseAccelOffset \"0\"
+
+set com_maxfps \"125\"
 set com_hunkMegs \"256\"
 set com_zoneMegs \"128\"
 set com_soundMegs \"64\"
 
+seta r_mode \"-2\"
+seta r_noborder \"1\"
+seta r_fullscreen \"1\"
 seta r_allowExtensions \"1\"
 seta r_allowSoftwareGL \"0\"
+seta r_ext_framebuffer_multisample \"16\"
+seta r_imageUpsample \"3\"
+seta r_genNormalMaps \"1\"
 seta r_colorbits \"32\"
 seta r_depthbits \"24\"
 seta r_detailTextures \"1\"
