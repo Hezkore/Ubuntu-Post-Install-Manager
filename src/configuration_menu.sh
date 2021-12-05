@@ -173,7 +173,6 @@ function config_flameshot () {
 	echo "Writing Flameshot configuration..."
 	sudo echo -e "[General]
 disabledTrayIcon=true
-saveAfterCopy=true
 copyPathAfterSave=true
 showHelp=false
 showStartupLaunchMessage=false
@@ -455,18 +454,25 @@ function config_gnome_shortcuts () {
 	echo "Disable Log out"
 	dconf write /org/gnome/settings-daemon/plugins/media-keys/logout "@as []"
 	
-	# Open system monitor via Cltr Shift Escape AND Ctrl Alt Dlete
+	# Open System Monitor via Ctrl Shift Escape
 	echo "System Monitor - Ctrl Shift Escape & Ctrl Alt Delete"
 	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/binding "'<Primary><Shift>Escape'"
 	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/command "'gnome-system-monitor'"
 	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/name "'Open system monitor'"
+	# AND Ctrl Alt Delete
 	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/binding "'<Primary><Alt>Delete'"
 	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/command "'gnome-system-monitor'"
 	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/name "'Open system monitor ALT'"
 	
+	# Open Quake 3 via Super Q
+	echo "Quake 3 - Super Q"
+	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/binding "'<Super>Q'"
+	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/command "'quake3 +map q3dm17 +bind p quit +bind b addbot grunt 5 +addbot visor 5 0 6000 Linus'"
+	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/name "'Play Quake 3'"
+	
 	# Apply
 	echo "Adding shortcuts"
-	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/']"
+	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/']"
 	
 	return 0
 }

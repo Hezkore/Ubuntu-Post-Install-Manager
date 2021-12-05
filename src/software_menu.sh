@@ -15,6 +15,7 @@ function show_software_menu () {
 		"Install_Chrome" "Install Chrome Browser via DEB" "ON"
 		"Install_VSCode" "Install Visual Studio Code via custom PPA" "ON"
 		"Install_GDebi" "Install GDebi DEB unpacker" "ON"
+		"Install_Innoextract" "Install Innoextract" "ON"
 		"Install_PPA_Purge" "Install PPA-Purge" "ON"
 		"Install_WGet" "Install WGet CLI tool" "ON"
 		"Install_SPC" "Install software-properties-common" "ON"
@@ -44,18 +45,10 @@ function show_software_menu () {
 		"Install_Inscape" "Install Inscape via custom PPA" "ON"
 		"Install_Telegram" "Install Telegram messenger" "ON"
 		"Install_Discord" "Install Discord messenger" "ON"
-		"Install_Steam" "Install Steam game store" "ON"
-		"Install_Heroic" "Install Heroic Epic Games launcher via DEB" "ON"
-		"Install_Minigalaxy" "Install Minigalaxy GOG launcher via DEB" "ON"
-		"Install_Lutris" "Install Lutris game manager via custom PPA" "ON"
-		"Install_DOSBox" "Install DOSBox x86 emulator with DOS" "ON"
+		"Install_Game_Data_Packager" "Install Game Data Packager" "ON"
 		"Install_Htop" "Install Htop system monitor" "ON"
 		"Install_Nvtop" "Install Nvtop NVidia GPU monitor" "ON"
 		"Install_Radeontop" "Install Radeontop Radeon GPU monitor" "ON"
-		"Install_GameMode" "Install Game Mode" "ON"
-		"Install_Mangohud" "Install Mangohud via custom PPA" "ON"
-		"Install_vkBasalt" "Install vkBasalt via custom PPA" "OFF"
-		"Install_GOverlay" "Install GOverlay via custom PPA" "ON"
 		"Install_Flameshot" "Install Flameshot screenshot tool" "ON"
 		"Install_Spotify" "Install Spotify music player via custom PPA" "ON"
 		"Install_Audacious" "Install Audacious music player" "ON"
@@ -66,7 +59,6 @@ function show_software_menu () {
 		"Install_OBS" "Install OBS Studio via custom PPA" "ON"
 		"Install_OBS_NvFBC_Plugin" "Install OBS Studio NvFBC plugin for NVidia cards" "ON"
 		"Install_Wine" "Install Wine and Winetricks" "ON"
-		"Install_Protontricks" "Install Protontricks via PIP" "ON"
 		"Install_GNOME_Boxes" "Install GNOME Boxes" "OFF"
 		"Install_VirtualBox" "Install VirtualBox" "ON"
 		"Install_IMWheel" "Install custom IMWheel version" "ON"
@@ -228,6 +220,10 @@ function install_gdebi () {
 	sudo apt install gdebi -y
 }
 
+function install_innoextract () {
+	sudo apt install innoextract -y
+}
+
 function install_ppa_purge () {
 	sudo apt install ppa-purge -y
 }
@@ -358,104 +354,6 @@ function install_discord () {
 	fi
 }
 
-function install_steam () {
-	sudo apt install steam -y
-	
-	# Check if a "Games" folder exists and add a Steam shortcut
-	if [[ -d "$HOME/Games"  ]]; then
-		ln -s "$HOME/.steam/debian-installation" "$HOME/Games/Steam"
-	fi
-}
-
-function install_lutris () {
-	if add_ppa "ppa:lutris-team/lutris"; then
-		sudo apt install lutris -y
-		return 0
-	else
-		return 1
-	fi
-}
-
-function install_heroic () {
-	if bin_exists "curl"; then
-		if bin_exists "wget"; then
-			if bin_exists "gdebi"; then
-				
-				echo "Downloading latest DEB..."
-				curl -s https://api.github.com/repos/Heroic-Games-Launcher/HeroicGamesLauncher/releases/latest \
-				| grep "browser_download_url.*deb" \
-				| cut -d : -f 2,3 \
-				| tr -d \" \
-				| wget -O heroic.deb -qi -
-				
-				echo "Extracting DEB..."
-				sudo gdebi heroic.deb -n
-				sudo rm -rf heroic.deb
-				
-				if bin_exists "heroic"; then
-					echo "Heroic installed successfully"
-					return 0
-				else
-					LAST_ERROR="Heroic was not installed"
-					return 1
-				fi
-			else
-				LAST_ERROR="GDebi is not installed, cannot extract DEB package"
-				return 1
-			fi
-			return 0
-		else
-			LAST_ERROR="WGet is not installed, cannot download DEB package"
-			return 1
-		fi
-	else
-		LAST_ERROR="cURL is not installed, cannot download DEB package"
-		return 1
-	fi
-}
-
-function install_minigalaxy () {
-	if bin_exists "curl"; then
-		if bin_exists "wget"; then
-			if bin_exists "gdebi"; then
-				
-				echo "Downloading latest DEB..."
-				curl -s https://api.github.com/repos/sharkwouter/minigalaxy/releases/latest \
-				| grep "browser_download_url.*deb" \
-				| cut -d : -f 2,3 \
-				| tr -d \" \
-				| wget -O minigalaxy.deb -qi -
-				
-				echo "Extracting DEB..."
-				sudo gdebi minigalaxy.deb -n
-				sudo rm -rf minigalaxy.deb
-				
-				if bin_exists "minigalaxy"; then
-					echo "Minigalaxy installed successfully"
-					return 0
-				else
-					LAST_ERROR="Minigalaxy was not installed"
-					return 1
-				fi
-			else
-				LAST_ERROR="GDebi is not installed, cannot extract DEB package"
-				return 1
-			fi
-			return 0
-		else
-			LAST_ERROR="WGet is not installed, cannot download DEB package"
-			return 1
-		fi
-	else
-		LAST_ERROR="cURL is not installed, cannot download DEB package"
-		return 1
-	fi
-}
-
-function install_dosbox () {
-	sudo apt install dosbox -y
-}
-
 function install_htop () {
 	sudo apt install htop -y
 }
@@ -466,37 +364,6 @@ function install_nvtop () {
 
 function install_radeontop () {
 	sudo apt install radeontop -y
-}
-
-function install_gamemode () {
-	sudo apt install gamemode -y
-}
-
-function install_mangohud () {
-	if add_ppa "ppa:flexiondotorg/mangohud"; then
-		sudo apt install mangohud -y
-		return 0
-	else
-		return 1
-	fi
-}
-
-function install_vkbasalt () {
-	if add_ppa "ppa:flexiondotorg/mangohud"; then
-		sudo apt install vkbasalt -y
-		return 0
-	else
-		return 1
-	fi
-}
-
-function install_goverlay () {
-	if add_ppa "ppa:flexiondotorg/mangohud"; then
-		sudo apt install goverlay -y
-		return 0
-	else
-		return 1
-	fi
 }
 
 function install_flameshot () {
@@ -657,23 +524,6 @@ function install_wine () {
 	sudo apt install winetricks -y
 	# Make sure there's a desktop file created
 	sudo cp /usr/share/doc/wine/examples/wine.desktop /usr/share/applications/wine.desktop
-}
-
-function install_protontricks () {
-	if bin_exists "pip"; then
-		pip install protontricks
-		
-		if bin_exists "protontricks"; then
-			echo "Protontricks installed successfully"
-			return 0
-		else
-			LAST_ERROR="Protontricks was not installed"
-			return 1
-		fi
-	else
-		LAST_ERROR="PIP is not installed, cannot download package"
-		return 1
-	fi
 }
 
 function install_gnome_boxes () {

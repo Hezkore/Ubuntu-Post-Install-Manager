@@ -100,6 +100,7 @@ function show_system_warnings () {
 }
 
 function show_main_menu () {
+	# Try to get sudo access early
 	category=$(whiptail --ok-button "Run" --cancel-button "Exit" --notags \
 	--title "$TITLE v$VERSION" --menu "\nMake sure to read the README" 0 0 0 "${CATEGORIES[@]}" 3>&1 1>&2 2>&3)
 	
@@ -242,12 +243,17 @@ function generate_selection_menu () {
 	else
 		# Ask if really ready
 		if (whiptail --title "Are You Sure?" --yesno "Do you really want to start $choices_count action(s)?" 0 0); then
+			sudo echo
+			
 			for choice in $choices; do
 				exec_action $choice
 			done
 			
 			# Notify the user that all actions are complete
 			notify_complete
+			
+			# DO NOT RETURN!
+			# We need to know if logout or reboot is needed
 		else
 			return 0
 		fi
