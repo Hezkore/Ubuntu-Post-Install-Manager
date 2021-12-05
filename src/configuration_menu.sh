@@ -410,7 +410,7 @@ function config_enabled_ext () {
 		gnome-extensions enable user-theme@gnome-shell-extensions.gcampax.github.com
 		gnome-extensions enable arcmenu@arcmenu.com
 		gnome-extensions enable trayIconsReloaded@selfmade.pl
-		gnome-extensions enable noannoyance@sindex.com
+		gnome-extensions enable noannoyance@daase.net
 		gnome-extensions enable dash-to-panel@jderose9.github.com
 		gnome-extensions enable clean-system-menu@astrapi.de
 		gnome-extensions enable panel-date-format@keiii.github.com

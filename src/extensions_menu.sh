@@ -45,7 +45,7 @@ function install_tray_icons_reloaded () {
 }
 
 function install_no_annoyance () {
-	_install_ext_id 1236
+	_install_ext_id 2182
 }
 
 function install_dash_to_panel () {
