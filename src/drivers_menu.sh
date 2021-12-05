@@ -3,7 +3,7 @@
 
 function show_drivers_menu () {
 	items=(
-		"Add_GPU_PPA" "Add custom PPA repo with newer drivers" "OFF"
+		"Add_GPU_PPA" "Add PPA repo with newer drivers" "OFF"
 		"Install_Drivers" "Automatically install required Ubuntu drivers" "ON"
 		"Patch_NvFBC" "Patch NVidia GPU drivers to remove NVENC and NvFBC limitations" "OFF"
 	)
