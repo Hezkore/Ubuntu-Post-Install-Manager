@@ -467,7 +467,7 @@ function config_gnome_shortcuts () {
 	# Open Quake 3 via Super Q
 	echo "Quake 3 - Super Q"
 	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/binding "'<Super>Q'"
-	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/command "'quake3 +map q3dm17 +addbot visor 5 0 6000 Linus'"
+	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/command "'quake3 +map q3dm17 +addbot random 5 0 6000 Linus'"
 	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/name "'Play Quake 3'"
 	
 	# Apply
