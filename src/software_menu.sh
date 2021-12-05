@@ -66,7 +66,7 @@ function show_software_menu () {
 		"Install_OBS" "Install OBS Studio via custom PPA" "ON"
 		"Install_OBS_NvFBC_Plugin" "Install OBS Studio NvFBC plugin for NVidia cards" "ON"
 		"Install_Wine" "Install Wine and Winetricks" "ON"
-		"Install_GNOME_Boxes" "Install GNOME Boxes" "ON"
+		"Install_GNOME_Boxes" "Install GNOME Boxes" "OFF"
 		"Install_VirtualBox" "Install VirtualBox" "ON"
 		"Install_IMWheel" "Install custom IMWheel version" "ON"
 		"Remove_Thunderbird" "Remove Thunderbird" "ON"
