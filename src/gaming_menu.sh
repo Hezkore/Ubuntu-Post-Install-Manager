@@ -15,6 +15,8 @@ function show_gaming_menu () {
 		"Install_GOverlay" "Install GOverlay via custom PPA" "ON"
 		"Install_Protontricks" "Install Protontricks via PIP" "ON"
 		"Install_Quake_3" "Install [io]Quake 3 via Game Data Packager" "ON"
+		"Install_Quake_3_Hi-Res_Textures" "Install Hi-Res Textures for Quake 3" "ON"
+		"Install_Quake_3_CFG" "Install custom autoexec Quake 3 config" "ON"
 	)
 	generate_selection_menu "Gaming Options" "${items[@]}"
 }
@@ -206,4 +208,70 @@ function install_quake_3 () {
 		LAST_ERROR="Game Data Packer is not installed, cannot download game data"
 		return 1
 	fi
+}
+
+function install_quake_3_hi-res_textures () {
+	if bin_exists "wget"; then
+		if bin_exists "unzip"; then
+			echo "Downloadin high-resolution textures..."
+			wget -O xcsv_hires.zip https://files.ioquake3.org/xcsv_hires.zip
+			
+			echo "Extracting textures to ~/.q3ademo/demoq3"
+			unzip -o -d "$HOME/.q3ademo/demoq3" xcsv_hires.zip
+			
+			sudo rm -rf xcsv_hires.zip
+			
+			return 0
+		else
+			LAST_ERROR="UnZip is not installed, cannot extract game data"
+			return 1
+		fi
+	else
+		LAST_ERROR="WGet is not installed, cannot download game data"
+		return 1
+	fi
+}
+
+function install_quake_3_cfg () {
+	sudo mkdir -p "$HOME/.q3ademo/demoq3/"
+	
+	echo "Writing custom autoexec config to $HOME/.q3ademo/demoq3/autoexec.cfg..."
+	sudo echo -e "bind p \"quit\"
+bind b \"addbot grunt 5\"
+bind mouse2 \"+zoom\"
+
+set com_maxfps \"128\"
+set com_hunkMegs \"256\"
+set com_zoneMegs \"128\"
+set com_soundMegs \"64\"
+
+seta r_allowExtensions \"1\"
+seta r_allowSoftwareGL \"0\"
+seta r_colorbits \"32\"
+seta r_depthbits \"24\"
+seta r_detailTextures \"1\"
+seta r_drawsun \"1\"
+seta r_dynamicLight \"1\"
+seta r_ext_compiled_vertex_array \"1\"
+seta r_ext_compressed_textures \"0\"
+seta r_ext_multitexture \"1\"
+seta r_ext_texture_filter_anisotropic \"1\"
+seta r_fastsky \"0\"
+seta r_finish \"1\"
+seta r_flares \"1\"
+seta r_ignoreGLErrors \"1\"
+seta r_lodbias \"-2\"
+seta r_picmip \"0\"
+seta r_roundImagesDown \"1\"
+seta r_smp \"1\"
+seta r_stencilbits \"16\"
+seta r_subdivisions \"1\"
+seta r_swapInterval \"0\"
+seta r_texturebits \"32\"
+seta r_textureMode \"GL_LINEAR_MIPMAP_LINEAR\"
+seta r_vertexlight \"0\"
+seta r_ext_texture_filter_anisotropic \"1\"
+seta r_ext_max_anisotropy \"16\"" > "$HOME/.q3ademo/demoq3/autoexec.cfg"
+	
+	return 0
 }
