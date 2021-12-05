@@ -15,6 +15,7 @@ function show_software_menu () {
 		"Install_Chrome" "Install Chrome Browser via DEB" "ON"
 		"Install_VSCode" "Install Visual Studio Code via custom PPA" "ON"
 		"Install_GDebi" "Install GDebi DEB unpacker" "ON"
+		"Install_PPA_Purge" "Install PPA-Purge" "ON"
 		"Install_WGet" "Install WGet CLI tool" "ON"
 		"Install_SPC" "Install software-properties-common" "ON"
 		"Install_Flatpak" "Enable Flatpak support" "ON"
@@ -220,8 +221,14 @@ function install_unzip () {
 }
 
 function install_gdebi () {
+	# Core
 	sudo apt install gdebi-core -y
+	# And GUI
 	sudo apt install gdebi -y
+}
+
+function install_ppa_purge () {
+	sudo apt install ppa-purge -y
 }
 
 function install_curl () {
