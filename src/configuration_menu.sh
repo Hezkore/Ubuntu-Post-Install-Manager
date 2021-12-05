@@ -426,7 +426,7 @@ function config_gnome_favorites () {
 
 function config_gnome_shortcuts () {
 	if bin_exists "dconf"; then
-		echo "Applying configuration..."
+		echo "Creating custom shortcuts..."
 	else
 		LAST_ERROR="DConf is not installed, cannot change GNOME keyboard shortcuts"
 		return 1
@@ -471,7 +471,7 @@ function config_gnome_shortcuts () {
 	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/name "'Play Quake 3'"
 	
 	# Apply
-	echo "Adding shortcuts"
+	echo "Applying custom shortcuts..."
 	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/']"
 	
 	return 0
