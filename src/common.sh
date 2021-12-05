@@ -106,6 +106,8 @@ function show_main_menu () {
 	if [ $? -gt 0 ]; then # User pressed Cancel
         quit
 	else
+		# Reset
+		SHOW_RECOMMEND_OPTION=true
 		$category
     fi
 }
@@ -177,11 +179,13 @@ function generate_selection_menu () {
 	
 	# Ask if the user wants the recommended options
 	rec_options=true
-	if [[ "${items_raw[@]}" =~ "ON" ]]; then
-		if (whiptail --title "Recommended Options" --yes-button "Recommended" --no-button "Empty" --yesno "What options do you want to start with?" 0 0); then
-			rec_options=true
-		else
-			rec_options=false
+	if $SHOW_RECOMMEND_OPTION; then
+		if [[ "${items_raw[@]}" =~ "ON" ]]; then
+			if (whiptail --title "Recommended Options" --yes-button "Recommended" --no-button "Empty" --yesno "What options do you want to start with?" 0 0); then
+				rec_options=true
+			else
+				rec_options=false
+			fi
 		fi
 	fi
 	
@@ -220,6 +224,11 @@ function generate_selection_menu () {
 			"${items[@]}" \
 			3>&1 1>&2 2>&3
 	)
+	#choices_count="${#choices[@]}" # Why doesn't this work?!?!
+	choices_count=0
+	for choice in $choices; do
+		choices_count="$(($choices_count+1))"
+	done
 	
 	# Reset
 	NEEDS_LOGOUT=false
@@ -232,7 +241,7 @@ function generate_selection_menu () {
 		return
 	else
 		# Ask if really ready
-		if (whiptail --title "Are You Sure?" --yesno "Do you really want to start ${#choices[@]} action(s)?" 0 0); then
+		if (whiptail --title "Are You Sure?" --yesno "Do you really want to start $choices_count action(s)?" 0 0); then
 			for choice in $choices; do
 				exec_action $choice
 			done

@@ -58,7 +58,7 @@ You can uncheck the ones you don't want to install during step **"3. Software"**
 If you find yourself without a browser; type `sudo apt install firefox` into a terminal to install FireFox.
 
 If the machine is not made for gaming, messaging or email, then I recommend you *NOT* check these options:
-* Step **"5. Configuration"**
+* Step **"6. Configuration"**
 	* Uncheck "Configure Geary to check for incoming email"
 	* Uncheck "Configure Telegram to run at start"
 	* Uncheck "Configure Discord to run at start"
@@ -74,7 +74,7 @@ They will stop appearing once you've signed in to the application.
 If Steam does not start minimized after you've signed in; it means you've got **"Run Steam when my computer starts"** enabled in your Steam settings.\
 This is not the script, but rather how Steam normally works.\
 To fix this; disable **"Run Steam when my computer starts"** in Steam settings.\
-You can run the script and check **"Configure Steam to run at start"** in step **"5. Configuration"** to have Steam start minimized at start.
+You can run the script and check **"Configure Steam to run at start"** in step **"6. Configuration"** to have Steam start minimized at start.
 
 If you're new to the GNOME file browser *(aka. Nautilus)* you'll quickly notice that clicking the current directory path at the top does nothing, you instead need to press **CTRL + L** to edit it.\
 *(Good for copying or pasting paths)*

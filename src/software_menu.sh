@@ -65,14 +65,12 @@ function show_software_menu () {
 		"Install_OBS" "Install OBS Studio via custom PPA" "ON"
 		"Install_OBS_NvFBC_Plugin" "Install OBS Studio NvFBC plugin for NVidia cards" "ON"
 		"Install_Wine" "Install Wine and Winetricks" "ON"
+		"Install_GNOME_Boxes" "Install GNOME Boxes" "ON"
 		"Install_VirtualBox" "Install VirtualBox" "ON"
 		"Install_IMWheel" "Install custom IMWheel version" "ON"
 		"Remove_Thunderbird" "Remove Thunderbird" "ON"
 		"Install_Geary" "Install Geary email client" "ON"
 		"Remove_KDE_Connect" "Remove KDE Connect" "ON"
-		"Update_APT" "Update APT software" "ON"
-		"Clean_APT" "Clean and remove APT redundant data" "ON"
-		"Update_Flatpak_Software" "Update all Flatpak software" "ON"
 	)
 	generate_selection_menu "Software Options" "${items[@]}"
 }
@@ -653,6 +651,10 @@ function install_wine () {
 	sudo cp /usr/share/doc/wine/examples/wine.desktop /usr/share/applications/wine.desktop
 }
 
+function install_gnome_boxes () {
+	sudo apt install gnome-boxes -y
+}
+
 function install_virtualbox () {
 	sudo apt install virtualbox -y
 }
@@ -703,24 +705,4 @@ function install_geary () {
 function remove_kde_connect () {
 	killall kdeconnectd
 	sudo apt autoremove --purge kdeconnect -y
-}
-
-function update_apt () {
-	sudo apt update
-	sudo apt upgrade -y
-}
-
-function clean_apt () {
-	sudo apt autoremove -y
-	sudo apt clean -y
-}
-
-function update_flatpak_software () {
-	if bin_exists "flatpak"; then
-		flatpak update -y
-		return 0
-	else
-		LAST_ERROR="Flatpak is not installed, cannot update Flatpak software"
-		return 1
-	fi
 }

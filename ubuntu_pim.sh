@@ -13,14 +13,16 @@ CATEGORIES=(
 	"show_misc_menu"			"1. Miscellaneous"
 	"show_drivers_menu"			"2. Drivers"
 	"show_software_menu"		"3. Software"
-	"show_extensions_menu"		"4. Extensions"
-	"show_configuration_menu"	"5. Configuration"
-	"show_theme_menu"			"6. Theme"
+	"show_updates_menu"			"4. Updates"
+	"show_extensions_menu"		"5. Extensions"
+	"show_configuration_menu"	"6. Configuration"
+	"show_theme_menu"			"7. Theme"
 	"show_firmware_menu"		"x. Firmware"
 )
 source src/misc_menu.sh
 source src/drivers_menu.sh
 source src/software_menu.sh
+source src/updates_menu.sh
 source src/extensions_menu.sh
 source src/configuration_menu.sh
 source src/theme_menu.sh
