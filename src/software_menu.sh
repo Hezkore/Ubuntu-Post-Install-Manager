@@ -66,6 +66,7 @@ function show_software_menu () {
 		"Install_OBS" "Install OBS Studio via custom PPA" "ON"
 		"Install_OBS_NvFBC_Plugin" "Install OBS Studio NvFBC plugin for NVidia cards" "ON"
 		"Install_Wine" "Install Wine and Winetricks" "ON"
+		"Install_Protontricks" "Install Protontricks via PIP" "ON"
 		"Install_GNOME_Boxes" "Install GNOME Boxes" "OFF"
 		"Install_VirtualBox" "Install VirtualBox" "ON"
 		"Install_IMWheel" "Install custom IMWheel version" "ON"
@@ -656,6 +657,23 @@ function install_wine () {
 	sudo apt install winetricks -y
 	# Make sure there's a desktop file created
 	sudo cp /usr/share/doc/wine/examples/wine.desktop /usr/share/applications/wine.desktop
+}
+
+function install_protontricks () {
+	if bin_exists "pip"; then
+		pip install protontricks
+		
+		if bin_exists "protontricks"; then
+			echo "Protontricks installed successfully"
+			return 0
+		else
+			LAST_ERROR="Protontricks was not installed"
+			return 1
+		fi
+	else
+		LAST_ERROR="PIP is not installed, cannot download package"
+		return 1
+	fi
 }
 
 function install_gnome_boxes () {
