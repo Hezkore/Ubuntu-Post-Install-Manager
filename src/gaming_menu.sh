@@ -238,21 +238,35 @@ function install_quake_3_cfg () {
 	cfg="bind p \"quit\"
 bind b \"addbot grunt 5\"
 bind mouse2 \"+zoom\"
+bind CTRL \"+movedown\"
+bind e \"weapnext\"
+bind q \"weapprev\"
+bind r \"weapon 5\"
+bind f \"weapon 7\"
 
+set sensitivity \"1.8\"
+
+set cg_shadows \"4\"
+set cg_autoswitch \"0\"
 set cg_fov \"110\"
 set cg_zoomfov \"38\"
 set cg_zoomScaling \"0\"
 set cg_zoomSensitivity \"1.35\"
 
-set cl_renderer \"opengl2\"
+set cl_consoleKeys \"§ ~ ` 0x7e 0x60\"
 set cl_mouseAccel \"0\"
 set cl_mouseAccelStyle \"0\"
 set cl_mouseAccelOffset \"0\"
+set cl_allowdownload \"1\"
+set cl_renderer \"opengl2\"
 
 set com_maxfps \"125\"
 set com_hunkMegs \"256\"
 set com_zoneMegs \"128\"
 set com_soundMegs \"64\"
+
+set s_musicvolume \"1.0\"
+set s_volume \"1.0\"
 
 seta r_mode \"-2\"
 seta r_noborder \"1\"
@@ -284,7 +298,7 @@ seta r_texturebits \"32\"
 seta r_textureMode \"GL_LINEAR_MIPMAP_LINEAR\"
 seta r_vertexlight \"0\"
 seta r_ext_texture_filter_anisotropic \"1\"
-seta r_ext_max_anisotropy \"16\"" 
+seta r_ext_max_anisotropy \"16\""
 	
 	# For the full game
 	sudo mkdir -p "$HOME/.q3a/baseq3/"
