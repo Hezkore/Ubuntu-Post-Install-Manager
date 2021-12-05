@@ -25,11 +25,15 @@ function update_apt_software () {
 	#	echo "Skipping updates"
 	#	return 0
 	#fi
+	
+	return 0
 }
 
 function clean_apt () {
 	sudo apt autoremove -y
 	sudo apt clean -y
+	
+	return 0
 }
 
 function update_flatpak_software () {

@@ -45,11 +45,19 @@ function nautilus_new_docs () {
 
 function nautilus_admin () {
 	sudo apt install nautilus-admin -y
+	
+	return 0
 }
 
 function nautilus_dosbox () {
-	create_dir "$HOME/.local/share/nautilus/scripts"
-	wget -O "$HOME/.local/share/nautilus/scripts/Run with DOSBox" https://raw.githubusercontent.com/Hezkore/nautilus-dosbox/master/Run%20with%20DOSBox
+	if bin_exists "wget"; then
+		create_dir "$HOME/.local/share/nautilus/scripts"
+		wget -O "$HOME/.local/share/nautilus/scripts/Run with DOSBox" https://raw.githubusercontent.com/Hezkore/nautilus-dosbox/master/Run%20with%20DOSBox
+		return 0
+	else
+		LAST_ERROR="WGet is not installed, cannot download script"
+		return 1
+	fi
 }
 
 function nautilus_typeahead () {

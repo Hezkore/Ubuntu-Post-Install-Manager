@@ -5,7 +5,7 @@ function show_configuration_menu () {
 	items=(
 		"Config_Git" "Configure Git username and email" "OFF"
 		"Config_Mimeapps" "Configure and reset file type associations" "ON"
-		"Config_Flameshot" "Configure Flameshot to stay in the background" "ON"
+		"Config_Flameshot" "Configure and reset Flameshot to stay in the background" "ON"
 		"Config_IMWheel" "Configure IMWheel scroll wheel speed" "ON"
 		"Config_IMWheel_Start" "Configure IMWheel to run at start" "ON"
 		"Config_Telegram_Start" "Configure Telegram to run at start" "ON"
@@ -84,7 +84,7 @@ function config_mimeapps () {
 	
 	# Create new associations based on what's installed
 	if bin_exists "audacious"; then
-		echo "Writing audacious mimetypes"
+		echo "Writing audacious mimetypes..."
 		echo 'audio/x-s3m=audacious.desktop' >> "$file"
 		echo 'audio/x-stm=audacious.desktop' >> "$file"
 		echo 'audio/3gpp=audacious.desktop' >> "$file"
@@ -136,12 +136,12 @@ function config_mimeapps () {
 	fi
 	
 	if bin_exists "wine"; then
-		echo "Writing wine mimetypes"
+		echo "Writing wine mimetypes..."
 		echo 'application/x-ms-dos-executable=wine.desktop' >> "$file"
 	fi
 	
 	if bin_exists "code"; then
-		echo "Writing code mimetypes"
+		echo "Writing code mimetypes..."
 		echo 'application/x-shellscript=code.desktop' >> "$file"
 		echo 'application/xml=code.desktop' >> "$file"
 		echo 'application/xhtml+xml=code.desktop' >> "$file"
@@ -150,25 +150,74 @@ function config_mimeapps () {
 	fi
 	
 	if bin_exists "gedit"; then
-		echo "Writing gedit mimetypes"
+		echo "Writing gedit mimetypes..."
 		echo 'text/plain=org.gnome.gedit.desktop' >> "$file"
 	fi
 	
 	if bin_exists "gdebi"; then
-		echo "Writing gdebi mimetypes"
+		echo "Writing gdebi mimetypes..."
 		echo 'application/vnd.debian.binary-package=gdebi.desktop' >> "$file"
 	fi
 	
 	if bin_exists "geary"; then
-		echo "Writing geary mimetypes"
+		echo "Writing geary mimetypes..."
 		echo 'x-scheme-handler/mailto=geary.desktop' >> "$file"
 	fi
+	
+	return 0
 }
 
 function config_flameshot () {
 	mkdir -p "$HOME/.config/flameshot"
-	sudo echo -e "[General]\ndisabledTrayIcon=true\nsaveAfterCopy=true\nshowHelp=false\nshowStartupLaunchMessage=false" > "$HOME/.config/flameshot/flameshot.ini"
+	
+	echo "Writing Flameshot configuration..."
+	sudo echo -e "[General]
+disabledTrayIcon=true
+saveAfterCopy=true
+copyPathAfterSave=true
+showHelp=false
+showStartupLaunchMessage=false
+savePathFixed=true
+savePath=~/Pictures
+setSaveAsFileExtension=.png
+showDesktopNotification=false
+
+[Shortcuts]
+TYPE_ARROW=A
+TYPE_CIRCLE=C
+TYPE_CIRCLECOUNT=
+TYPE_COMMIT_CURRENT_TOOL=Ctrl+Return
+TYPE_COPY=Ctrl+C
+TYPE_DRAWER=D
+TYPE_EXIT=Ctrl+Q
+TYPE_IMAGEUPLOADER=Return
+TYPE_MARKER=M
+TYPE_MOVESELECTION=Ctrl+M
+TYPE_MOVE_DOWN=Down
+TYPE_MOVE_LEFT=Left
+TYPE_MOVE_RIGHT=Right
+TYPE_MOVE_UP=Up
+TYPE_OPEN_APP=Ctrl+O
+TYPE_PENCIL=P
+TYPE_PIN=
+TYPE_PIXELATE=B
+TYPE_RECTANGLE=R
+TYPE_REDO=Ctrl+Shift+Z
+TYPE_RESIZE_DOWN=Shift+Down
+TYPE_RESIZE_LEFT=Shift+Left
+TYPE_RESIZE_RIGHT=Shift+Right
+TYPE_RESIZE_UP=Shift+Up
+TYPE_SAVE=Ctrl+S
+TYPE_SELECTION=S
+TYPE_SELECTIONINDICATOR=
+TYPE_SELECT_ALL=Ctrl+A
+TYPE_TEXT=T
+TYPE_TOGGLE_PANEL=Space
+TYPE_UNDO=Ctrl+Z" > "$HOME/.config/flameshot/flameshot.ini"
+	
 	NEEDS_LOGOUT=true
+	
+	return 0
 }
 
 function config_imwheel () {
@@ -188,30 +237,40 @@ function config_imwheel_start () {
 	echo "Creating autostart desktop entry..."
 	sudo echo -e "[Desktop Entry]\nName=IMWheel\nIcon=imwheel\nExec=imwheel -d -b 45\nTerminal=false\nType=Application\nX-GNOME-Autostart-enabled=true" > "$HOME/.config/autostart/imwheel.desktop"
 	NEEDS_LOGOUT=true
+	
+	return 0
 }
 
 function config_telegram_start () {
 	echo "Creating autostart desktop entry..."
 	sudo echo -e "[Desktop Entry]\nName=Telegram\nIcon=telegram\nExec=telegram-desktop -startintray\nTerminal=false\nType=Application\nX-GNOME-Autostart-enabled=true\nX-GNOME-Autostart-Delay=1" > "$HOME/.config/autostart/Telegram.desktop"
 	NEEDS_LOGOUT=true
+	
+	return 0
 }
 
 function config_discord_start () {
 	echo "Creating autostart desktop entry..."
 	sudo echo -e "[Desktop Entry]\nName=Discord\nIcon=discord\nExec=discord --start-minimized\nTerminal=false\nType=Application\nX-GNOME-Autostart-enabled=true\nX-GNOME-Autostart-Delay=2" > "$HOME/.config/autostart/Discord.desktop"
 	NEEDS_LOGOUT=true
+	
+	return 0
 }
 
 function config_steam_start () {
 	echo "Creating autostart desktop entry..."
 	sudo echo -e "[Desktop Entry]\nName=Steam\nIcon=steam\nExec=steam -silent\nTerminal=false\nType=Application\nX-GNOME-Autostart-enabled=true\nX-GNOME-Autostart-Delay=3" > "$HOME/.config/autostart/Steam-minimized.desktop"
 	NEEDS_LOGOUT=true
+	
+	return 0
 }
 
 function config_geary_start () {
 	echo "Creating autostart desktop entry..."
 	sudo echo -e "[Desktop Entry]\nName=Geary\nIcon=geary\nExec=geary --gapplication-service\nTerminal=false\nType=Application\nX-GNOME-Autostart-enabled=true" > "$HOME/.config/autostart/Geary.desktop"
 	NEEDS_LOGOUT=true
+	
+	return 0
 }
 
 function config_geary_settings () {
@@ -224,6 +283,8 @@ function config_geary_settings () {
 	
 	dconf write /org/gnome/Geary/startup-notifications true
 	dconf write /org/gnome/Geary/optional-plugins "['sent-sound']"
+	
+	return 0
 }
 
 function config_lollypop_window () {
@@ -235,6 +296,8 @@ function config_lollypop_window () {
 	fi
 	
 	dconf write /org/gnome/Lollypop/window-size "[1280, 720]"
+	
+	return 0
 }
 
 function config_gnome_mouse () {
@@ -247,6 +310,8 @@ function config_gnome_mouse () {
 	
 	dconf write /org/gnome/desktop/peripherals/mouse/accel-profile "'flat'"
 	dconf write /org/gnome/desktop/peripherals/mouse/speed -0.1
+	
+	return 0
 }
 
 function config_gnome_middle_paste () {
@@ -258,6 +323,8 @@ function config_gnome_middle_paste () {
 	fi
 	
 	dconf write /org/gnome/desktop/interface/gtk-enable-primary-paste false
+	
+	return 0
 }
 
 function config_gnome_weekdate () {
@@ -269,6 +336,8 @@ function config_gnome_weekdate () {
 	fi
 	
 	dconf write /org/gnome/desktop/calendar/show-weekdate true
+	
+	return 0
 }
 
 function config_gnome_resizeright () {
@@ -280,6 +349,8 @@ function config_gnome_resizeright () {
 	fi
 	
 	dconf write /org/gnome/desktop/wm/preferences/resize-with-right-button true
+	
+	return 0
 }
 
 function config_gnome_nomaximize () {
@@ -291,6 +362,8 @@ function config_gnome_nomaximize () {
 	fi
 	
 	dconf write /org/gnome/mutter/auto-maximize false
+	
+	return 0
 }
 
 function config_gnome_center () {
@@ -302,6 +375,8 @@ function config_gnome_center () {
 	fi
 	
 	dconf write /org/gnome/mutter/center-new-windows true
+	
+	return 0
 }
 
 function config_gnome_noattach () {
@@ -314,6 +389,8 @@ function config_gnome_noattach () {
 	
 	dconf write /org/gnome/mutter/attach-modal-dialogs false
 	dconf write /org/gnome/shell/overrides/attach-modal-dialogs false
+	
+	return 0
 }
 
 function config_gnome_filechooser () {
@@ -331,6 +408,8 @@ function config_gnome_filechooser () {
 	dconf write /org/gnome/nautilus/preferences/show-create-link true
 	dconf write /org/gnome/nautilus/preferences/default-folder-viewer "'icon-view'"
 	dconf write /org/gnome/nautilus/icon-view/default-zoom-level "'small'"
+	
+	return 0
 }
 
 function config_gnome_favorites () {
@@ -342,6 +421,8 @@ function config_gnome_favorites () {
 	fi
 	
 	dconf write /org/gnome/shell/favorite-apps "['org.gnome.Nautilus.desktop', 'microsoft-edge.desktop']"
+	
+	return 0
 }
 
 function config_gnome_shortcuts () {
@@ -386,6 +467,8 @@ function config_gnome_shortcuts () {
 	# Apply
 	echo "Adding shortcuts"
 	dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/']"
+	
+	return 0
 }
 
 function config_enabled_ext () {
@@ -449,6 +532,8 @@ function configure_ding () {
 	_dconf_write_ext ding/icon-size "'large'"
 	_dconf_write_ext ding/show-home false
 	_dconf_write_ext ding/show-volumes true
+	
+	return 0
 }
 
 function configure_arcmenu () {
@@ -532,6 +617,8 @@ function configure_arcmenu () {
 	
 	# This is required for ArcMenu to update
 	_dconf_write_ext arcmenu/reload-theme true
+	
+	return 0
 }
 
 function configure_tray_icons_reloaded () {
@@ -557,6 +644,8 @@ function configure_tray_icons_reloaded () {
 	#_dconf_write_ext trayIconsReloaded/icon-brightness -20
 	#_dconf_write_ext trayIconsReloaded/icon-contrast 0
 	#_dconf_write_ext trayIconsReloaded/icon-saturation 0
+	
+	return 0
 }
 
 function configure_dash_to_panel () {
@@ -640,6 +729,8 @@ function configure_dash_to_panel () {
 	_dconf_write_ext dash-to-panel/tray-padding 4
 	_dconf_write_ext dash-to-panel/tray-size 0
 	_dconf_write_ext dash-to-panel/window-preview-title-position "'TOP'"
+	
+	return 0
 }
 
 function configure_clean_system_menu () {
@@ -653,6 +744,8 @@ function configure_clean_system_menu () {
 	_dconf_write_ext clean-system-menu/power-button-position 1
 	_dconf_write_ext clean-system-menu/power-button-positionnumber 0
 	_dconf_write_ext clean-system-menu/power-button-visible false
+	
+	return 0
 }
 
 function configure_panel_date_format () {
@@ -664,6 +757,8 @@ function configure_panel_date_format () {
 	fi
 	
 	_dconf_write_ext panel-date-format/format "'   %R\n%d-%m-%y'"
+	
+	return 0
 }
 
 function configure_impatience () {
@@ -690,6 +785,8 @@ function configure_game_mode_status_icon () {
 	_dconf_write_ext gamemode/active-tint false
 	_dconf_write_ext gamemode/always-show-icon false
 	_dconf_write_ext gamemode/emit-notifications false
+	
+	return 0
 }
 
 function configure_blur_my_shell () {
@@ -717,6 +814,8 @@ function configure_blur_my_shell () {
 	
 	# Might not be required, but again, just to be safe
 	NEEDS_LOGOUT=true
+	
+	return 0
 }
 
 function configure_gnome_ui_improvements () {
@@ -731,4 +830,6 @@ function configure_gnome_ui_improvements () {
 	_dconf_write_ext gnome-ui-tune/increase-thumbnails-size true
 	_dconf_write_ext gnome-ui-tune/overview-firefox-pip false
 	_dconf_write_ext gnome-ui-tune/restore-thumbnails-background true
+	
+	return 0
 }

@@ -34,52 +34,78 @@ function _install_ext_id () {
 
 function install_user_themes () {
 	_install_ext_id 19
+	
+	return 0
 }
 
 function install_arcmenu () {
 	_install_ext_id 3628
+	
+	return 0
 }
 
 function install_tray_icons_reloaded () {
 	_install_ext_id 2890
+	
+	return 0
 }
 
 function install_no_annoyance () {
 	_install_ext_id 2182
+	
+	return 0
 }
 
 function install_dash_to_panel () {
 	_install_ext_id 1160
+	
+	return 0
 }
 
 function install_clean_system_menu () {
 	_install_ext_id 4298
+	
+	return 0
 }
 
 function install_panel_date_format () {
 	_install_ext_id 1462
+	
+	return 0
 }
 
 function install_application_volume_mixer () {
 	_install_ext_id 3499
+	
+	return 0
 }
 
 function install_impatience () {
 	_install_ext_id 277
+	
+	return 0
 }
 
 function install_no_overview () {
 	_install_ext_id 4099
+	
+	return 0
 }
 
 function install_game_mode_status_icon () {
 	_install_ext_id 1852
+	
+	return 0
 }
 
 function install_blur_my_shell () {
 	_install_ext_id 3193
+	
+	return 0
 }
 
 function install_gnome_ui_improvements () {
 	_install_ext_id 4158
+	
+	return 0
 }

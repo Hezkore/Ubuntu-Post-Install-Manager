@@ -23,4 +23,6 @@ function install_xanmod () {
 	sudo apt update
 	sudo apt install linux-xanmod -y
 	NEEDS_RESTART=true
+	
+	return 0
 }
