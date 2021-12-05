@@ -233,10 +233,9 @@ function install_quake_3_hi-res_textures () {
 }
 
 function install_quake_3_cfg () {
-	sudo mkdir -p "$HOME/.q3ademo/demoq3/"
-	
 	echo "Writing custom autoexec config to $HOME/.q3ademo/demoq3/autoexec.cfg..."
-	sudo echo -e "bind p \"quit\"
+	
+	cfg="bind p \"quit\"
 bind b \"addbot grunt 5\"
 bind mouse2 \"+zoom\"
 
@@ -285,7 +284,16 @@ seta r_texturebits \"32\"
 seta r_textureMode \"GL_LINEAR_MIPMAP_LINEAR\"
 seta r_vertexlight \"0\"
 seta r_ext_texture_filter_anisotropic \"1\"
-seta r_ext_max_anisotropy \"16\"" > "$HOME/.q3ademo/demoq3/autoexec.cfg"
+seta r_ext_max_anisotropy \"16\"" 
+	
+	# For the full game
+	sudo mkdir -p "$HOME/.q3a/baseq3/"
+	sudo echo -e "$cfg" > "$HOME/.q3a/baseq3/q3config.cfg"
+	
+	# Link cfg from full game to demo
+	sudo mkdir -p "$HOME/.q3ademo/demoq3/"
+	sudo rm -rf "$HOME/.q3ademo/demoq3/q3config.cfg"
+	sudo ln -s "$HOME/.q3a/baseq3/q3config.cfg" "$HOME/.q3ademo/demoq3/q3config.cfg"
 	
 	return 0
 }
