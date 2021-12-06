@@ -16,7 +16,7 @@ function show_gaming_menu () {
 		"Install_Protontricks" "Install Protontricks via PIP" "ON"
 		"Install_Quake_3" "Install [io]Quake 3 via Game Data Packager" "ON"
 		"Install_Quake_3_Hi-Res_Textures" "Install Hi-Res Textures for Quake 3" "ON"
-		"Install_Quake_3_CFG" "Install custom Hi-Res Quake 3 config" "ON"
+		"Install_Quake_3_CFG" "Install custom high quality Quake 3 config" "ON"
 	)
 	generate_selection_menu "Gaming Options" "${items[@]}"
 }
@@ -236,13 +236,15 @@ function install_quake_3_cfg () {
 	echo "Writing custom autoexec config to $HOME/.q3ademo/demoq3/autoexec.cfg..."
 	
 	cfg="bind p \"quit\"
-bind b \"addbot grunt 5\"
+bind b \"addbot random 5\"
 bind mouse2 \"+zoom\"
 bind CTRL \"+movedown\"
 bind e \"weapnext\"
 bind q \"weapprev\"
 bind r \"weapon 5\"
 bind f \"weapon 7\"
+
+seta name "${USER^}"
 
 set sensitivity \"1.8\"
 
