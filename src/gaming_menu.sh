@@ -313,9 +313,9 @@ seta name "${USER^}"
 
 set sensitivity \"1.8\"
 
+seta cg_fov \"115\"
 set cg_shadows \"1\"
 set cg_autoswitch \"0\"
-seta cg_fov \"115\"
 set cg_zoomfov \"38\"
 set cg_zoomScaling \"0\"
 set cg_zoomSensitivity \"1.35\"
