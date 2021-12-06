@@ -267,7 +267,7 @@ cd \"$HOME/.q3a\" && ./ioquake3.x86_64"
 					desktop="[Desktop Entry]
 Exec=quake3
 Name=Quake 3
-Comment=Quake 3 Arena
+Comment=ioQuake 3 Arena
 Type=Application
 Terminal=false
 Categories=Game;
