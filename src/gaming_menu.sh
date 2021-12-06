@@ -256,6 +256,24 @@ cd \"$HOME/.q3a\" && ./ioquake3.x86_64"
 						ln -s "$q3dir" "$HOME/Games/Quake 3"
 					fi
 					
+					# Download Quake 3 icon
+					echo
+					echo "Downloading Quake 3 icon..."
+					wget -O "$HOME/.local/share/icons/quake3.svg" https://iconarchive.com/download/i106244/papirus-team/papirus-apps/quake-3.svg
+					
+					# Create a .desktop file
+					echo
+					echo "Creating Quake 3 .desktop file..."
+					desktop="[Desktop Entry]
+Exec=quake3
+Name=Quake 3
+Comment=Quake 3 Arena
+Type=Application
+Terminal=false
+Categories=Game;
+Icon=quake3"
+					sudo echo -e "$desktop" > "$HOME/.local/share/applications/quake3.desktop"
+					
 					return 0
 				else
 					LAST_ERROR="GDebi is not installed, cannot extract DEB package"
