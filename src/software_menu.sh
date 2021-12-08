@@ -34,7 +34,7 @@ function show_software_menu () {
 		"Install_Meson" "Install Meson build system" "ON"
 		"Install_CMake" "Install CMake make system" "ON"
 		"Install_Ninja" "Install Ninja build system" "ON"
-		"Install_Python" "Install Python and Pip" "ON"
+		"Install_Python3" "Install Python and Pip" "ON"
 		"Install_NodeJS" "Install NodeJS via custom PPA" "ON"
 		"Install_Vim" "Install Vim CLI text editor" "ON"
 		"Install_Emacs" "Install Emacs CLI text editor" "ON"
@@ -97,7 +97,7 @@ function install_python3 () {
 	
 	pip install repolib
 	
-	sudo apt install python -y
+	#sudo apt install python -y
 }
 
 function install_nodejs () {
