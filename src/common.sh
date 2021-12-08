@@ -89,7 +89,7 @@ function show_system_warnings () {
 	PATHS=($(echo $PATH | tr ':' "\n"))
 	local_exists=false
 	for dir in "${PATHS[@]}"; do
-		if [ $dir = "$HOME/.local/bina" ]; then
+		if [ $dir = "$HOME/.local/bin" ]; then
 			local_exists=true
 			break
 		fi

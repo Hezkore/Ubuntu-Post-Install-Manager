@@ -18,7 +18,7 @@ function show_software_menu () {
 		"Install_Innoextract" "Install Innoextract" "ON"
 		"Install_PPA_Purge" "Install PPA-Purge" "ON"
 		"Install_WGet" "Install WGet CLI tool" "ON"
-		"Install_SPC" "Install software-properties-common" "ON"
+		"Install_SPC" "Install Software-Properties-Common" "ON"
 		"Install_Flatpak" "Enable Flatpak support" "ON"
 		"Install_Blender" "Install Blender via Flatpak" "ON"
 		"Install_Audacity" "Install Audacity via Flatpak" "ON"
@@ -245,6 +245,10 @@ function install_build_depend () {
 	ffmpeg \
 	g++ \
 	sassc \
+	autotools-dev \
+	libtool \
+	libreadline-dev \
+	intltool \
 	libx11-xcb-dev \
 	libavutil-dev \
 	libavformat-dev \
