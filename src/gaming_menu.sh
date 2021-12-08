@@ -265,7 +265,7 @@ cd \"$HOME/.q3a\" && ./ioquake3.x86_64"
 					echo
 					echo "Creating Quake 3 .desktop file..."
 					desktop="[Desktop Entry]
-Exec=quake3
+Exec=.q3a/ioquake3.x86_64
 Name=Quake 3
 Comment=ioQuake 3 Arena
 Type=Application
