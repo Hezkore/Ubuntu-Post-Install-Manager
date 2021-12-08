@@ -62,6 +62,7 @@ function show_software_menu () {
 		"Install_GNOME_Boxes" "Install GNOME Boxes" "OFF"
 		"Install_VirtualBox" "Install VirtualBox" "ON"
 		"Install_IMWheel" "Install custom IMWheel version" "ON"
+		"Install_PINCE" "Install PINCE memory inspector" "OFF"
 		"Remove_Thunderbird" "Remove Thunderbird" "ON"
 		"Install_Geary" "Install Geary email client" "ON"
 		"Remove_KDE_Connect" "Remove KDE Connect" "ON"
@@ -567,6 +568,42 @@ function install_imwheel () {
 		fi
 	else
 		LAST_ERROR="WGet is not installed, cannot download package"
+		return 1
+	fi
+}
+
+function install_pince () {
+	if bin_exists "git"; then
+		git clone https://github.com/korcankaraokcu/PINCE.git "$HOME/.pince"
+		cd "$HOME/.pince"
+		sudo sh install_pince.sh
+		cd ..
+		
+		# Create a cute little bin script so the user can call 'pince'
+		binscript="#!/bin/bash
+cd \"$HOME/.pince\" && ./PINCE.sh $@"
+		sudo echo -e "$binscript" > "$HOME/.local/bin/pince"
+		sudo chmod u+x "$HOME/.local/bin/pince"
+		
+		# Take ownership of the folder
+		sudo chown -R $USER "$HOME/.pince"
+		
+		# Create a .desktop file
+		echo
+		echo "Creating PINCE 3 .desktop file..."
+		desktop="[Desktop Entry]
+Exec=pince
+Name=PINCE
+Comment=PINCE memory inspector
+Type=Application
+Terminal=true
+Categories=Utility;
+Icon=memory"
+		sudo echo -e "$desktop" > "$HOME/.local/share/applications/pince.desktop"
+		
+		return 0
+	else
+		LAST_ERROR="Git is not installed, cannot clone Git repo"
 		return 1
 	fi
 }

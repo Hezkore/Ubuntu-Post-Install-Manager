@@ -248,7 +248,7 @@ function install_quake_3 () {
 					# Create a cute little bin script so the user can call 'quake3'
 					binscript="#!/bin/bash
 cd \"$HOME/.q3a\" && ./ioquake3.x86_64"
-					sudo echo -e "$binscript" > "$HOME/.local/bin/quake3 $@"
+					sudo echo -e "$binscript" > "$HOME/.local/bin/quake3"
 					sudo chmod u+x "$HOME/.local/bin/quake3"
 					
 					# Check if a "Games" folder exists and add a Quake 3 shortcut
