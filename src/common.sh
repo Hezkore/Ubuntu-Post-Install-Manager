@@ -95,8 +95,27 @@ function show_system_warnings () {
 		fi
 	done
 	if ! $local_exists; then
-		warning_message+="$HOME/.local/bin is not in the PATH environment variable.\nSome applications might require it.\n\n"
-		echo -e "\033[1m$HOME/.local/bin\033[0m is not in environment variable PATH"
+
+		# Okay so local bin dir did not exist, try to create it...
+		mkdir -p "$HOME/.local/bin"
+		# Now source .profile
+		source ~/.profile
+		# Now check again (ugh, repeated code!)
+		PATHS=($(echo $PATH | tr ':' "\n"))
+		for dir in "${PATHS[@]}"; do
+			if [ $dir = "$HOME/.local/bin" ]; then
+				local_exists=true
+				break
+			fi
+		done
+
+		if $local_exists; then
+			#warning_message+="$HOME/.local/bin was added to the PATH environment variable.\n\n"
+			echo -e "$HOME/.local/bin added to PATH"
+		else
+			warning_message+="$HOME/.local/bin is not in the PATH environment variable.\nSome applications might require it.\n\n"
+			echo -e "\033[1m$HOME/.local/bin\033[0m is not in environment variable PATH"
+		fi
 	fi
 	
 	# Display any warnings
