@@ -26,10 +26,8 @@ The ArcMenu GNOME extension also needs at least a height of 642 pixels, which is
 ## How to install & run
 Download the script by clicking the green **"Code ▼"** button here on GitHub, then click **"[Download Zip](https://github.com/Hezkore/Ubuntu-Post-Install-Manager/archive/refs/heads/master.zip)"** and save the file.\
 The file - named **"Ubuntu-Post-Install-Manager-master.zip"** - will most likely save to **"/home/[user]/Downloads/"**.\
-Unpack the script by right clicking **"Ubuntu-Post-Install-Manager-master.zip"**  and selecting **"Extract Here"**, which creates the folder **"Ubuntu-Post-Install-Manager-master"**.\
-Right click the **"Ubuntu-Post-Install-Manager-master"** folder and select **"Open in Terminal"**.\
-In the newly opened terminal, type `./ubuntu_pim.sh` and press Enter to run the script.\
-*(Pro tip: you can press **TAB** after you've written `./u` to autocomplete the remaining part of the command)*
+Unpack the script by right clicking **"Ubuntu-Post-Install-Manager-master.zip"** and selecting **"Extract Here"**, which creates the folder **"Ubuntu-Post-Install-Manager-master"**.\
+Double click the **"Ubuntu-Post-Install-Manager-master"** folder to enter it, then right click the file **"ubuntu_pim.sh"** and select the option **"Run as a Program"**.
 
 ## Navigation & usage
 Press the Up and Down arrow keys to move your selection up and down.\
