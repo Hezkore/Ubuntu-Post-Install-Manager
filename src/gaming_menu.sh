@@ -262,7 +262,7 @@ function install_quake_3 () {
 					
 					# Create a cute little bin script so the user can call 'quake3'
 					binscript="#!/bin/bash
-cd \"$HOME/.q3a\" && ./ioquake3.x86_64"
+cd \"$HOME/.q3a\" && ./ioquake3.x86_64 $@"
 					sudo echo -e "$binscript" > "$HOME/.local/bin/quake3"
 					sudo chmod u+x "$HOME/.local/bin/quake3"
 					
@@ -274,6 +274,7 @@ cd \"$HOME/.q3a\" && ./ioquake3.x86_64"
 					# Download Quake 3 icon
 					echo
 					echo "Downloading Quake 3 icon..."
+					mkdir -p "$HOME/.local/share/icons"
 					wget -O "$HOME/.local/share/icons/quake3.svg" https://iconarchive.com/download/i106244/papirus-team/papirus-apps/quake-3.svg
 					
 					# Create a .desktop file
