@@ -500,7 +500,7 @@ function install_vscode () {
 	if bin_exists "curl"; then
 		curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
 		sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
-		sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/code.list'
+		sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
 		sudo rm -rf microsoft.gpg
 		sudo apt update
 		sudo apt install code -y
@@ -511,7 +511,7 @@ function install_vscode () {
 			return 0
 		else
 			# Remove the repo to avoid errors
-			sudo rm -f "/etc/apt/sources.list.d/code.list"
+			sudo rm -f "/etc/apt/sources.list.d/vscode.list"
 				
 			LAST_ERROR="Visual Studio Code was not installed"
 			return 1
