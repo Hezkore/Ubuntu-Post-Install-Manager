@@ -576,7 +576,7 @@ function install_pince () {
 	if bin_exists "git"; then
 		git clone https://github.com/korcankaraokcu/PINCE.git "$HOME/.pince"
 		cd "$HOME/.pince"
-		sudo sh install_pince.sh
+		sudo sh install_pince.sh <<< y
 		cd ..
 		
 		# Create a cute little bin script so the user can call 'pince'
