@@ -96,7 +96,7 @@ function show_system_warnings () {
 	done
 	if ! $local_exists; then
 		warning_message+="$HOME/.local/bin is not in the PATH environment variable.\nSome applications might require it.\n\n"
-		echo -e "\033[1m$HOME/.local/bin\033[0m is not in path"
+		echo -e "\033[1m$HOME/.local/bin\033[0m is not in environment variable PATH"
 	fi
 	
 	# Display any warnings
