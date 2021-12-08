@@ -540,14 +540,15 @@ function configure_arcmenu () {
 		_dconf_write_ext arcmenu/border-color "'rgba(255,255,255,0)'"
 		_dconf_write_ext arcmenu/button-padding 0
 		#_dconf_write_ext arcmenu/custom-hot-corner-cmd ""
-		_dconf_write_ext arcmenu/custom-menu-button-icon "'Distro_Icon'"
+		_dconf_write_ext arcmenu/distro-icon 5
+		_dconf_write_ext arcmenu/menu-button-icon "'Distro_Icon'"
+		#_dconf_write_ext arcmenu/custom-menu-button-icon "'Distro_Icon'"
 		_dconf_write_ext arcmenu/custom-menu-button-icon-size 23.0
 		_dconf_write_ext arcmenu/disable-category-arrows true
 		_dconf_write_ext arcmenu/disable-recently-installed-apps false
 		_dconf_write_ext arcmenu/disable-scrollview-fade-effect true
 		_dconf_write_ext arcmenu/disable-searchbox-border true
 		_dconf_write_ext arcmenu/disable-tooltips true
-		_dconf_write_ext arcmenu/distro-icon 5
 		_dconf_write_ext arcmenu/enable-custom-arc-menu true
 		_dconf_write_ext arcmenu/enable-horizontal-flip true
 		_dconf_write_ext arcmenu/enable-large-icons true
@@ -568,7 +569,6 @@ function configure_arcmenu () {
 		_dconf_write_ext arcmenu/menu-button-color "'rgb(145,65,172)'"
 		_dconf_write_ext arcmenu/menu-button-hover-backgroundcolor "'rgba(255,255,255,0.08)'"
 		_dconf_write_ext arcmenu/menu-button-hover-color "'rgb(153,193,241)'"
-		_dconf_write_ext arcmenu/menu-button-icon "'Custom_Icon'"
 		_dconf_write_ext arcmenu/menu-button-override-border-radius true
 		_dconf_write_ext arcmenu/menu-color "'rgba(32,32,32,0.98)'"
 		_dconf_write_ext arcmenu/menu-corner-radius 0
