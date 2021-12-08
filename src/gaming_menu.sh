@@ -176,7 +176,7 @@ function install_protontricks () {
 			return 1
 		fi
 	else
-		LAST_ERROR="Python-PIP is not installed, cannot download package"
+		LAST_ERROR="Python-PIP is not installed (make sure ~/.local/bin is in PATH), cannot download package"
 		return 1
 	fi
 }

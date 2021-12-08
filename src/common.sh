@@ -70,6 +70,7 @@ function show_system_warnings () {
 	# Must be using X11
 	if ! $X11; then
 		warning_message+="You are not running a X11 session.\nPlease log out and select \"Ubuntu on Xorg\".\n\n"
+		echo "Not a X11 session"
 	fi
 	
 	# Must be using GNOME desktop
@@ -77,14 +78,30 @@ function show_system_warnings () {
 		# Must be using GNOME 40
 		if ! [ $GNOME_VER_INT = 40 ]; then
 			warning_message+="You are not using GNOME version 40.\nGNOME version $GNOME_VER is not guaranteed to work with this script.\n\n"
+			echo "Incorrect GNOME version"
 		fi
 	else
 		warning_message+="You are not using GNOME desktop.\nMost configuration options in this script require GNOME.\n\n"
+		echo "Not using GNOME"
+	fi
+	
+	# Warn about weird PATH
+	PATHS=($(echo $PATH | tr ':' "\n"))
+	local_exists=false
+	for dir in "${PATHS[@]}"; do
+		if [ $dir = "$HOME/.local/bina" ]; then
+			local_exists=true
+			break
+		fi
+	done
+	if ! $local_exists; then
+		warning_message+="$HOME/.local/bin is not in the PATH environment variable.\nSome applications might require it.\n\n"
+		echo -e "\033[1m$HOME/.local/bin\033[0m is not in path"
 	fi
 	
 	# Display any warnings
 	if ! [ -z "$warning_message" ]; then
-		warning_message+="The script might not work correctly.\nDo you still want to continue?"
+		warning_message+="The script might not work correctly due to these issues.\nDo you still want to continue?"
 		
 		echo -ne '\007' # Beep sound
 		
@@ -94,6 +111,7 @@ function show_system_warnings () {
 		then
 			echo "Issues might occur"
 		else
+			echo "User exit due to error"
 			quit
 		fi
 	fi
