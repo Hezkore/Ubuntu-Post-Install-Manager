@@ -3,7 +3,7 @@
 
 function show_configuration_menu () {
 	items=(
-		"Config_Git" "Configure Git username and email" "OFF"
+		"Config_Git" "Configure Git username and email" "ON"
 		"Config_Mimeapps" "Configure and reset file type associations" "ON"
 		"Config_Flameshot" "Configure and reset Flameshot to stay in the background" "ON"
 		"Config_IMWheel" "Configure IMWheel scroll wheel speed" "ON"
@@ -47,15 +47,16 @@ function show_configuration_menu () {
 
 function config_git () {
 	if bin_exists "git"; then
-	
-		git_username=$(whiptail --inputbox "Enter your Git username" 0 0 --title "Git Configuration" 3>&1 1>&2 2>&3)
+		echo "Configuring Git..."
+
+		git_username=$(whiptail --inputbox "Enter your Git username (press Enter to skip)" 0 0 "$USER" --title "Git Configuration" 3>&1 1>&2 2>&3)
 		exitstatus=$?
 		if [ $exitstatus = 0 ]; then
 			git config --global user.name "$git_username"
 			echo "Username: $git_username"
 		fi
 		
-		git_usermail=$(whiptail --inputbox "Enter your Git E-Mail" 0 0 --title "Git Configuration" 3>&1 1>&2 2>&3)
+		git_usermail=$(whiptail --inputbox "Enter your Git E-Mail (press Enter to skip)" 0 0 "$USER@gmail.com" --title "Git Configuration" 3>&1 1>&2 2>&3)
 		exitstatus=$?
 		if [ $exitstatus = 0 ]; then
 			git config --global user.email $git_usermail
