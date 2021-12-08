@@ -114,7 +114,9 @@ function show_main_menu () {
 }
 
 function notify_error () {
-	notify-send "Ubuntu Post-Install Manager - Error when running action!"
+	if bin_exists "notify-send"; then
+		notify-send "Ubuntu Post-Install Manager - Error when running action!"
+	fi
 	echo -ne '\007' # Beep sound
 	
 	sleep 0.5
@@ -136,7 +138,9 @@ function notify_error () {
 }
 
 function notify_complete () {
-	notify-send "Ubuntu Post-Install Manager - All actions complete"
+	if bin_exists "notify-send"; then
+		notify-send "Ubuntu Post-Install Manager - All actions complete"
+	fi
 	echo -ne '\007' # Beep sound
 	
 	sleep 0.5
