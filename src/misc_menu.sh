@@ -4,6 +4,7 @@
 function show_misc_menu () {
 	items=(
 		"Folder_Setup" "Create common folder directories" "ON"
+		"Disable_Error_Report" "Disable Ubuntu error reporting" "ON"
 		"Nautilus_New_Docs" "Add 'New Document' menu to Nautilus" "ON"
 		"Nautilus_Admin" "Add 'Open as Admin' option to Nautilus" "OFF"
 		"Nautilus_DOSBox" "Add 'Run with DOSbox' script to Nautilus" "ON"
@@ -29,6 +30,12 @@ function folder_setup () {
 	
 	# Make sure autostart directory exists!
 	create_dir ~/.config/autostart
+}
+
+function disable_error_report () {
+	sudo systemctl stop apport.service
+	sudo systemctl disable apport.service
+	sudo systemctl mask apport.service
 }
 
 function nautilus_new_docs () {
