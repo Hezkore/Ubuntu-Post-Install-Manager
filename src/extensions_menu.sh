@@ -12,7 +12,7 @@ function show_extensions_menu () {
 		"Install_Panel_Date_Format" "Install Panel Date Format" "ON"
 		"Install_Application_Volume_Mixer" "Install Application Volume Mixer" "ON"
 		"Install_Impatience" "Install Impatience" "ON"
-		"Install_No_Overview" "Install No Overview" "ON"
+		#"Install_No_Overview" "Install No Overview" "ON"
 		"Install_Game_Mode_Status_Icon" "Install Game Mode Status Icon" "ON"
 		"Install_Blur_My_Shell" "Install Blur My Shell" "ON"
 		"Install_GNOME_UI_Improvements" "Install Gnome 4x UI Improvements" "ON"

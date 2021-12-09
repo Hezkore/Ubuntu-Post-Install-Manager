@@ -495,7 +495,7 @@ function config_enabled_ext () {
 		gnome-extensions enable volume-mixer@evermiss.net
 		gnome-extensions enable impatience@gfxmonk.net
 		gnome-extensions enable drive-menu@gnome-shell-extensions.gcampax.github.com
-		gnome-extensions enable no-overview@fthx
+		#gnome-extensions enable no-overview@fthx
 		gnome-extensions enable blur-my-shell@aunetx
 		gnome-extensions enable gnome-ui-tune@itstime.tech
 		gnome-extensions enable gamemode@christian.kellner.me
@@ -677,7 +677,7 @@ function configure_dash_to_panel () {
 		_dconf_write_ext dash-to-panel/focus-highlight-dominant true
 		_dconf_write_ext dash-to-panel/focus-highlight-opacity 5
 		_dconf_write_ext dash-to-panel/group-apps true
-		_dconf_write_ext dash-to-panel/hide-overview-on-startup false
+		_dconf_write_ext dash-to-panel/hide-overview-on-startup true
 		_dconf_write_ext dash-to-panel/hotkeys-overlay-combo "'TEMPORARILY'"
 		_dconf_write_ext dash-to-panel/leftbox-padding 15
 		_dconf_write_ext dash-to-panel/leftbox-size 0
