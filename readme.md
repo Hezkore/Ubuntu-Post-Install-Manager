@@ -75,6 +75,16 @@ This is not the script, but rather how Steam normally works.\
 To fix this; disable **"Run Steam when my computer starts"** in Steam settings.\
 You can run the script and check **"Configure Steam to run at start"** in step **"7. Configuration"** to have Steam start minimized at start.
 
+## Linux information
+
+GNOME is a desktop *(the G in GNOME is **not** silent)*.\
+Some other popular desktops are KDE Plasma, XFCE and Cinnamon.\
+A desktop is typically just a pack of applications *(like a settings manager application, text editor etc.)*, a taskbar *(if the desktop even uses one)* and a set of shortcut keys.\
+Rendering is done using X11 or the newer Wayland.\
+Windows/GUI are usually handled by the GTK or QT GUI toolkits.\
+A Linux distro is *usually* just a pre-defined desktop, extra applications, a login screen, default settings and X11/Wayland already installed.\
+Linux itself is just a kernel.
+
 If you're new to the GNOME file browser *(aka. Nautilus)* you'll quickly notice that clicking the current directory path at the top does nothing, you instead need to press **CTRL + L** to edit it.\
 *(Good for copying or pasting paths)*
 
@@ -82,7 +92,7 @@ Directories and files in Linux are **case-sensitive**.\
 The directory separator in Linux is `/` and **not a backwards slash** like on Windows.\
 Put all your files in **"/home/[user]/"**.\
 The `~` symbol is an alias of **"/home/[user]"**.\
-The `.` symbol means "this directory", so running script in your current directory is done via `./<script>`.
+The `.` symbol means "this directory", so running script in your current directory is done via `./<script>`.\
 Avoid putting things in your **"root"** folders, such as **"/usr/local/"**.\
 Use **"~/.local/"** instead to prevent any system issues.\
 Files and folders starting with `.` are considered hidden.
