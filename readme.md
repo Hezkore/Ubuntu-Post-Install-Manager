@@ -21,7 +21,7 @@ That way the script has some space to work with.
 
 ### • 1024x768 resolution
 Ubuntu doesn't work too well on resolutions lower than 1024x768.\
-The ArcMenu GNOME extension also needs at least a height of 642 pixels, which is the menu doesn't displayed at 800x600.
+The ArcMenu GNOME extension also needs at least a height of 642 pixels, which is why the menu doesn't displayed at 800x600 or lower.
 
 ## How to install & run
 Download the script by clicking the green **"Code ▼"** button here on GitHub, then click **"[Download Zip](https://github.com/Hezkore/Ubuntu-Post-Install-Manager/archive/refs/heads/master.zip)"** and save the file.\
