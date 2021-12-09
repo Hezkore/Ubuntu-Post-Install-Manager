@@ -21,19 +21,20 @@ That way the script has some space to work with.
 
 ### • 1024x768 resolution
 Ubuntu doesn't work too well on resolutions lower than 1024x768.\
-The ArcMenu GNOME extension also needs at least a height of 642 pixels, which is why no menu is displayed on 800x600.
+The ArcMenu GNOME extension also needs at least a height of 642 pixels, which is the menu doesn't displayed at 800x600.
 
 ## How to install & run
 Download the script by clicking the green **"Code ▼"** button here on GitHub, then click **"[Download Zip](https://github.com/Hezkore/Ubuntu-Post-Install-Manager/archive/refs/heads/master.zip)"** and save the file.\
 The file - named **"Ubuntu-Post-Install-Manager-master.zip"** - will most likely save to **"/home/[user]/Downloads/"**.\
 Unpack the script by right clicking **"Ubuntu-Post-Install-Manager-master.zip"** and selecting **"Extract Here"**, which creates the folder **"Ubuntu-Post-Install-Manager-master"**.\
-Double click the **"Ubuntu-Post-Install-Manager-master"** folder to enter it, then right click the file **"ubuntu_pim.sh"** and select the option **"Run as a Program"**.
+Double click the **"Ubuntu-Post-Install-Manager-master"** folder to enter it, then right click the file **"ubuntu_pim.sh"** and select the option **"Run as a Program"**.\
+Follow the steps in order.
 
 ## Navigation & usage
 Press the Up and Down arrow keys to move your selection up and down.\
 Press TAB to move your selection between the lower two menu buttons.\
-Press Enter to confirm your selection.\
-Press Space to toggle a option on or off in the customize menu.
+Press Space to toggle a option on or off in the customize menu.\
+Press Enter to confirm your selection.
 
 ## Notes
 You can run the script right after you've installed Ubuntu, or after you've updated Ubuntu and your drivers.\
@@ -55,7 +56,7 @@ FireFox, Microsoft Edge and Google Chrome are all installed by default.\
 You can uncheck the ones you don't want to install during step **"3. Software"**.\
 If you find yourself without a browser; type `sudo apt install firefox` into a terminal to install FireFox.
 
-If the machine is not made for gaming, messaging or email, then I recommend you *NOT* check these options:
+If you don't like things starting automatically; I recommend you *NOT* check these options:
 * Step **"7. Configuration"**
 	* Uncheck "Configure Geary to check for incoming email"
 	* Uncheck "Configure Telegram to run at start"
@@ -64,7 +65,7 @@ If the machine is not made for gaming, messaging or email, then I recommend you 
 
 *(You can also disable these later by running the application **"Startup Applications"**)*
 
-If the machine is made for gaming, then I recommend reading the [Gaming](#gaming) section for some useful tips and guides.
+If the machine is made for gaming, I recommend reading the [Gaming](#gaming) section for some useful tips and guides.
 
 If Steam, Discord, Telegram or Geary is set to run at start; a login screen will automatically appear for each application when you log in.\
 They will stop appearing once you've signed in to the application.
@@ -77,27 +78,41 @@ You can run the script and check **"Configure Steam to run at start"** in step *
 If you're new to the GNOME file browser *(aka. Nautilus)* you'll quickly notice that clicking the current directory path at the top does nothing, you instead need to press **CTRL + L** to edit it.\
 *(Good for copying or pasting paths)*
 
+Put all your files in **"/home/[user]/"**.\
+The `~` symbol is an alias of **"/home/[user]"**.\
+Avoid putting things in your **"root"** folders, such as **"/usr/local/"**.\
+Use **"~/.local/"** instead to prevent any system issues.
+
 The **"*Windows* key"**  is usually called the **"*Super* key"** in Linux.
 
 Hold **Super** then click and hold your **left mouse button** to drag a window around without having to grab the window's title bar.\
 Hold **Super** then click and hold the **right mouse button** to to resize a window without having to grab the window's edge.\
 *(Learn to use this!)*
 
-* Other keyboard Shortcuts
-	* Flameshot capture screenshot area
-		* **Shift + F1**
-	* Open Nautilus *(files)*
-		* **Super + E**
-	* Open Terminal
-		* **Super + T**
-		* **Ctr + Alt + T**
-	* Open System Monitor
-		* **Ctrl + Alt + Delete**
-		* **Ctrl + Shift + Escape**
+If **"Configure GNOME keyboard shortcuts"** is checked in step **"7. Configuration"**, the following shortcuts are available:
+* Flameshot capture screenshot area
+	* **Shift + F1**
+		* While capturing area >
+			* **Ctrl + S** to save to ~/Pictures
+			* **Ctrl + C** to copy to clipboard
+* Open Nautilus *(files)*
+	* **Super + E**
+* Open Terminal
+	* **Ctr + Alt + T**
+	* **Super + T**
+* Open System Monitor
+	* **Ctrl + Alt + Delete**
+	* **Ctrl + Shift + Escape**
+* Play Quake 3 *(if **"Install  [io]Quake 3..."** is checked in step **"4. Gaming"**)*
+	* **Super + Q**
 
 ## Gaming
-Wine and Proton let's you run Windows software and games on Linux.\
-Wine is commonly used applications, while Proton *(based on Wine)* is mainly used for games.\
+Step **"4. Gaming"** is an optional step and safe to skip.
+
+Wine *(from step **"3. Software"**)* and Proton *(part of Steam from step **"4. Gaming"**)* let's you run Windows software and games on Linux.\
+Wine is commonly used applications, while Proton *(based on Wine)* is mainly used for games.
+
+Visit [ProtonDB.com](https://www.protondb.com/) to find out if your favorite games runs on Linux.\
 You can read more about Proton [here](https://www.gamingonlinux.com/2019/07/a-simple-guide-to-steam-play-valves-technology-for-playing-windows-games-on-linux/).
 
 To enable Proton in Steam; start Steam and click:
@@ -106,7 +121,7 @@ To enable Proton in Steam; start Steam and click:
 		* Steam Play >
 			* "Enable Steam Play for supported titles"
 			* "Enable Steam Play for all other titles"
-		* Shader Pre-Caching
+		* Shader Pre-Caching >
 			* "Enable Shader Pre-Caching"
 			* "Allow background processing of Vulkan shaders"
 		* *(recommended)*
@@ -118,14 +133,14 @@ To enable Proton in Steam; start Steam and click:
 				* "Low Bandwidth Mode"
 				* "Low Performance Mode"
 
-Visit [ProtonDB.com](https://www.protondb.com/) to find out if your favorite games runs on Linux.
-
-Adding a non-Steam game to Steam lets you use Proton with local games, you can also use Lutris for gaming.
+Adding a non-Steam game to Steam lets you use Proton with local games.\
+You can also use Lutris *(from step **"4. Gaming"**)* to play locally installed games.
 
 You can enable Game Mode in Steam by right clicking any game > Properties ... > Launch Options > Write `gamemoderun %command%`.\
 I have not noticed any performance increase using Game Mode.
 
-Use GOverlay to enable a in-game FPS counter, effects and many other things.\
+Use GOverlay *(from step **"4. Gaming"**)* to enable a in-game FPS counter, effects and many other things.\
 Start the application **"GOverlay"** and check **"Global Enable"** in the MangoHud tab, and make sure the **"Hide"** checkbox is checked in the **"Visual"** section.\
 Don't forget to click **"Save"** at the bottom of the window and restart/log out!\
-Press **Right Shift + F12** in-game to toggle MangoHud.
+You won't ever have to start GOverlay again.\
+Press **Right Shift + F12** in Vulkan based games to toggle MangoHud *(from step **"4. Gaming"**)* on and off.
