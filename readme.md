@@ -82,7 +82,7 @@ Some other popular desktops are KDE Plasma, XFCE and Cinnamon.\
 A desktop is typically just a pack of applications *(like a settings manager application, text editor etc.)*, a taskbar *(if the desktop even uses one)* and a set of shortcut keys.\
 Rendering is done using X11 or the newer Wayland.\
 Windows/GUI are usually handled by the GTK or QT GUI toolkits.\
-A Linux distro is *usually* just a specific package manager *(Apt in Debian/Ubuntu)*, a pre-defined desktop, extra applications, X11/Wayland already installed and configured,a login screen and a philosophy.\
+A Linux distro is *usually* just a specific package manager *(Apt in Debian/Ubuntu)*, a pre-defined desktop, extra applications, X11/Wayland already installed and configured, a login screen and a philosophy.\
 Any Linux distro can do/become the same as any other Linux distro with enough work.\
 Linux itself is just a kernel.
 
