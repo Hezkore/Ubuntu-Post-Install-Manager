@@ -31,6 +31,8 @@ function folder_setup () {
 	# Make sure some standard local dirs exist
 	create_dir ~/.config/autostart
 	create_dir ~/.local/bin
+	create_dir ~/.local/share/icons
+	create_dir ~/.local/share/fonts
 }
 
 function disable_error_report () {
