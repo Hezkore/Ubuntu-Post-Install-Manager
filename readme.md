@@ -107,6 +107,24 @@ If **"Configure GNOME keyboard shortcuts"** is checked in step **"7. Configurati
 * Play Quake 3 *(if **"Install  [io]Quake 3..."** is checked in step **"4. Gaming"**)*
 	* **Super + Q**
 
+There's no need to navigate the "start menu" when looking for applications.\
+Press the **Super** key and start typing the applications name, then press **Enter**.\
+If the application is not installed, GNOME will search for the application in Store and display any matching results.
+
+Use the application **"GNOME-Software"** *(from step **"3. Software"**)* *(titled **"Software"**, usually referred to as GNOME store)* to install any extra software you might need.\
+You can also uninstall software via the GNOME Store.\
+Right click an application and select **"Show Details"** to quickly jump to the application's store page.\
+*(Not every application has a store page)*
+
+Updating software via the GNOME Store might result in a suggested reboot.\
+GNOME does this to keep the user safe, but you can avoid the reboot by calling the following commands in the terminal `sudo apt update` *(looks for updates)* and `sudo apt upgrade` *(applies the update)*.\
+You can also use **"Update APT software"** from step **"5. Updates"** to let the script call these commands for you.
+
+If you manually remove applications, then watch out for the `--purge` flag.\
+`--purge` will remove anything that depends on that application as well.\
+`sudo apt remove python3` - **Safe**\
+`sudo apt remove --purge python3` - **Not safe**
+
 ## Gaming
 Step **"4. Gaming"** is an optional step and safe to skip.
 
