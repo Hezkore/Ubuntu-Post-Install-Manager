@@ -84,6 +84,12 @@ Avoid putting things in your **"root"** folders, such as **"/usr/local/"**.\
 Use **"~/.local/"** instead to prevent any system issues.\
 Files and folders starting with `.` are considered hidden.
 
+There's no such thing as executable filetypes in Linux.\
+Instead they need the ***execute** file permission*.\
+You can make any file executable by right clicking it and selecting properties, navigate to **"Permissions"** and check the **"Execute"** checkbox.\
+Remember that even scripts files like **".sh"** require this permission!
+
+
 The **"*Windows* key"**  is usually called the **"*Super* key"** in Linux.
 
 Hold **Super** then click and hold your **left mouse button** to drag a window around without having to grab the window's title bar.\
@@ -135,6 +141,9 @@ You can use **CTRL + ALT + F1 - F6** to switch between them.\
 Learning to use the **Terminal** is not required in Linux anymore.\
 But using it helps a lot, is a faster than navigating menus and enables you to do so much more *(it's also really fun!)*.\
 Some basic Terminal information:
+* *TAB*
+	* Auto complete any command, file or directory
+	* Remember to use TAB a lot to save on key presses!
 * *Ctrl + C*
 	* Cancel application/command
 * *Ctrl + Shift + C / V*
@@ -143,14 +152,21 @@ Some basic Terminal information:
 	* Scroll upp / down
 * `sudo <command>`
 	* Stands for "super user do" and enables admin privileges to the command[s] following it *(so be careful running sudo commands you find online!)*
-* `man <command>` *(example: `man sudo`)*
+	* Example: `sudo nano <file>`
+* `nano <file>`
+	* Nano is a simple terminal based text editor
+	* Press *Ctrl + X* to exit out of Nano
+* `man <command>`
 	* Show the manual for that command *(press Q to quit)*
+	* Example: `man sudo`
 	* You can usually do `<command> --help` to display a simpler manual
 * `ls`
 	* Lists directory content, like 'dir' in DOS
 	* Use `ls -a` to display "all" the content, like hidden files and folders
 * `cd <path>`
 	* Change directory to an absolute or relative path
+	* `cd ..` moves one directory back
+	* `cd ~` moves to your home folder
 * `mkdir <name>`
 	* Make directory with a specific name
 * `touch <file>`
@@ -159,6 +175,18 @@ Some basic Terminal information:
 * `rm <file>`
 	* Removes a file, but not a folder
 	* Use `rm -r <folder>` to recursively remove a folder
+* `<command1> | <command2>`
+	* Redirect *(pipe)* output of one command to the input of another command
+	* Example: `ls ~ | grep -i doc`
+		* This lists files in your home directory but pipes the data into the application "grep" with the "-i" flag for case-insensitive matches against the word "pic", which should display the folder "Documents"
+	* Example: `ls ~ -R | more`
+		* This lists every file and folder recursively in your home directory, but pipes the data into "more", which displays a "--More--" message when the text is about to scroll outside the terminals view and lets you press *Page Down* to scroll to the next page
+* `whereis <command>`
+	* Displays where the command binary is located on your hard drive
+* `apt <options> <application>`
+	* Apt is the package manager in Debian/Ubuntu and must be called via `sudo`
+	* Example: `sudo apt install firefox`
+	* Example: `sudo apt remove firefox`
 
 ## Gaming
 Step **"4. Gaming"** is an optional step and safe to skip.
