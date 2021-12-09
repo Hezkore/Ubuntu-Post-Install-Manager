@@ -541,6 +541,7 @@ function install_imwheel () {
 	if bin_exists "wget"; then
 		if bin_exists "git"; then
 			if bin_exists "make"; then
+				
 				git clone https://github.com/ajh3/imwheel-exclude-patched.git "$HOME/imwheel"
 				cd "$HOME/imwheel"
 				./configure
@@ -553,8 +554,8 @@ function install_imwheel () {
 				if bin_exists "imwheel"; then
 					echo "IMWheel installed successfully"
 				else
-					echo "IMWheel did not install successfully!"
-					return 0
+					LAST_ERROR="IMWheel did not install correctly"
+					return 1
 				fi
 				
 				return 0
