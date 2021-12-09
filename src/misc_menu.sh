@@ -28,8 +28,9 @@ function folder_setup () {
 	create_dir ~/Projects/Images
 	create_dir ~/Projects/Audio
 	
-	# Make sure autostart directory exists!
+	# Make sure some standard local dirs exist
 	create_dir ~/.config/autostart
+	create_dir ~/.local/bin
 }
 
 function disable_error_report () {
