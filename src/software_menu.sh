@@ -37,7 +37,7 @@ function show_software_menu () {
 		"Install_Python3" "Install Python and Pip" "ON"
 		"Install_NodeJS" "Install NodeJS via custom PPA" "ON"
 		"Install_Vim" "Install Vim CLI text editor" "ON"
-		"Install_Emacs" "Install Emacs CLI text editor" "ON"
+		"Install_Emacs" "Install Emacs CLI text editor" "OFF"
 		"Install_Foliate" "Install Foliate EBook reader via custom PPA" "ON"
 		"Install_Kdenlive" "Install Kdenlive video editor via custom PPA" "ON"
 		"Install_Handbrake" "Install Handbrake video trimmer" "ON"
