@@ -87,7 +87,8 @@ The **"*Windows* key"**  is usually called the **"*Super* key"** in Linux.
 
 Hold **Super** then click and hold your **left mouse button** to drag a window around without having to grab the window's title bar.\
 Hold **Super** then click and hold the **right mouse button** to to resize a window without having to grab the window's edge.\
-*(Learn to use this!)*
+Note that **"Configure GNOME to resize with right mouse button"** in step **"7. Configuration"** needs to be checked for this to work, otherwise use the **middle mouse button** to resize the window.\
+*(Learn to use these shortcuts!)*
 
 If **"Configure GNOME keyboard shortcuts"** is checked in step **"7. Configuration"**, the following shortcuts are available:
 * Flameshot capture screenshot area
