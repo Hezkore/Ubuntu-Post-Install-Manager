@@ -81,7 +81,8 @@ If you're new to the GNOME file browser *(aka. Nautilus)* you'll quickly notice 
 Put all your files in **"/home/[user]/"**.\
 The `~` symbol is an alias of **"/home/[user]"**.\
 Avoid putting things in your **"root"** folders, such as **"/usr/local/"**.\
-Use **"~/.local/"** instead to prevent any system issues.
+Use **"~/.local/"** instead to prevent any system issues.\
+Files and folders starting with `.` are considered hidden.
 
 The **"*Windows* key"**  is usually called the **"*Super* key"** in Linux.
 
@@ -124,6 +125,40 @@ If you manually remove applications, then watch out for the `--purge` flag.\
 `--purge` will remove anything that depends on that application as well.\
 `sudo apt remove python3` - **Safe**\
 `sudo apt remove --purge python3` - **Not safe**
+
+Linux is a multi-user OS and lets you start several sessions at the same time.\
+You can use **CTRL + ALT + F1 - F6** to switch between them.\
+**CTRL + ALT + F2** should be your standard graphical session, while **CTRL + ALT + F1** is your alternative session.\
+*(Seems to be the other way around sometimes)*\
+**CTRL + ALT + F3 - F6** are not graphical by default and instead starts in terminal mode.
+
+Learning to use the **Terminal** is not required in Linux anymore.\
+But using it helps a lot, is a faster than navigating menus and enables you to do so much more *(it's also really fun!)*.\
+Some basic Terminal information:
+* *Ctrl + C*
+	* Cancel application/command
+* *Ctrl + Shift + C / V*
+	* Copy / Paste
+* *Ctrl + Shift + Up / Down*
+	* Scroll upp / down
+* `sudo <command>`
+	* Stands for "super user do" and enables admin privileges to the command[s] following it *(so be careful running sudo commands you find online!)*
+* `man <command>` *(example: `man sudo`)*
+	* Show the manual for that command *(press Q to quit)*
+	* You can usually do `<command> --help` to display a simpler manual
+* `ls`
+	* Lists directory content, like 'dir' in DOS
+	* Use `ls -a` to display "all" the content, like hidden files and folders
+* `cd <path>`
+	* Change directory to an absolute or relative path
+* `mkdir <name>`
+	* Make directory with a specific name
+* `touch <file>`
+	* If the file does not exist, the file is created *(basically create file)*
+	* If the file exists, the file timestamp is updated
+* `rm <file>`
+	* Removes a file, but not a folder
+	* Use `rm -r <folder>` to recursively remove a folder
 
 ## Gaming
 Step **"4. Gaming"** is an optional step and safe to skip.
