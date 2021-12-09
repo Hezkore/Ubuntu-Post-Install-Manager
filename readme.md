@@ -37,7 +37,7 @@ Press Space to toggle a option on or off in the customize menu.\
 Press Enter to confirm your selection.
 
 ## Notes
-You can run the script right after you've installed Ubuntu, or after you've updated Ubuntu and your drivers.\
+You can run this script right after you've installed Ubuntu, or after you've updated Ubuntu and your drivers.\
 Most efficient might be right after install, as the script will update Ubuntu and your drivers on its own.
 
 I recommend doing all the steps in order, unless you know what you're doing.\
