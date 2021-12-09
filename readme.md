@@ -79,7 +79,7 @@ If you're new to the GNOME file browser *(aka. Nautilus)* you'll quickly notice 
 *(Good for copying or pasting paths)*
 
 Directories and files in Linux are **case-sensitive**.\
-The directory separator in Linux is `/` and **not** a backwards slash like on Windows.\
+The directory separator in Linux is `/` and **not a backwards slash** like on Windows.\
 Put all your files in **"/home/[user]/"**.\
 The `~` symbol is an alias of **"/home/[user]"**.\
 The `.` symbol means "this directory", so running script in your current directory is done via `./<script>`.
