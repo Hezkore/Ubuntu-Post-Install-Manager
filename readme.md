@@ -75,14 +75,15 @@ This is not the script, but rather how Steam normally works.\
 To fix this; disable **"Run Steam when my computer starts"** in Steam settings.\
 You can run the script and check **"Configure Steam to run at start"** in step **"7. Configuration"** to have Steam start minimized at start.
 
-## Linux information
+## New Linux user information
 
 GNOME is a desktop *(the G in GNOME is **not** silent)*.\
 Some other popular desktops are KDE Plasma, XFCE and Cinnamon.\
 A desktop is typically just a pack of applications *(like a settings manager application, text editor etc.)*, a taskbar *(if the desktop even uses one)* and a set of shortcut keys.\
 Rendering is done using X11 or the newer Wayland.\
 Windows/GUI are usually handled by the GTK or QT GUI toolkits.\
-A Linux distro is *usually* just a pre-defined desktop, extra applications, a login screen, default settings and X11/Wayland already installed.\
+A Linux distro is *usually* just a specific package manager *(Apt in Debian/Ubuntu)*, a pre-defined desktop, extra applications, X11/Wayland already installed and configured,a login screen and a philosophy.\
+Any Linux distro can do/become the same as any other Linux distro with enough work.\
 Linux itself is just a kernel.
 
 If you're new to the GNOME file browser *(aka. Nautilus)* you'll quickly notice that clicking the current directory path at the top does nothing, you instead need to press **CTRL + L** to edit it.\
