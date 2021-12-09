@@ -83,7 +83,7 @@ A desktop is typically just a pack of applications *(like a settings manager app
 Rendering is done using X11 or the newer Wayland.\
 Windows/GUI are usually handled by the GTK or QT GUI toolkits.\
 A Linux distro is *usually* just a specific package manager *(Apt in Debian/Ubuntu)*, a pre-defined desktop, extra applications, X11/Wayland already installed and configured, a login screen and a philosophy.\
-Any Linux distro can do/become the same as any other Linux distro with enough work.\
+With enough work, a Linux distro can do/become the same as any other Linux distro.\
 Linux itself is just a kernel.
 
 If you're new to the GNOME file browser *(aka. Nautilus)* you'll quickly notice that clicking the current directory path at the top does nothing, you instead need to press **CTRL + L** to edit it.\
