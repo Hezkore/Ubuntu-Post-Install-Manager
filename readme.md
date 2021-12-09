@@ -93,9 +93,11 @@ The directory separator in Linux is `/` and **not a backwards slash** like on Wi
 Put all your files in **"/home/[user]/"**.\
 The `~` symbol is an alias of **"/home/[user]"**.\
 The `.` symbol means "this directory", so running script in your current directory is done via `./<script>`.\
+Files and folders starting with `.` are considered hidden.\
+Press **Ctrl + H*** to toggle display of hidden files.\
 Avoid putting things in your **"root"** folders, such as **"/usr/local/"**.\
 Use **"~/.local/"** instead to prevent any system issues.\
-Files and folders starting with `.` are considered hidden.
+For example, install fonts to **"~/.local/fonts/"** instead of **"/usr/local/fonts/"** *(unless you want them system-wide)*.
 
 There's no such thing as executable filetypes in Linux.\
 Instead they need the ***execute** file permission*.\
@@ -193,6 +195,11 @@ Some basic Terminal information:
 * `rm <file>`
 	* Removes a file, but not a folder
 	* Use `rm -r <folder>` to recursively remove a folder
+* `mv <path1> <path2>`
+	* Move a file or folder from path 1 to path 2
+	* Use this command to rename files and folders
+* `cp <path1> <path2>`
+	* Copy path 1 file or folder to path 2
 * `<command1> | <command2>`
 	* Redirect *(pipe)* output of one command to the input of another command
 	* Example: `ls ~ | grep -i doc`
