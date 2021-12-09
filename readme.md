@@ -32,7 +32,7 @@ Follow the steps in order.
 
 ## Navigation & usage
 Press the Up and Down arrow keys to move your selection up and down.\
-Press TAB to move your selection between the lower two menu buttons.\
+Press TAB to move your selection between the two lower menu buttons.\
 Press Space to toggle a option on or off in the customize menu.\
 Press Enter to confirm your selection.
 
