@@ -10,7 +10,7 @@ function show_gaming_menu () {
 		"Install_DOSBox" "Install DOSBox x86 emulator with DOS" "ON"
 		"Install_Game_Data_Packager" "Install Game Data Packager" "ON"
 		"Install_GameMode" "Install Game Mode" "ON"
-		"Patch_NvFBC" "Patch NVidia GPU drivers to remove NVENC and NvFBC limitations" "OFF"
+		"Patch_NvFBC" "Remove NVENC and NvFBC limitations in NVidia GPU drivers" "OFF"
 		"Install_Mangohud" "Install Mangohud via custom PPA" "ON"
 		"Install_vkBasalt" "Install vkBasalt via custom PPA" "OFF"
 		"Install_GOverlay" "Install GOverlay via custom PPA" "ON"
@@ -145,6 +145,10 @@ function patch_nvfbc () {
 		sudo ./patch-fbc.sh
 		cd ..
 		sudo rm -rf ~/nvidia-patch
+		
+		# User MOST restart to apply patch!
+		NEEDS_RESTART=true
+		
 		return 0
 	else
 		LAST_ERROR="Git is not installed, cannot clone Git repo key"
