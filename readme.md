@@ -129,10 +129,11 @@ If you manually remove applications, then watch out for the `--purge` flag.\
 Step **"4. Gaming"** is an optional step and safe to skip.
 
 Wine *(from step **"3. Software"**)* and Proton *(part of Steam from step **"4. Gaming"**)* let's you run Windows software and games on Linux.\
-Wine is commonly used applications, while Proton *(based on Wine)* is mainly used for games.
+Wine is commonly used applications, while Proton *(based on Wine)* is mainly used for games.\
+They are not emulators *(Wine is an acronym for "Wine Is Not an Emulator")* but instead use Windows runtimes rewritten for Linux.
 
-Visit [ProtonDB.com](https://www.protondb.com/) to find out if your favorite games runs on Linux.\
-You can read more about Proton [here](https://www.gamingonlinux.com/2019/07/a-simple-guide-to-steam-play-valves-technology-for-playing-windows-games-on-linux/).
+Visit [ProtonDB.com](https://www.protondb.com/) to find out if your favorite Steam games runs on Linux.\
+Optionally, you can read more about Proton [here](https://www.gamingonlinux.com/2019/07/a-simple-guide-to-steam-play-valves-technology-for-playing-windows-games-on-linux/).
 
 To enable Proton in Steam; start Steam and click:
 * Steam >
