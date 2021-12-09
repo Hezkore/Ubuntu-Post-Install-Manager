@@ -129,7 +129,12 @@ If **"Configure GNOME keyboard shortcuts"** is checked in step **"7. Configurati
 
 There's no need to navigate the "start menu" when looking for applications.\
 Press the **Super** key and start typing the applications name, then press **Enter**.\
-If the application is not installed, GNOME will search for the application in Store and display any matching results.
+If the application is not installed, GNOME will search for the application in Store and display any matching results.\
+Press **Super** twice to display all applications.
+
+After pressing **Super**, you can drag any window into a new desktop at the top of the screen.\
+You can use the mouse scroll wheel on the taskbar to quickly switch  desktop.\
+**Super + Alt + Lef/Right** also switches desktop.
 
 Use the application **"GNOME-Software"** *(from step **"3. Software"**)* *(titled **"Software"**, usually referred to as GNOME store)* to install any extra software you might need.\
 You can also uninstall software via the GNOME Store.\
