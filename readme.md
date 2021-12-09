@@ -84,6 +84,8 @@ Rendering is done using X11 or the newer Wayland.\
 Windows/GUI are usually handled by the GTK or QT GUI toolkits.\
 A Linux distro is *usually* just a specific package manager *(Apt in Debian/Ubuntu)*, a pre-defined desktop, extra applications, X11/Wayland already installed and configured, a login screen and a philosophy.\
 With enough work, a Linux distro can do/become the same as any other Linux distro.\
+And just because you're using the GNOME desktop does not mean you can't install any XFCE or Cinnamon desktop applications.\
+For example, if you don't like the GNOME file browser Nautilus you can install the Cinnamon file browser Nemo.\
 Linux itself is just a kernel.
 
 If you're new to the GNOME file browser *(aka. Nautilus)* you'll quickly notice that clicking the current directory path at the top does nothing, you instead need to press **CTRL + L** to edit it.\
