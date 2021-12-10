@@ -456,6 +456,7 @@ m_yaw=0.25
 m_pitch=0.25
 vid_renderer=1
 screenshot_dir=$HOME/Pictures
+cl_capfps=false
 
 [Doom.Player]
 name=${USER^}
