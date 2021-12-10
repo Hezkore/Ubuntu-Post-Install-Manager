@@ -18,6 +18,8 @@ function show_gaming_menu () {
 		"Install_Quake_3" "Install [io]Quake 3 via Game Data Packager" "ON"
 		"Install_Quake_3_Hi-Res_Textures" "Install Hi-Res Textures for Quake 3" "ON"
 		"Install_Quake_3_CFG" "Install custom high quality Quake 3 config" "ON"
+		"Install_Doom_Port_Zandronum" "Install the Zandronum Doom port via custom PPA" "ON"
+		"Install_Doom_And_Freedoom" "Install Shareware Doom and Freedoom" "ON"
 	)
 	generate_selection_menu "Gaming Options" "${items[@]}"
 }
@@ -427,4 +429,122 @@ seta r_vertexlight \"0\""
 	sudo echo -e "$cfg" > "$HOME/.q3a/baseq3/q3config.cfg"
 	
 	return 0
+}
+
+function install_doom_port_zandronum () {
+	wget -O - http://debian.drdteam.org/drdteam.gpg | sudo apt-key add -
+	sudo add-apt-repository 'deb http://debian.drdteam.org/ stable multiverse' -y
+	sudo apt-get update
+	sudo apt-get install zandronum doomseeker-zandronum -y
+	
+	# Make sure the config folder exists
+	sudo mkdir -p "$HOME/.config/zandronum"
+	
+	cfg="[IWADSearch.Directories]
+Path=/usr/share/games/doom
+
+[GlobalSettings]
+snd_mididevice=-2
+snd_musicvolume=0.85
+snd_resampler=NoInterp
+m_show_backbutton=-1
+m_use_mouse=0
+vid_vsync=true
+vid_defheight=900
+vid_defwidth=1600
+m_yaw=0.25
+m_pitch=0.25
+vid_renderer=1
+screenshot_dir=$HOME/Pictures
+
+[Doom.Player]
+name=${USER^}
+
+[Doom.ConsoleVariables]
+snd_menuvolume=1
+crosshairgrow=true
+crosshairhealth=false
+crosshaircolor=ff ff ff
+crosshair=7
+hud_althud=true
+cl_rockettrails=2
+vid_cursor=-
+lookspring=false
+
+[Doom.Bindings]
+1=slot 1
+2=slot 2
+3=slot 3
+4=slot 4
+5=slot 5
+6=slot 6
+7=slot 7
+8=slot 8
+9=slot 9
+0=slot 0
+-=sizedown
+Equals=sizeup
+tab=+showscores
+w=+forward
+t=messagemode
+enter=messagemode
+y=messagemode2
+u=spectate
+ctrl=+crouch
+a=+moveleft
+s=+back
+d=+moveright
+shift=+speed
+m=togglemap
+space=+jump
+capslock=toggle cl_run
+f1=vote_yes
+f2=vote_no
+f3=menu_load
+f4=menu_options
+f5=menu_display
+f6=quicksave
+f7=menu_endgame
+f8=togglemessages
+f9=quickload
+f10=menu_quit
+f11=spynext
+f12=toggleconsole
+sysrq=screenshot
+pause=pause
+mouse1=+attack
+mouse2=+zoom
+mouse3=+altattack
+pad_start=pause
+pad_back=menu_main
+q=weapprev
+e=weapnext
+r=+reload
+o=chase
+p=quit
+f=+use
+g=invuse
+h=invprev
+j=invnext
+k=invquery
+z=+showmedals
+x=taunt
+c=crouch
+b=invdrop
+n=weapdrop"
+	
+	echo -e "$cfg" > "$HOME/.config/zandronum/zandronum.ini"
+}
+
+function install_doom_and_freedoom () {
+	sudo apt install --no-install-recommends --no-install-suggests doom-wad-shareware -y
+	sudo apt install --no-install-recommends --no-install-suggests freedoom -y
+	sudo apt install --no-install-recommends --no-install-suggests freedm -y
+	
+	# Let's be real sneaky and remove the PrBoom and freedoom shortcuts
+	# This way the user will use Zandronum, which they should be using anyways
+	sudo rm -f "/usr/share/applications/prboom-plus.desktop"
+	sudo rm -f "/usr/share/applications/io.github.freedoom.FreeDM.desktop"
+	sudo rm -f "/usr/share/applications/io.github.freedoom.Phase1.desktop"
+	sudo rm -f "/usr/share/applications/io.github.freedoom.Phase2.desktop"
 }
