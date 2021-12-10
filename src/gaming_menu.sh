@@ -470,6 +470,7 @@ hud_althud=true
 cl_rockettrails=2
 vid_cursor=-
 lookspring=false
+con_scaletext=true
 
 [Doom.Bindings]
 1=slot 1
