@@ -449,7 +449,6 @@ snd_musicvolume=0.85
 snd_resampler=NoInterp
 m_show_backbutton=-1
 m_use_mouse=0
-vid_vsync=true
 vid_defheight=900
 vid_defwidth=1600
 m_yaw=0.25
