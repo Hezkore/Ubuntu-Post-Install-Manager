@@ -145,7 +145,7 @@ function show_main_menu () {
         quit
 	else
 		# Reset
-		SHOW_RECOMMEND_OPTION=true
+		USE_RECOMMEND_OPTION=true
 		$category
     fi
 }
@@ -221,7 +221,7 @@ function generate_selection_menu () {
 	
 	# Ask if the user wants the recommended options
 	rec_options=true
-	if $SHOW_RECOMMEND_OPTION; then
+	if $USE_RECOMMEND_OPTION; then
 		if [[ "${items_raw[@]}" =~ "ON" ]]; then
 			if (whiptail --title "Recommended Options" --yes-button "Recommended" --no-button "Empty" --yesno "What options do you want to start with?" 0 0); then
 				rec_options=true

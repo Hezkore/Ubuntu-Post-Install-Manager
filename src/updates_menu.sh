@@ -7,7 +7,7 @@ function show_updates_menu () {
 		"Clean_APT" "Auto remove redundant APT data and clean" "ON"
 		"Update_Flatpak_Software" "Update all Flatpak software" "ON"
 	)
-	SHOW_RECOMMEND_OPTION=false
+	USE_RECOMMEND_OPTION=false
 	generate_selection_menu "Update Options" "${items[@]}"
 }
 
