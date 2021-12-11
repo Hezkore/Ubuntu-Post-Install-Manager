@@ -40,6 +40,7 @@ function show_software_menu () {
 		"Install_Emacs" "Install Emacs CLI text editor" "OFF"
 		"Install_Foliate" "Install Foliate EBook reader via custom PPA" "ON"
 		"Install_Kdenlive" "Install Kdenlive video editor via custom PPA" "ON"
+		"Install_Video_Trimmer" "Install Video Trimmer" via Flatpak "ON"
 		"Install_Handbrake" "Install Handbrake video trimmer" "ON"
 		"Install_Krita" "Install Krita image editor via custom PPA" "ON"
 		"Install_Inscape" "Install Inscape via custom PPA" "ON"
@@ -309,6 +310,16 @@ function install_kdenlive () {
 		sudo apt install kdenlive -y
 		return 0
 	else
+		return 1
+	fi
+}
+
+function install_video_trimmer () {
+	if bin_exists "flatpak"; then
+		flatpak install org.gnome.gitlab.YaLTeR.VideoTrimmer -y
+		return 0
+	else
+		LAST_ERROR="Flatpak is not installed, cannot update Flatpak software"
 		return 1
 	fi
 }
