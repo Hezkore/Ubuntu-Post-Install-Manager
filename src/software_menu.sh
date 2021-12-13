@@ -63,6 +63,7 @@ function show_software_menu () {
 		"Install_GNOME_Boxes" "Install GNOME Boxes" "OFF"
 		"Install_VirtualBox" "Install VirtualBox" "ON"
 		"Install_IMWheel" "Install custom IMWheel version" "ON"
+		"Install_System_Monitoring_Center" "Install System Monitoring Center" "ON"
 		"Install_PINCE" "Install PINCE memory inspector" "OFF"
 		"Remove_Thunderbird" "Remove Thunderbird" "ON"
 		"Install_Geary" "Install Geary email client" "ON"
@@ -580,6 +581,25 @@ function install_imwheel () {
 		fi
 	else
 		LAST_ERROR="WGet is not installed, cannot download package"
+		return 1
+	fi
+}
+
+function install_system_monitoring_center () {
+	if bin_exists "wget"; then
+		if bin_exists "gdebi"; then
+			wget -O ~/system-monitoring-center.deb https://sourceforge.net/projects/system-monitoring-center/files/latest/download
+			sudo gdebi ~/system-monitoring-center.deb -n
+			sudo rm -rf ~/system-monitoring-center.deb
+			
+			return 0
+		else
+			LAST_ERROR="GDebi is not installed, cannot extract DEB package"
+			return 1
+		fi
+		return 0
+	else
+		LAST_ERROR="WGet is not installed, cannot download DEB package"
 		return 1
 	fi
 }
