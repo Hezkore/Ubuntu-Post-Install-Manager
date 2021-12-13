@@ -10,6 +10,7 @@ function show_theme_menu () {
 		"Install_Mouse_Cursor" "Download, install and apply mouse cursor" "ON"
 		"Install_Font_SegoeUI" "Download, install and apply Segoe UI font" "ON"
 		"Install_Nerd_Fonts" "Download Nerd Fonts for coders" "ON"
+		"Config_GNOME_Terminal_Theme" "Configure GNOME terminal theme" "ON"
 	)
 	generate_selection_menu "Theme Options" "${items[@]}"
 }
@@ -227,6 +228,38 @@ function install_nerd_fonts () {
 		return 0
 	else
 		LAST_ERROR="WGet is not installed, cannot download fonts"
+		return 1
+	fi
+}
+
+function config_gnome_terminal_theme () {
+	if bin_exists "dconf"; then
+		echo "Fetching terminal profile..."
+		
+		# First we need to get a terminal profile
+		# Notice that /org/gnome/terminal/legacy/profiles:/default does NOT work!
+		term_profile_raw=$(dconf read /org/gnome/terminal/legacy/profiles:/list)
+		term_profile=${term_profile_raw:2:36}
+		
+		# Apply our changes
+		echo "Applying configuration to profile $term_profile..."
+		dconf write /org/gnome/terminal/legacy/profiles:/:$term_profile/use-theme-transparency false
+		dconf write /org/gnome/terminal/legacy/profiles:/:$term_profile/use-transparent-background true
+		dconf write /org/gnome/terminal/legacy/profiles:/:$term_profile/background-transparency-percent 3
+		
+		term_font="/usr/share/fonts/truetype/JetBrainsMono-nerd-font/JetBrains Mono Regular Nerd Font Complete Mono.ttf"
+		if [ -f "$term_font" ]; then
+			echo "Applying JetBrains Mono font..."
+			dconf write /org/gnome/terminal/legacy/profiles:/:$term_profile/use-system-font false
+			dconf write /org/gnome/terminal/legacy/profiles:/:$term_profile/font \"'JetBrainsMono Nerd Font Mono 12'\"
+		else
+			echo "JetBrains Mono font was not found, using default..."
+			dconf write /org/gnome/terminal/legacy/profiles:/:$term_profile/use-system-font true
+		fi
+		
+		return 0
+	else
+		LAST_ERROR="DConf is not installed, cannot change GNOME terminal configuration"
 		return 1
 	fi
 }
