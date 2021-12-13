@@ -199,7 +199,7 @@ function install_nerd_fonts () {
 		mkdir -p "$HOME/.nerd-fonts"
 		cd "$HOME/.nerd-fonts"
 		
-		#_install_nerd_font 3270
+		_install_nerd_font 3270
 		_install_nerd_font Agave
 		_install_nerd_font CascadiaCode
 		_install_nerd_font Cousine
