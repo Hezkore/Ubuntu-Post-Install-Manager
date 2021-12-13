@@ -9,6 +9,7 @@ function show_theme_menu () {
 		"Install_Windows_Icons" "Download, install and apply Windows icons" "ON"
 		"Install_Mouse_Cursor" "Download, install and apply mouse cursor" "ON"
 		"Install_Font_SegoeUI" "Download, install and apply Segoe UI font" "ON"
+		"Install_Nerd_Fonts" "Download Nerd Fonts for coders" "ON"
 	)
 	generate_selection_menu "Theme Options" "${items[@]}"
 }
@@ -178,6 +179,50 @@ function install_font_segoeui () {
 		fi
 	else
 		LAST_ERROR="WGet is not installed, cannot download font"
+		return 1
+	fi
+}
+
+function _install_nerd_font () {
+	wget -O $1.zip https://github.com/ryanoasis/nerd-fonts/releases/latest/download/$1.zip
+	sudo mkdir -p "/usr/share/fonts/truetype/$1-nerd-font"
+	sudo unzip -o -d "/usr/share/fonts/truetype/$1-nerd-font" $1.zip "*.ttf"
+	sudo rm -f $1.zip
+}
+
+function install_nerd_fonts () {
+	if bin_exists "wget"; then
+		
+		# Make a temporary storage space for the fonts
+		mkdir -p "$HOME/.nerd-fonts"
+		cd "$HOME/.nerd-fonts"
+		
+		_install_nerd_font 3270
+		_install_nerd_font Agave
+		_install_nerd_font CascadiaCode
+		_install_nerd_font CodeNewRoman
+		_install_nerd_font DejaVuSansMono
+		_install_nerd_font DroidSansMono
+		_install_nerd_font FiraMono
+		_install_nerd_font Go-Mono
+		_install_nerd_font Hack
+		_install_nerd_font Hasklig
+		_install_nerd_font Inconsolata
+		_install_nerd_font JetBrainsMono
+		_install_nerd_font LiberationMono
+		_install_nerd_font Noto
+		_install_nerd_font ProFont
+		_install_nerd_font Overpass
+		_install_nerd_font RobotoMono
+		_install_nerd_font SpaceMono
+		_install_nerd_font SourceCodePro
+		
+		# Cleanup
+		sudo rm -rf "$HOME/.nerd-fonts"
+		
+		return 0
+	else
+		LAST_ERROR="WGet is not installed, cannot download fonts"
 		return 1
 	fi
 }
