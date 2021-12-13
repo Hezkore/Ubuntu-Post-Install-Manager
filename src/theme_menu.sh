@@ -187,6 +187,7 @@ function _install_nerd_font () {
 	wget -O $1.zip https://github.com/ryanoasis/nerd-fonts/releases/latest/download/$1.zip
 	sudo mkdir -p "/usr/share/fonts/truetype/$1-nerd-font"
 	sudo unzip -o -d "/usr/share/fonts/truetype/$1-nerd-font" $1.zip "*.ttf"
+	sudo unzip -o -d "/usr/share/fonts/opentype/$1-nerd-font" $1.zip "*.otf" "*.ttc"
 	sudo rm -f $1.zip
 }
 
@@ -197,9 +198,10 @@ function install_nerd_fonts () {
 		mkdir -p "$HOME/.nerd-fonts"
 		cd "$HOME/.nerd-fonts"
 		
-		_install_nerd_font 3270
+		#_install_nerd_font 3270
 		_install_nerd_font Agave
 		_install_nerd_font CascadiaCode
+		_install_nerd_font Cousine
 		_install_nerd_font CodeNewRoman
 		_install_nerd_font DejaVuSansMono
 		_install_nerd_font DroidSansMono
@@ -219,6 +221,8 @@ function install_nerd_fonts () {
 		
 		# Cleanup
 		sudo rm -rf "$HOME/.nerd-fonts"
+		sudo find "/usr/share/fonts/truetype" -type d -empty -delete
+		sudo find "/usr/share/fonts/opentype" -type d -empty -delete
 		
 		return 0
 	else
