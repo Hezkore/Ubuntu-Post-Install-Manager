@@ -535,10 +535,38 @@ function install_vscode () {
 }
 
 function install_wine () {
+	# I wonder if this is needed...
+	#sudo dpkg --add-architecture i386
+	
+	# Install Wine & Winetricks
 	sudo apt install --install-recommends wine -y
 	sudo apt install winetricks -y
+	
 	# Make sure there's a desktop file created
 	sudo cp /usr/share/doc/wine/examples/wine.desktop /usr/share/applications/wine.desktop
+	
+	# Add some extra stuff
+	if bin_exists "wget"; then
+		if bin_exists "wine"; then
+				
+			wget http://dl.winehq.org/wine/wine-gecko/2.47.1/wine-gecko-2.47.1-x86_64.msi
+			wine msiexec /i wine-gecko-2.47.1-x86_64.msi
+			rm -f wine-gecko-2.47.1-x86_64.msi
+			
+			# I guess we don't need these either then
+			#wget http://dl.winehq.org/wine/wine-gecko/2.47.1/wine-gecko-2.47.1-x86.msi
+			#wine msiexec /i wine-gecko-2.47.1-x86.msi
+			#rm -f wine-gecko-2.47.1-x86.msi
+			
+			return 0
+		else
+			LAST_ERROR="Wine was not installed"
+			return 1
+		fi
+	else
+		LAST_ERROR="WGet is not installed, cannot download package"
+		return 1
+	fi
 }
 
 function install_gnome_boxes () {
