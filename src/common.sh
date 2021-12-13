@@ -69,7 +69,7 @@ function fetch_system_information () {
 function show_system_warnings () {
 	# Must be using X11
 	if ! $X11; then
-		warning_message+="You are not running a X11 session.\nPlease log out and select \"Ubuntu on Xorg\".\n\n"
+		warning_message+="You are not running a X11 session.\nThis is not an issue.\nPlease log out and select \"Ubuntu on Xorg\".\n\n"
 		echo "Not a X11 session"
 	fi
 	
