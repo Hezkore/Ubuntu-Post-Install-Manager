@@ -64,6 +64,7 @@ function nautilus_dosbox () {
 	if bin_exists "wget"; then
 		create_dir "$HOME/.local/share/nautilus/scripts"
 		wget -O "$HOME/.local/share/nautilus/scripts/Run with DOSBox" https://raw.githubusercontent.com/Hezkore/nautilus-dosbox/master/Run%20with%20DOSBox
+		chmod +x "$HOME/.local/share/nautilus/scripts/Run with DOSBox"
 		return 0
 	else
 		LAST_ERROR="WGet is not installed, cannot download script"
