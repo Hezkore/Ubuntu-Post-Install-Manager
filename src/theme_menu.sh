@@ -210,7 +210,7 @@ function install_nerd_fonts () {
 		_install_nerd_font Inconsolata
 		_install_nerd_font JetBrainsMono
 		_install_nerd_font LiberationMono
-		_install_nerd_font Noto
+		#_install_nerd_font Noto  #A bit too massive honestly...
 		_install_nerd_font ProFont
 		_install_nerd_font Overpass
 		_install_nerd_font RobotoMono
