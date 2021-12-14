@@ -247,13 +247,20 @@ function config_gnome_terminal_theme () {
 		dconf write /org/gnome/terminal/legacy/profiles:/:$term_profile/use-transparent-background true
 		dconf write /org/gnome/terminal/legacy/profiles:/:$term_profile/background-transparency-percent 3
 		
-		term_font="/usr/share/fonts/truetype/JetBrainsMono-nerd-font/JetBrains Mono Regular Nerd Font Complete Mono.ttf"
+		# Font
+		term_font_size="12"
+		term_font_dir="Hack-nerd-font"
+		term_font_file="Hack Regular Nerd Font Complete Mono.ttf"
+		term_font_name="Hack Nerd Font Mono"
+		
+		term_font="/usr/share/fonts/truetype/$term_font_dir/$term_font_file"
+		
 		if [ -f "$term_font" ]; then
-			echo "Applying JetBrains Mono font..."
+			echo "Applying font \"'$term_font_name $term_font_size'\"..."
 			dconf write /org/gnome/terminal/legacy/profiles:/:$term_profile/use-system-font false
-			dconf write /org/gnome/terminal/legacy/profiles:/:$term_profile/font \"'JetBrainsMono Nerd Font Mono 12'\"
+			dconf write /org/gnome/terminal/legacy/profiles:/:$term_profile/font "'$term_font_name $term_font_size'"
 		else
-			echo "JetBrains Mono font was not found, using default..."
+			echo "The font $term_font_name was not found, using system font..."
 			dconf write /org/gnome/terminal/legacy/profiles:/:$term_profile/use-system-font true
 		fi
 		
