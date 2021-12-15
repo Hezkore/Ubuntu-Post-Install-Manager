@@ -442,11 +442,11 @@ function config_gnome_shortcuts () {
 		# Open System Monitor via Ctrl Shift Escape
 		echo "System Monitor - Ctrl Shift Escape & Ctrl Alt Delete"
 		dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/binding "'<Primary><Shift>Escape'"
-		dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/command "'system-monitoring-center'"
+		dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/command "'gnome-system-monitor'"
 		dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/name "'Open system monitor'"
 		# AND Ctrl Alt Delete
 		dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/binding "'<Primary><Alt>Delete'"
-		dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/command "'system-monitoring-center'"
+		dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/command "'gnome-system-monitor'"
 		dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/name "'Open system monitor ALT'"
 		
 		# Open Quake 3 via Super Q
@@ -603,7 +603,7 @@ function configure_arcmenu () {
 		
 		# Add pinned app based on what's installed
 		# TODO
-		_dconf_write_ext arcmenu/pinned-app-list "['System Monitoring Center', '', 'tr.org.pardus.system-monitoring-center.desktop', 'Terminal', '', 'org.gnome.Terminal.desktop', 'Bitwarden', '', 'com.bitwarden.desktop.desktop', 'Mail', '', 'org.gnome.Geary.desktop', 'Steam', '', 'steam.desktop', 'Spotify', '', 'spotify.desktop', 'Lollypop', '', 'org.gnome.Lollypop.desktop', 'Audacious', '', 'audacious.desktop', 'Telegram', '', 'telegramdesktop.desktop', 'Discord', '', 'discord.desktop', 'Blender', '', 'org.blender.Blender.desktop', 'Krita', '', 'org.kde.krita.desktop', 'Kdenlive', '', 'org.kde.kdenlive.desktop', 'OBS', '', 'com.obsproject.Studio.desktop', 'VSCode', '', 'code.desktop']"
+		_dconf_write_ext arcmenu/pinned-app-list "['System Monitor', '', 'gnome-system-monitor.desktop', 'Terminal', '', 'org.gnome.Terminal.desktop', 'Bitwarden', '', 'com.bitwarden.desktop.desktop', 'Mail', '', 'org.gnome.Geary.desktop', 'Steam', '', 'steam.desktop', 'Spotify', '', 'spotify.desktop', 'Lollypop', '', 'org.gnome.Lollypop.desktop', 'Audacious', '', 'audacious.desktop', 'Telegram', '', 'telegramdesktop.desktop', 'Discord', '', 'discord.desktop', 'Blender', '', 'org.blender.Blender.desktop', 'Krita', '', 'org.kde.krita.desktop', 'Kdenlive', '', 'org.kde.kdenlive.desktop', 'OBS', '', 'com.obsproject.Studio.desktop', 'VSCode', '', 'code.desktop']"
 		
 		# This is required for ArcMenu to update
 		_dconf_write_ext arcmenu/reload-theme true
