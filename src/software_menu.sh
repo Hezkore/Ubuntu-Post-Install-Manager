@@ -46,7 +46,6 @@ function show_software_menu () {
 		"Install_Inscape" "Install Inscape via custom PPA" "ON"
 		"Install_Telegram" "Install Telegram messenger" "ON"
 		"Install_Discord" "Install Discord messenger" "ON"
-		"Install_Game_Data_Packager" "Install Game Data Packager" "ON"
 		"Install_Htop" "Install Htop system monitor" "ON"
 		"Install_Nvtop" "Install Nvtop NVidia GPU monitor" "ON"
 		"Install_Radeontop" "Install Radeontop Radeon GPU monitor" "ON"
