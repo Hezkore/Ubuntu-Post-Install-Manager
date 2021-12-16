@@ -355,13 +355,13 @@ Terminal=false
 Icon=blitzmax
 Categories=Utility;TextEditor;Development;IDE;
 Keywords=bmx;blitzmax;ng;"
-		sudo echo -e "$desktop" > "$HOME/.local/share/applications/maxide.desktop"
-
+				sudo echo -e "$desktop" > "$HOME/.local/share/applications/maxide.desktop"
+			
+				return 0
 			else
 				LAST_ERROR="UnZip is not installed, cannot extract DEB package"
 				return 1
 			fi
-			return 0
 		else
 			LAST_ERROR="WGet is not installed, cannot download DEB package"
 			return 1

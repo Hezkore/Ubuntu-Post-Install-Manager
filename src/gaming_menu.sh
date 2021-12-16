@@ -301,7 +301,6 @@ Icon=quake3"
 					LAST_ERROR="GDebi is not installed, cannot extract DEB package"
 					return 1
 				fi
-				return 0
 			else
 				LAST_ERROR="Game Data Packer is not installed, cannot download game data"
 				return 1
