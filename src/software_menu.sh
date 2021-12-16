@@ -31,6 +31,7 @@ function show_software_menu () {
 		"Install_UnZip" "Install UnZip" "ON"
 		"Install_Build-Essential" "Install build-essential" "ON"
 		"Install_Build_Depend" "Install common build dependencies" "ON"
+		"Install_BlitzMax_NG" "Install BlitzMax NG" "ON"
 		"Install_Meson" "Install Meson build system" "ON"
 		"Install_CMake" "Install CMake make system" "ON"
 		"Install_Ninja" "Install Ninja build system" "ON"
@@ -284,6 +285,91 @@ function install_build_depend () {
 	
 	# This needs to be a separate step as it doesn't always exist
 	sudo apt install -y libsimde-dev
+}
+
+function install_blitzmax_ng () {
+	if bin_exists "curl"; then
+		if bin_exists "wget"; then
+			if bin_exists "unzip"; then
+				
+				echo "Downloading latest BlitzMax NG version..."
+				curl -s https://api.github.com/repos/bmx-ng/bmx-ng/releases \
+				| grep "browser_download_url.*BlitzMax_linux_.*.tar.xz" \
+				| cut -d : -f 2,3 \
+				| tr -d \" \
+				| wget -O blitzmax.tar.xz -qi -
+				
+				echo
+				echo "Extracting archive..."
+				tar -xvf blitzmax.tar.xz -C "$HOME/"
+				sudo rm -rf blitzmax.tar.xz
+				
+				# Check if BlitzMax folder was properly extracted
+				if [[ -d "$HOME/BlitzMax"  ]]; then
+					mv "$HOME/BlitzMax" "$HOME/.bmxng"
+				else
+					LAST_ERROR="Unable to extract BlitzMax NG"
+					return 1
+				fi
+				
+				mkdir -p "$HOME/.local/bin"
+				
+				# Check if BlitzMax bcc exists
+				if [[ -f "$HOME/.bmxng/bin/bcc"  ]]; then
+					ln -s "$HOME/.bmxng/bin/bcc" "$HOME/.local/bin/bcc"
+				else
+					LAST_ERROR="Unable to find BlitzMax NG bcc binary"
+					return 1
+				fi
+				
+				# Check if BlitzMax bmk exists
+				if [[ -f "$HOME/.bmxng/bin/bmk"  ]]; then
+					ln -s "$HOME/.bmxng/bin/bmk" "$HOME/.local/bin/bmk"
+				else
+					LAST_ERROR="Unable to find BlitzMax NG bmk binary"
+					return 1
+				fi
+				
+				# Check if BlitzMax MaxIDE exists
+				if [[ -f "$HOME/.bmxng/MaxIDE"  ]]; then
+					ln -s "$HOME/.bmxng/MaxIDE" "$HOME/.local/bin/MaxIDE"
+					ln -s "$HOME/.bmxng/MaxIDE" "$HOME/.local/bin/maxide"
+				else
+					LAST_ERROR="Unable to find BlitzMax NG bmk binary"
+					return 1
+				fi
+				
+				# Add icon
+				mkdir -p "$HOME/.local/share/icons"
+				cp "$HOME/.bmxng/src/maxide/makeicons/source/Build-Run_16x.svg" "$HOME/.local/share/icons/blitzmax.svg"
+				
+				# Create desktop file
+				echo
+				echo "Creating BlitzMax NG .desktop file..."
+				desktop="[Desktop Entry]
+Exec=MaxIDE %F
+Name=MaxIDE
+Comment=BlitzMax NG IDE
+Type=Application
+Terminal=false
+Icon=blitzmax
+Categories=Utility;TextEditor;Development;IDE;
+Keywords=bmx;blitzmax;ng;"
+		sudo echo -e "$desktop" > "$HOME/.local/share/applications/maxide.desktop"
+
+			else
+				LAST_ERROR="UnZip is not installed, cannot extract DEB package"
+				return 1
+			fi
+			return 0
+		else
+			LAST_ERROR="WGet is not installed, cannot download DEB package"
+			return 1
+		fi
+	else
+		LAST_ERROR="cURL is not installed, cannot download DEB package"
+		return 1
+	fi
 }
 
 function install_spc () {
