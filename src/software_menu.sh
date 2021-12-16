@@ -279,9 +279,11 @@ function install_build_depend () {
 	libwebkit2gtk-4.0-dev \
 	libgtk-3-dev \
 	libobs-dev \
-	libsimde-dev \
 	libxtst-dev \
 	libxmu-dev
+	
+	# This needs to be a separate step as it doesn't always exist
+	sudo apt install -y libsimde-dev
 }
 
 function install_spc () {
