@@ -355,7 +355,7 @@ Terminal=false
 Icon=blitzmax
 Categories=Utility;TextEditor;Development;IDE;
 Keywords=bmx;blitzmax;ng;"
-				sudo echo -e "$desktop" > "$HOME/.local/share/applications/maxide.desktop"
+				echo -e "$desktop" > "$HOME/.local/share/applications/maxide.desktop"
 			
 				return 0
 			else
@@ -729,7 +729,7 @@ function install_pince () {
 		# Create a cute little bin script so the user can call 'pince'
 		binscript="#!/bin/bash
 cd \"$HOME/.pince\" && ./PINCE.sh $@"
-		sudo echo -e "$binscript" > "$HOME/.local/bin/pince"
+		echo -e "$binscript" > "$HOME/.local/bin/pince"
 		sudo chmod u+x "$HOME/.local/bin/pince"
 		
 		# Take ownership of the folder
@@ -746,7 +746,7 @@ Type=Application
 Terminal=true
 Categories=Utility;
 Icon=memory"
-		sudo echo -e "$desktop" > "$HOME/.local/share/applications/pince.desktop"
+		echo -e "$desktop" > "$HOME/.local/share/applications/pince.desktop"
 		
 		return 0
 	else

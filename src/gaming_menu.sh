@@ -264,12 +264,12 @@ function install_quake_3 () {
 					sudo rm -rf release-linux*.zip
 					
 					# Create a bogus CD Key for the demo
-					sudo echo -e "aaaaaaaaaaaaaaaa" > "$q3dir/baseq3/q3key"
+					echo -e "aaaaaaaaaaaaaaaa" > "$q3dir/baseq3/q3key"
 					
 					# Create a cute little bin script so the user can call 'quake3'
 					binscript="#!/bin/bash
 cd \"$HOME/.q3a\" && ./ioquake3.x86_64 $@"
-					sudo echo -e "$binscript" > "$HOME/.local/bin/quake3"
+					echo -e "$binscript" > "$HOME/.local/bin/quake3"
 					sudo chmod u+x "$HOME/.local/bin/quake3"
 					
 					# Check if a "Games" folder exists and add a Quake 3 shortcut
@@ -294,7 +294,7 @@ Type=Application
 Terminal=false
 Categories=Game;
 Icon=quake3"
-					sudo echo -e "$desktop" > "$HOME/.local/share/applications/quake3.desktop"
+					echo -e "$desktop" > "$HOME/.local/share/applications/quake3.desktop"
 					
 					return 0
 				else
@@ -424,8 +424,8 @@ seta r_vertexlight \"0\""
 	
 	# Write the config
 	echo "Writing Quake 3 config to $HOME/.q3a/baseq3/..."
-	sudo mkdir -p "$HOME/.q3a/baseq3/"
-	sudo echo -e "$cfg" > "$HOME/.q3a/baseq3/q3config.cfg"
+	mkdir -p "$HOME/.q3a/baseq3/"
+	echo -e "$cfg" > "$HOME/.q3a/baseq3/q3config.cfg"
 	
 	return 0
 }
@@ -437,7 +437,7 @@ function install_doom_port_zandronum () {
 	sudo apt-get install zandronum doomseeker-zandronum -y
 	
 	# Make sure the config folder exists
-	sudo mkdir -p "$HOME/.config/zandronum"
+	mkdir -p "$HOME/.config/zandronum"
 	
 	cfg="[IWADSearch.Directories]
 Path=/usr/share/games/doom
