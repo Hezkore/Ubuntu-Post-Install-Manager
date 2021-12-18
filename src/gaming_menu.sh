@@ -20,6 +20,8 @@ function show_gaming_menu () {
 		"Install_Quake_3_CFG" "Install custom high quality Quake 3 config" "ON"
 		"Install_Doom_Port_Zandronum" "Install the Zandronum Doom port via custom PPA" "ON"
 		"Install_Doom_And_Freedoom" "Install Shareware Doom and Freedoom" "ON"
+		"Install_Dwarf_Fortress" "Install McArcady's Dwarf Fortress starter pack" "ON"
+		"Install_Hezkore_Dwarf_Fortress" "Install Hezkore's Dwarf Fortress assets" "ON"
 	)
 	generate_selection_menu "Gaming Options" "${items[@]}"
 }
@@ -547,4 +549,84 @@ function install_doom_and_freedoom () {
 	sudo rm -f "/usr/share/applications/io.github.freedoom.FreeDM.desktop"
 	sudo rm -f "/usr/share/applications/io.github.freedoom.Phase1.desktop"
 	sudo rm -f "/usr/share/applications/io.github.freedoom.Phase2.desktop"
+}
+
+function install_dwarf_fortress () {
+	if bin_exists "curl"; then
+		if bin_exists "wget"; then
+			if bin_exists "gdebi"; then
+				
+				echo "Downloading Dwarf Fortress..."
+				curl -s https://api.github.com/repos/McArcady/lnp-forge/releases \
+				| grep -m 1 "browser_download_url.*deb" \
+				| cut -d : -f 2,3 \
+				| tr -d \" \
+				| wget -O df.deb -qi -
+				
+				sudo gdebi df.deb -n
+				sudo rm -rf df.deb
+				
+				sudo chown -R $USER "/opt/linux-dwarf-pack"
+				
+				# Create shortcut to Dwarf Fortress folder
+				if [[ -d "$HOME/Games"  ]]; then
+					ln -s "/opt/linux-dwarf-pack" "$HOME/Games/Dwarf Fortress"
+				fi
+				
+				return 0
+			else
+				LAST_ERROR=LAST_ERROR="GDebi is not installed, cannot extract DEB package"
+				return 1
+			fi
+		else
+			LAST_ERROR="WGet is not installed, cannot download DEB package"
+			return 1
+		fi
+	else
+		LAST_ERROR="cURL is not installed, cannot download DEB package"
+		return 1
+	fi
+}
+
+function install_hezkore_dwarf_fortress () {
+	df="/opt/linux-dwarf-pack/LNP"
+	graph="${df}/Graphics/Hezkore"
+	
+	mkdir -p "${df}/Colors"
+	mkdir -p "${graph}/data/art"
+	mkdir -p "${graph}/data/init"
+	
+	if bin_exists "wget"; then
+		echo
+		echo "Downloading font..."
+		wget -O "${graph}/data/README.md" "https://raw.githubusercontent.com/Hezkore/dwarf-fortress-assets/master/readme.md"
+	
+		echo
+		echo "Downloading colors..."
+		wget -O "${df}/Colors/Hezkore.txt" "https://raw.githubusercontent.com/Hezkore/dwarf-fortress-assets/master/colors.txt"
+		ln -s "${df}/Colors/Hezkore.txt" "${graph}/data/init/colors.txt"
+		
+		echo
+		echo "Downloading tileset..."
+		wget -O "${df}/Tilesets/Hezkore.png" "https://github.com/Hezkore/Dwarf-Fortress-Assets/blob/master/hezkore.png?raw=true"
+		ln -s "${df}/Tilesets/Hezkore.png" "${graph}/data/art/Hezkore.png"
+		
+		echo
+		echo "Downloading font..."
+		wget -O "${graph}/data/PxPlus_ToshibaSat_9x16.ttf" "https://github.com/Hezkore/dwarf-fortress-assets/blob/master/font.ttf?raw=true"
+		wget -O "${graph}/data/PxPlus_ToshibaTxL1_8x16.ttf" "https://github.com/Hezkore/dwarf-fortress-assets/blob/master/font_alt.ttf?raw=true"
+		
+		echo
+		echo "Downloading init..."
+		wget -O "${graph}/data/init/init.txt" "https://github.com/Hezkore/dwarf-fortress-assets/blob/master/init.txt?raw=true"
+		wget -O "${graph}/data/init/d_init.txt" "https://github.com/Hezkore/dwarf-fortress-assets/blob/master/d_init.txt?raw=true"
+		
+		echo
+		echo "Downloading manifest..."
+		wget -O "${graph}/manifest.json" "https://github.com/Hezkore/dwarf-fortress-assets/blob/master/manifest.json?raw=true"
+		
+	else
+		LAST_ERROR="WGet is not installed, cannot download assets package"
+		return 1
+	fi
 }

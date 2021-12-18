@@ -294,7 +294,7 @@ function install_blitzmax_ng () {
 				
 				echo "Downloading latest BlitzMax NG version..."
 				curl -s https://api.github.com/repos/bmx-ng/bmx-ng/releases \
-				| grep "browser_download_url.*BlitzMax_linux_.*.tar.xz" \
+				| grep -m 1 "browser_download_url.*BlitzMax_linux_.*.tar.xz" \
 				| cut -d : -f 2,3 \
 				| tr -d \" \
 				| wget -O blitzmax.tar.xz -qi -
