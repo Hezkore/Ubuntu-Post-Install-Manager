@@ -28,6 +28,7 @@ function folder_setup () {
 	create_dir ~/Projects/Images
 	create_dir ~/Projects/Audio
 	create_dir ~/Projects/Video
+	create_dir ~/Projects/Misc
 	
 	# Make sure some standard local dirs exist
 	create_dir ~/.config/autostart
