@@ -613,8 +613,8 @@ function install_hezkore_dwarf_fortress () {
 		
 		echo
 		echo "Downloading font..."
-		wget -O "${graph}/data/PxPlus_ToshibaSat_9x16.ttf" "https://github.com/Hezkore/dwarf-fortress-assets/blob/master/font.ttf?raw=true"
-		wget -O "${graph}/data/PxPlus_ToshibaTxL1_8x16.ttf" "https://github.com/Hezkore/dwarf-fortress-assets/blob/master/font_alt.ttf?raw=true"
+		wget -O "${graph}/data/font.ttf" "https://github.com/Hezkore/dwarf-fortress-assets/blob/master/font.ttf?raw=true"
+		wget -O "${graph}/data/font_alt.ttf" "https://github.com/Hezkore/dwarf-fortress-assets/blob/master/font_alt.ttf?raw=true"
 		
 		echo
 		echo "Downloading init..."
