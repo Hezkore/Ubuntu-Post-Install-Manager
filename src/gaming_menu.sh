@@ -598,9 +598,9 @@ function install_hezkore_dwarf_fortress () {
 	
 	if bin_exists "wget"; then
 		echo
-		echo "Downloading font..."
-		wget -O "${graph}/data/README.md" "https://raw.githubusercontent.com/Hezkore/dwarf-fortress-assets/master/readme.md"
-	
+		echo "Downloading readme..."
+		wget -O "${graph}/README.md" "https://raw.githubusercontent.com/Hezkore/dwarf-fortress-assets/master/readme.md"
+		
 		echo
 		echo "Downloading colors..."
 		wget -O "${df}/Colors/Hezkore.txt" "https://raw.githubusercontent.com/Hezkore/dwarf-fortress-assets/master/colors.txt"
@@ -613,8 +613,8 @@ function install_hezkore_dwarf_fortress () {
 		
 		echo
 		echo "Downloading font..."
-		wget -O "${graph}/data/font.ttf" "https://github.com/Hezkore/dwarf-fortress-assets/blob/master/font.ttf?raw=true"
-		wget -O "${graph}/data/font_alt.ttf" "https://github.com/Hezkore/dwarf-fortress-assets/blob/master/font_alt.ttf?raw=true"
+		wget -O "${graph}/data/art/font.ttf" "https://github.com/Hezkore/dwarf-fortress-assets/blob/master/font.ttf?raw=true"
+		wget -O "${graph}/data/art/font_alt.ttf" "https://github.com/Hezkore/dwarf-fortress-assets/blob/master/font_alt.ttf?raw=true"
 		
 		echo
 		echo "Downloading init..."
