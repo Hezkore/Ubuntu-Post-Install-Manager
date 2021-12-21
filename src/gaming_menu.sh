@@ -22,6 +22,7 @@ function show_gaming_menu () {
 		"Install_Doom_And_Freedoom" "Install Shareware Doom and Freedoom" "ON"
 		"Install_Dwarf_Fortress" "Install McArcady's Dwarf Fortress starter pack" "ON"
 		"Install_Hezkore_Dwarf_Fortress" "Install Hezkore's Dwarf Fortress assets" "ON"
+		"Install_Open_RollerCoaster_Tycoon_2" "Install Open RollerCoaster Tycoon 2" "ON"
 	)
 	generate_selection_menu "Gaming Options" "${items[@]}"
 }
@@ -629,4 +630,9 @@ function install_hezkore_dwarf_fortress () {
 		LAST_ERROR="WGet is not installed, cannot download assets package"
 		return 1
 	fi
+}
+
+function install_open_rollercoaster_tycoon_2 () {
+	sudo add-apt-repository ppa:openrct2/nightly -y
+	sudo apt install openrct2 -y
 }

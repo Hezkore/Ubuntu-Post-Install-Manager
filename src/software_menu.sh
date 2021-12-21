@@ -37,6 +37,8 @@ function show_software_menu () {
 		"Install_Ninja" "Install Ninja build system" "ON"
 		"Install_Python3" "Install Python and Pip" "ON"
 		"Install_NodeJS" "Install NodeJS via custom PPA" "ON"
+		"Install_Sublime_4" "Install Sublime Text 4 via custom PPA" "ON"
+		"Install_Sublime_4_Dev" "Install Sublime Text 4 Dev via custom PPA" "OFF"
 		"Install_Vim" "Install Vim CLI text editor" "ON"
 		"Install_Emacs" "Install Emacs CLI text editor" "OFF"
 		"Install_Foliate" "Install Foliate EBook reader via custom PPA" "ON"
@@ -374,6 +376,22 @@ Keywords=bmx;blitzmax;ng;"
 
 function install_spc () {
 	sudo apt install software-properties-common -y
+}
+
+function install_sublime_4 () {
+	wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+	# STABLE
+	echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+	sudo apt-get update
+	sudo apt-get install sublime-text -y
+}
+
+function install_sublime_4_dev () {
+	wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+	# DEV
+	echo "deb https://download.sublimetext.com/ apt/dev/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+	sudo apt-get update
+	sudo apt-get install sublime-text -y
 }
 
 function install_vim () {
