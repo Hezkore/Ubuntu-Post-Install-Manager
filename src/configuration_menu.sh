@@ -302,7 +302,7 @@ function config_gnome_mouse () {
 	if bin_exists "dconf"; then
 		echo "Applying configuration..."
 		dconf write /org/gnome/desktop/peripherals/mouse/accel-profile "'flat'"
-		dconf write /org/gnome/desktop/peripherals/mouse/speed -0.1
+		dconf write /org/gnome/desktop/peripherals/mouse/speed 0.065
 		
 		return 0
 	else

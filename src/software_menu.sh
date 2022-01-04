@@ -9,6 +9,7 @@ function show_software_menu () {
 		"Install_GNOME_Shell_Ext_Support" "Install GNOME shell extension support" "ON"
 		"Install_GNOME_Ext_Installer" "Install GNOME extension installer" "ON"
 		"Install_Discover_Store" "Install KDE Discover software store" "OFF"
+		"Install_Remote_Desktop" "Install Remmina VNC and remote desktop" "ON"
 		"Install_Curl" "Install cURL CLI tool" "ON"
 		"Install_Edge_Browser" "Install Microsoft Edge Browser via custom PPA" "ON"
 		"Install_FireFox" "Install FireFox Browser" "ON"
@@ -233,6 +234,10 @@ function install_innoextract () {
 
 function install_ppa_purge () {
 	sudo apt install ppa-purge -y
+}
+
+function install_remote_desktop () {
+	sudo apt install xrdp -y
 }
 
 function install_curl () {
