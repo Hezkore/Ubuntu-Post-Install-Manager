@@ -633,6 +633,6 @@ function install_hezkore_dwarf_fortress () {
 }
 
 function install_open_rollercoaster_tycoon_2 () {
-	sudo add-apt-repository ppa:openrct2/nightly -y
+	sudo add-apt-repository ppa:openrct2/master -y
 	sudo apt install openrct2 -y
 }
