@@ -38,6 +38,7 @@ function show_software_menu () {
 		"Install_CMake" "Install CMake make system" "ON"
 		"Install_Ninja" "Install Ninja build system" "ON"
 		"Install_Python3" "Install Python and Pip" "ON"
+		"Install_D_Lang" "Install D Language and the DMD compiler" "ON"
 		"Install_NodeJS" "Install NodeJS via custom PPA" "ON"
 		"Install_Sublime_4" "Install Sublime Text 4 via custom PPA" "ON"
 		"Install_Sublime_4_Dev" "Install Sublime Text 4 Dev via custom PPA" "OFF"
@@ -104,6 +105,19 @@ function install_python3 () {
 	pip install repolib
 	
 	#sudo apt install python -y
+}
+
+function install_d_lang () {
+	if bin_exists "wget"; then
+		mkdir -p "$HOME/dlang" && wget https://dlang.org/install.sh -O "$HOME/dlang/install.sh"
+		chmod +x "$HOME/dlang/install.sh"
+		$HOME/dlang/install.sh install dmd
+		source $(~/dlang/install.sh dmd -a)
+		return 0
+	else
+		LAST_ERROR="WGet is not installed, cannot download installer"
+		return 1
+	fi
 }
 
 function install_nodejs () {
