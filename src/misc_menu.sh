@@ -4,6 +4,7 @@
 function show_misc_menu () {
 	items=(
 		"Folder_Setup" "Create common folder directories" "ON"
+		"Wine_Windows_Folder" "Create Windows folders for Wine" "ON"
 		"Disable_Error_Report" "Disable Ubuntu error reporting" "ON"
 		"Nautilus_New_Docs" "Add 'New Document' menu to Nautilus" "ON"
 		"Nautilus_Admin" "Add 'Open as Admin' option to Nautilus" "OFF"
@@ -35,6 +36,31 @@ function folder_setup () {
 	create_dir ~/.local/bin
 	create_dir ~/.local/share/icons
 	create_dir ~/.local/share/fonts
+}
+
+function wine_windows_folder () {
+	# Make sure the Wine folder exists
+	create_dir "$HOME/.wine/drive_c"
+	
+	# Create the shortcut
+	if [[ -d "$HOME/.wine/drive_c" ]]; then
+		if [[ -d "$HOME/Windows" ]]; then
+			echo "Windows folder already exists"
+		else
+			echo "Creating Wine drive C shortcut as Windows"
+			ln -s "$HOME/.wine/drive_c" "$HOME/Windows"
+		fi
+		
+		if [[ -d "$HOME/.wine/drive_c/syswine" ]]; then
+			echo "syswine folder already exists"
+		else
+			echo "Creating Wine system shortcut as syswine"
+			ln -s "$HOME/.wine" "$HOME/.wine/drive_c/syswine"
+		fi
+	else
+		LAST_ERROR=".wine/drive_c folder doesn't exist"
+		return 1
+	fi
 }
 
 function disable_error_report () {
