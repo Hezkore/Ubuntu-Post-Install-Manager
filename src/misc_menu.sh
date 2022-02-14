@@ -40,7 +40,7 @@ function folder_setup () {
 
 function wine_windows_folder () {
 	# Make sure the Wine folder exists
-	create_dir "$HOME/.wine/drive_c"
+	create_dir "$HOME/.wine/drive_c/Games"
 	
 	# Create the shortcut
 	if [[ -d "$HOME/.wine/drive_c" ]]; then
@@ -56,6 +56,17 @@ function wine_windows_folder () {
 		else
 			echo "Creating Wine system shortcut as syswine"
 			ln -s "$HOME/.wine" "$HOME/.wine/drive_c/syswine"
+		fi
+		
+		if [[ -d "$HOME/Games" ]]; then
+			if [[ -d "$HOME/Games/Windows Games" ]]; then
+				echo "Windows Games fodler already exists"
+			else
+				if [[ -d "$HOME/.wine/drive_c/Games" ]]; then
+					echo "Creating Wine Games shortcut as Windows Games"
+					ln -s "$HOME/.wine/drive_c/Games" "$HOME/Games/Windows Games"
+				fi
+			fi
 		fi
 	else
 		LAST_ERROR=".wine/drive_c folder doesn't exist"
