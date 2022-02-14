@@ -25,6 +25,7 @@ function show_configuration_menu () {
 		"Config_GNOME_NoAttach" "Configure GNOME to not attach modal dialogs" "ON"
 		"Config_GNOME_FileChooser" "Configure GNOME file chooser settings" "ON"
 		"Config_GNOME_Favorites" "Configure GNOME favorite apps" "ON"
+		"Config_GNOME_App_Timeout" "Configure GNOME application timeout" "ON"
 		
 		# GNOME keyboard shortcuts
 		"Config_GNOME_Shortcuts" "Configure GNOME keyboard shortcuts" "ON"
@@ -412,6 +413,10 @@ function config_gnome_favorites () {
 		LAST_ERROR="DConf is not installed, cannot change GNOME configuration"
 		return 1
 	fi
+}
+
+function config_gnome_app_timeout () {
+	gsettings set org.gnome.mutter check-alive-timeout 10000
 }
 
 function config_gnome_shortcuts () {
