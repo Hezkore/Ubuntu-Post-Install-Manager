@@ -65,6 +65,7 @@ function show_software_menu () {
 		"Install_OBS" "Install OBS Studio via custom PPA" "ON"
 		"Install_OBS_NvFBC_Plugin" "Install OBS Studio NvFBC plugin for NVidia cards" "ON"
 		"Install_Wine" "Install Wine and Winetricks" "ON"
+		"Install_EXE_Thumbnailer" "Install EXE Thumbnailer" "ON"
 		"Install_GNOME_Boxes" "Install GNOME Boxes" "OFF"
 		"Install_VirtualBox" "Install VirtualBox" "ON"
 		"Install_IMWheel" "Install custom IMWheel version" "ON"
@@ -697,6 +698,10 @@ function install_wine () {
 		LAST_ERROR="WGet is not installed, cannot download package"
 		return 1
 	fi
+}
+
+function install_exe_thumbnailer () {
+	sudo apt install exe-thumbnailer -y
 }
 
 function install_gnome_boxes () {
