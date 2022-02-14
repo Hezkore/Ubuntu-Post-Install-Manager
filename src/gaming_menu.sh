@@ -33,7 +33,21 @@ function install_steam () {
 	
 	# Check if a "Games" folder exists and add a Steam shortcut
 	if [[ -d "$HOME/Games"  ]]; then
-		ln -s "$HOME/.steam/debian-installation" "$HOME/Games/Steam"
+		if [[ -d "$HOME/Games/Steam"  ]]; then
+			echo "Steam folder already exists in Games"
+		else
+			echo "Steam folder shortcut created in Games"
+			ln -s "$HOME/.steam/debian-installation/steamapps/common" "$HOME/Games/Steam"
+		fi
+	fi
+	
+	if [[ -d "$HOME/Applications"  ]]; then
+		if [[ -d "$HOME/Applications/Steam"  ]]; then
+			echo "Steam folder already exists in Applications"
+		else
+			echo "Steam folder shortcut created in Applications"
+			ln -s "$HOME/.steam/debian-installation" "$HOME/Applications/Steam"
+		fi
 	fi
 	
 	return 0
