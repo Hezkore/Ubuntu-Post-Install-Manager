@@ -20,11 +20,12 @@ function folder_setup () {
 	create_dir ~/Applications
 	create_dir ~/Games
 	create_dir ~/Projects/Others
-	create_dir ~/Projects/Code/BlitzMax
-	create_dir ~/Projects/Code/Bash
+	#create_dir ~/Projects/Code/BlitzMax
+	#create_dir ~/Projects/Code/Bash
 	create_dir ~/Projects/Code/C
-	create_dir ~/Projects/Code/Cpp
-	create_dir ~/Projects/Code/D
+	#create_dir ~/Projects/Code/Cpp
+	#create_dir ~/Projects/Code/D
+	create_dir ~/Projects/Code/JavaScript
 	create_dir ~/Projects/Code/TypeScript
 	create_dir ~/Projects/Images
 	create_dir ~/Projects/Audio
