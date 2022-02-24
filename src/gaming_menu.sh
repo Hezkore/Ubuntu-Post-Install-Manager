@@ -23,7 +23,7 @@ function show_gaming_menu () {
 		"Install_Dwarf_Fortress" "Install McArcady's Dwarf Fortress starter pack" "ON"
 		"Install_Hezkore_Dwarf_Fortress" "Install Hezkore's Dwarf Fortress assets" "ON"
 		"Install_Open_RollerCoaster_Tycoon_2" "Install Open RollerCoaster Tycoon 2" "ON"
-		"Install_0AD" "Install 0 A.D via custom PPA" "ON"
+		"Install_0_AD" "Install 0 A.D via custom PPA" "ON"
 	)
 	generate_selection_menu "Gaming Options" "${items[@]}"
 }
@@ -652,7 +652,7 @@ function install_open_rollercoaster_tycoon_2 () {
 	sudo apt install openrct2 -y
 }
 
-function "install_0ad" () {
+function install_0_ad () {
 	sudo add-apt-repository ppa:wfg/0ad
 	sudo apt-get install 0ad -y
 }
