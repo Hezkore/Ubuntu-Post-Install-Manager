@@ -653,6 +653,6 @@ function install_open_rollercoaster_tycoon_2 () {
 }
 
 function install_0_ad () {
-	sudo add-apt-repository ppa:wfg/0ad
+	sudo add-apt-repository ppa:wfg/0ad -y
 	sudo apt-get install 0ad -y
 }
